@@ -1,0 +1,49 @@
+--lpm_clshift CBX_DECLARE_ALL_CONNECTED_PORTS="OFF" LPM_SHIFTTYPE="ARITHMETIC" LPM_WIDTH=16 LPM_WIDTHDIST=4 data direction distance result
+--VERSION_BEGIN 19.1 cbx_lpm_clshift 2019:09:22:11:00:28:SJ cbx_mgl 2019:09:22:11:02:15:SJ  VERSION_END
+
+
+-- Copyright (C) 2019  Intel Corporation. All rights reserved.
+--  Your use of Intel Corporation's design tools, logic functions 
+--  and other software and tools, and any partner logic 
+--  functions, and any output files from any of the foregoing 
+--  (including device programming or simulation files), and any 
+--  associated documentation or information are expressly subject 
+--  to the terms and conditions of the Intel Program License 
+--  Subscription Agreement, the Intel Quartus Prime License Agreement,
+--  the Intel FPGA IP License Agreement, or other applicable license
+--  agreement, including, without limitation, that your use is for
+--  the sole purpose of programming logic devices manufactured by
+--  Intel and sold by Intel or its authorized distributors.  Please
+--  refer to the applicable agreement for further details, at
+--  https://fpgasoftware.intel.com/eula.
+
+
+
+--synthesis_resources = 
+SUBDESIGN lpm_clshift_fuc
+( 
+	data[15..0]	:	input;
+	direction	:	input;
+	distance[3..0]	:	input;
+	result[15..0]	:	output;
+) 
+VARIABLE 
+	direction_w[0..0]	: WIRE;
+	pad_left_w[7..0]	: WIRE;
+	pad_right_w0w[1..0]	: WIRE;
+	pad_right_w1w[2..0]	: WIRE;
+	pad_right_w2w[4..0]	: WIRE;
+	pad_right_w3w[8..0]	: WIRE;
+	sbit_w[79..0]	: WIRE;
+
+BEGIN 
+	direction_w[] = ( direction);
+	pad_left_w[] = B"00000000";
+	pad_right_w0w[] = ( sbit_w[15..15], sbit_w[15..15]);
+	pad_right_w1w[] = ( sbit_w[31..31], sbit_w[31..31], sbit_w[31..31]);
+	pad_right_w2w[] = ( sbit_w[47..47], sbit_w[47..47], sbit_w[47..47], sbit_w[47..47], sbit_w[47..47]);
+	pad_right_w3w[] = ( sbit_w[63..63], sbit_w[63..63], sbit_w[63..63], sbit_w[63..63], sbit_w[63..63], sbit_w[63..63], sbit_w[63..63], sbit_w[63..63], sbit_w[63..63]);
+	result[15..0] = sbit_w[79..64];
+	sbit_w[] = ( ((((distance[3..3] & (! direction_w[])) & ( sbit_w[55..48], pad_left_w[7..0])) # ((distance[3..3] & direction_w[]) & ( pad_right_w3w[7..0], sbit_w[63..56]))) # ((! distance[3..3]) & sbit_w[63..48])), ((((distance[2..2] & (! direction_w[])) & ( sbit_w[43..32], pad_left_w[3..0])) # ((distance[2..2] & direction_w[]) & ( pad_right_w2w[3..0], sbit_w[47..36]))) # ((! distance[2..2]) & sbit_w[47..32])), ((((distance[1..1] & (! direction_w[])) & ( sbit_w[29..16], pad_left_w[1..0])) # ((distance[1..1] & direction_w[]) & ( pad_right_w1w[1..0], sbit_w[31..18]))) # ((! distance[1..1]) & sbit_w[31..16])), ((((distance[0..0] & (! direction_w[])) & ( sbit_w[14..0], pad_left_w[0..0])) # ((distance[0..0] & direction_w[]) & ( pad_right_w0w[0..0], sbit_w[15..1]))) # ((! distance[0..0]) & sbit_w[15..0])), data[]);
+END;
+--VALID FILE

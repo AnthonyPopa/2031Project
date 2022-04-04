@@ -1,0 +1,15 @@
+-- Altera Memory Initialization File (MIF)
+
+DEPTH = 4;
+WIDTH = 24;
+
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+
+CONTENT
+  BEGIN
+           000 : 000100;  
+           001 : 010000;  
+           002 : 000001;  
+           003 : 000000;
+  END;

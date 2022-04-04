@@ -1,0 +1,1285 @@
+Analysis & Synthesis report for SCOMP
+Wed Mar 16 17:03:10 2022
+Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis IP Cores Summary
+ 10. State Machine - |SCOMP_System|SCOMP:inst|state
+ 11. User-Specified and Inferred Latches
+ 12. Registers Removed During Synthesis
+ 13. Removed Registers Triggering Further Register Optimizations
+ 14. General Register Statistics
+ 15. Inverted Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Source assignments for NeoPixelController:inst13|altsyncram:pixelRAM|altsyncram_g524:auto_generated
+ 18. Source assignments for SCOMP:inst|altsyncram:altsyncram_component|altsyncram_qm24:auto_generated
+ 19. Parameter Settings for User Entity Instance: NeoPixelController:inst13|altsyncram:pixelRAM
+ 20. Parameter Settings for User Entity Instance: PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i
+ 21. Parameter Settings for User Entity Instance: SCOMP:inst|altsyncram:altsyncram_component
+ 22. Parameter Settings for User Entity Instance: SCOMP:inst|LPM_CLSHIFT:shifter
+ 23. Parameter Settings for User Entity Instance: SCOMP:inst|LPM_BUSTRI:io_bus
+ 24. Parameter Settings for User Entity Instance: TIMER:inst4|LPM_BUSTRI:IO_BUS
+ 25. Parameter Settings for User Entity Instance: DIG_IN:inst7|LPM_BUSTRI:IO_BUS
+ 26. altsyncram Parameter Settings by Entity Instance
+ 27. Post-Synthesis Netlist Statistics for Top Partition
+ 28. Elapsed Time Per Partition
+ 29. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2019  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Wed Mar 16 17:03:10 2022       ;
+; Quartus Prime Version           ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
+; Revision Name                   ; SCOMP                                       ;
+; Top-level Entity Name           ; SCOMP_System                                ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 326                                         ;
+; Total pins                      ; 64                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 32,864                                      ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 1                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSXFC6D6F31C6     ;                    ;
+; Top-level entity name                                                           ; SCOMP_System       ; SCOMP              ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Maximum processors allowed for parallel compilation                             ; All                ;                    ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 8           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 8           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                 ;
++----------------------------------+-----------------+----------------------------------------+-----------------------------------------------------------------------------------------------+----------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                                  ; Library  ;
++----------------------------------+-----------------+----------------------------------------+-----------------------------------------------------------------------------------------------+----------+
+; NeoPixelController.vhd           ; yes             ; User VHDL File                         ; C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/NeoPixelController.vhd   ;          ;
+; HEX_DISP.vhd                     ; yes             ; User VHDL File                         ; C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/HEX_DISP.vhd             ;          ;
+; DIG_OUT.vhd                      ; yes             ; User VHDL File                         ; C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/DIG_OUT.vhd              ;          ;
+; DIG_IN.vhd                       ; yes             ; User VHDL File                         ; C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/DIG_IN.vhd               ;          ;
+; clk_div.vhd                      ; yes             ; User VHDL File                         ; C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/clk_div.vhd              ;          ;
+; TIMER.vhd                        ; yes             ; User VHDL File                         ; C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/TIMER.vhd                ;          ;
+; IO_DECODER.vhd                   ; yes             ; User VHDL File                         ; C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/IO_DECODER.vhd           ;          ;
+; SCOMP.vhd                        ; yes             ; User VHDL File                         ; C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/SCOMP.vhd                ;          ;
+; SCOMP_System.bdf                 ; yes             ; User Block Diagram/Schematic File      ; C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/SCOMP_System.bdf         ;          ;
+; HEX_DISP_6.bdf                   ; yes             ; User Block Diagram/Schematic File      ; C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/HEX_DISP_6.bdf           ;          ;
+; PLL_main.vhd                     ; yes             ; User Wizard-Generated File             ; C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/PLL_main.vhd             ; PLL_main ;
+; PLL_main/PLL_main_0002.v         ; yes             ; User Verilog HDL File                  ; C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/PLL_main/PLL_main_0002.v ; PLL_main ;
+; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altsyncram.tdf                         ;          ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/stratix_ram_block.inc                  ;          ;
+; lpm_mux.inc                      ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_mux.inc                            ;          ;
+; lpm_decode.inc                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_decode.inc                         ;          ;
+; aglobal191.inc                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/aglobal191.inc                         ;          ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/a_rdenreg.inc                          ;          ;
+; altrom.inc                       ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altrom.inc                             ;          ;
+; altram.inc                       ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altram.inc                             ;          ;
+; altdpram.inc                     ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altdpram.inc                           ;          ;
+; db/altsyncram_g524.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/db/altsyncram_g524.tdf   ;          ;
+; pixeldata.mif                    ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/pixeldata.mif            ;          ;
+; altera_pll.v                     ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altera_pll.v                           ;          ;
+; db/altsyncram_qm24.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/db/altsyncram_qm24.tdf   ;          ;
+; PixelTest.mif                    ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/PixelTest.mif            ;          ;
+; lpm_clshift.tdf                  ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_clshift.tdf                        ;          ;
+; db/lpm_clshift_fuc.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/db/lpm_clshift_fuc.tdf   ;          ;
+; lpm_bustri.tdf                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf                         ;          ;
++----------------------------------+-----------------+----------------------------------------+-----------------------------------------------------------------------------------------------+----------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                                                                     ;
++---------------------------------------------+-----------------------------------------------------------------------------------+
+; Resource                                    ; Usage                                                                             ;
++---------------------------------------------+-----------------------------------------------------------------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 340                                                                               ;
+;                                             ;                                                                                   ;
+; Combinational ALUT usage for logic          ; 448                                                                               ;
+;     -- 7 input functions                    ; 1                                                                                 ;
+;     -- 6 input functions                    ; 100                                                                               ;
+;     -- 5 input functions                    ; 153                                                                               ;
+;     -- 4 input functions                    ; 75                                                                                ;
+;     -- <=3 input functions                  ; 119                                                                               ;
+;                                             ;                                                                                   ;
+; Dedicated logic registers                   ; 326                                                                               ;
+;                                             ;                                                                                   ;
+; I/O pins                                    ; 64                                                                                ;
+; Total MLAB memory bits                      ; 0                                                                                 ;
+; Total block memory bits                     ; 32864                                                                             ;
+;                                             ;                                                                                   ;
+; Total DSP Blocks                            ; 0                                                                                 ;
+;                                             ;                                                                                   ;
+; Total PLLs                                  ; 1                                                                                 ;
+;     -- PLLs                                 ; 1                                                                                 ;
+;                                             ;                                                                                   ;
+; Maximum fan-out node                        ; PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
+; Maximum fan-out                             ; 351                                                                               ;
+; Total fan-out                               ; 3660                                                                              ;
+; Average fan-out                             ; 3.88                                                                              ;
++---------------------------------------------+-----------------------------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                 ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------+--------------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                        ; Entity Name        ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------+--------------------+--------------+
+; |SCOMP_System                             ; 448 (23)            ; 326 (0)                   ; 32864             ; 0          ; 64   ; 0            ; |SCOMP_System                                                                              ; SCOMP_System       ; work         ;
+;    |DIG_IN:inst7|                         ; 0 (0)               ; 10 (10)                   ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|DIG_IN:inst7                                                                 ; DIG_IN             ; work         ;
+;    |DIG_OUT:inst6|                        ; 0 (0)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|DIG_OUT:inst6                                                                ; DIG_OUT            ; work         ;
+;    |HEX_DISP_6:inst9|                     ; 44 (2)              ; 24 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9                                                             ; HEX_DISP_6         ; work         ;
+;       |HEX_DISP:inst1|                    ; 7 (7)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9|HEX_DISP:inst1                                              ; HEX_DISP           ; work         ;
+;       |HEX_DISP:inst2|                    ; 7 (7)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9|HEX_DISP:inst2                                              ; HEX_DISP           ; work         ;
+;       |HEX_DISP:inst3|                    ; 7 (7)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9|HEX_DISP:inst3                                              ; HEX_DISP           ; work         ;
+;       |HEX_DISP:inst4|                    ; 7 (7)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9|HEX_DISP:inst4                                              ; HEX_DISP           ; work         ;
+;       |HEX_DISP:inst5|                    ; 7 (7)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9|HEX_DISP:inst5                                              ; HEX_DISP           ; work         ;
+;       |HEX_DISP:inst6|                    ; 7 (7)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9|HEX_DISP:inst6                                              ; HEX_DISP           ; work         ;
+;    |IO_DECODER:inst3|                     ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|IO_DECODER:inst3                                                             ; IO_DECODER         ; work         ;
+;    |NeoPixelController:inst13|            ; 67 (67)             ; 68 (68)                   ; 96                ; 0          ; 0    ; 0            ; |SCOMP_System|NeoPixelController:inst13                                                    ; NeoPixelController ; work         ;
+;       |altsyncram:pixelRAM|               ; 0 (0)               ; 0 (0)                     ; 96                ; 0          ; 0    ; 0            ; |SCOMP_System|NeoPixelController:inst13|altsyncram:pixelRAM                                ; altsyncram         ; work         ;
+;          |altsyncram_g524:auto_generated| ; 0 (0)               ; 0 (0)                     ; 96                ; 0          ; 0    ; 0            ; |SCOMP_System|NeoPixelController:inst13|altsyncram:pixelRAM|altsyncram_g524:auto_generated ; altsyncram_g524    ; work         ;
+;    |PLL_main:inst1|                       ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|PLL_main:inst1                                                               ; PLL_main           ; pll_main     ;
+;       |PLL_main_0002:pll_main_inst|       ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|PLL_main:inst1|PLL_main_0002:pll_main_inst                                   ; PLL_main_0002      ; PLL_main     ;
+;          |altera_pll:altera_pll_i|        ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i           ; altera_pll         ; work         ;
+;    |SCOMP:inst|                           ; 252 (214)           ; 178 (178)                 ; 32768             ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst                                                                   ; SCOMP              ; work         ;
+;       |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 32768             ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst|altsyncram:altsyncram_component                                   ; altsyncram         ; work         ;
+;          |altsyncram_qm24:auto_generated| ; 0 (0)               ; 0 (0)                     ; 32768             ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst|altsyncram:altsyncram_component|altsyncram_qm24:auto_generated    ; altsyncram_qm24    ; work         ;
+;       |lpm_clshift:shifter|               ; 38 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst|lpm_clshift:shifter                                               ; lpm_clshift        ; work         ;
+;          |lpm_clshift_fuc:auto_generated| ; 38 (38)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst|lpm_clshift:shifter|lpm_clshift_fuc:auto_generated                ; lpm_clshift_fuc    ; work         ;
+;    |TIMER:inst4|                          ; 33 (33)             ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|TIMER:inst4                                                                  ; TIMER              ; work         ;
+;    |clk_div:inst5|                        ; 25 (25)             ; 21 (21)                   ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|clk_div:inst5                                                                ; clk_div            ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------+--------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                    ;
++-----------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+-------+---------------+
+; Name                                                                                    ; Type ; Mode           ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF           ;
++-----------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+-------+---------------+
+; NeoPixelController:inst13|altsyncram:pixelRAM|altsyncram_g524:auto_generated|ALTSYNCRAM ; AUTO ; True Dual Port ; 4            ; 24           ; 4            ; 24           ; 96    ; pixeldata.mif ;
+; SCOMP:inst|altsyncram:altsyncram_component|altsyncram_qm24:auto_generated|ALTSYNCRAM    ; AUTO ; Single Port    ; 2048         ; 16           ; --           ; --           ; 32768 ; PixelTest.mif ;
++-----------------------------------------------------------------------------------------+------+----------------+--------------+--------------+--------------+--------------+-------+---------------+
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                          ;
++--------+--------------+---------+--------------+--------------+------------------------------+-----------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance              ; IP Include File ;
++--------+--------------+---------+--------------+--------------+------------------------------+-----------------+
+; Altera ; altera_pll   ; 19.1    ; N/A          ; N/A          ; |SCOMP_System|PLL_main:inst1 ; PLL_main.vhd    ;
++--------+--------------+---------+--------------+--------------+------------------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |SCOMP_System|SCOMP:inst|state                                                                                                                                                                                                                                                                                                                                                                                                                                ;
++------------------+---------------+--------------+--------------+-------------+----------------+--------------+-------------+--------------+-----------------+---------------+---------------+----------------+---------------+---------------+--------------+---------------+--------------+----------------+------------------+-----------------+----------------+-----------------+----------------+---------------+--------------+--------------+-------------+------------+
+; Name             ; state.ex_out2 ; state.ex_out ; state.ex_in2 ; state.ex_in ; state.ex_shift ; state.ex_xor ; state.ex_or ; state.ex_and ; state.ex_return ; state.ex_call ; state.ex_jpos ; state.ex_jzero ; state.ex_jneg ; state.ex_jump ; state.ex_sub ; state.ex_addi ; state.ex_add ; state.ex_loadi ; state.ex_istore2 ; state.ex_istore ; state.ex_iload ; state.ex_store2 ; state.ex_store ; state.ex_load ; state.ex_nop ; state.decode ; state.fetch ; state.init ;
++------------------+---------------+--------------+--------------+-------------+----------------+--------------+-------------+--------------+-----------------+---------------+---------------+----------------+---------------+---------------+--------------+---------------+--------------+----------------+------------------+-----------------+----------------+-----------------+----------------+---------------+--------------+--------------+-------------+------------+
+; state.init       ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 0          ;
+; state.fetch      ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 1           ; 1          ;
+; state.decode     ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 1            ; 0           ; 1          ;
+; state.ex_nop     ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 1            ; 0            ; 0           ; 1          ;
+; state.ex_load    ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 1             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_store   ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 1              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_store2  ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 1               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_iload   ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 1              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_istore  ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 1               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_istore2 ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 1                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_loadi   ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 1              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_add     ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 1            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_addi    ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 1             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_sub     ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 1            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_jump    ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 1             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_jneg    ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 1             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_jzero   ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 1              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_jpos    ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 1             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_call    ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 1             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_return  ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 1               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_and     ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 1            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_or      ; 0             ; 0            ; 0            ; 0           ; 0              ; 0            ; 1           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_xor     ; 0             ; 0            ; 0            ; 0           ; 0              ; 1            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_shift   ; 0             ; 0            ; 0            ; 0           ; 1              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_in      ; 0             ; 0            ; 0            ; 1           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_in2     ; 0             ; 0            ; 1            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_out     ; 0             ; 1            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
+; state.ex_out2    ; 1             ; 0            ; 0            ; 0           ; 0              ; 0            ; 0           ; 0            ; 0               ; 0             ; 0             ; 0              ; 0             ; 0             ; 0            ; 0             ; 0            ; 0              ; 0                ; 0               ; 0              ; 0               ; 0              ; 0             ; 0            ; 0            ; 0           ; 1          ;
++------------------+---------------+--------------+--------------+-------------+----------------+--------------+-------------+--------------+-----------------+---------------+---------------+----------------+---------------+---------------+--------------+---------------+--------------+----------------+------------------+-----------------+----------------+-----------------+----------------+---------------+--------------+--------------+-------------+------------+
+
+
++----------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                      ;
++-----------------------------------------------------+---------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal       ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------------+------------------------+
+; TIMER:inst4|IO_COUNT[0]                             ; IO_DECODER:inst3|TIMER_EN ; yes                    ;
+; TIMER:inst4|IO_COUNT[1]                             ; IO_DECODER:inst3|TIMER_EN ; yes                    ;
+; TIMER:inst4|IO_COUNT[2]                             ; IO_DECODER:inst3|TIMER_EN ; yes                    ;
+; TIMER:inst4|IO_COUNT[3]                             ; IO_DECODER:inst3|TIMER_EN ; yes                    ;
+; TIMER:inst4|IO_COUNT[4]                             ; IO_DECODER:inst3|TIMER_EN ; yes                    ;
+; TIMER:inst4|IO_COUNT[5]                             ; IO_DECODER:inst3|TIMER_EN ; yes                    ;
+; TIMER:inst4|IO_COUNT[6]                             ; IO_DECODER:inst3|TIMER_EN ; yes                    ;
+; TIMER:inst4|IO_COUNT[7]                             ; IO_DECODER:inst3|TIMER_EN ; yes                    ;
+; TIMER:inst4|IO_COUNT[8]                             ; IO_DECODER:inst3|TIMER_EN ; yes                    ;
+; TIMER:inst4|IO_COUNT[9]                             ; IO_DECODER:inst3|TIMER_EN ; yes                    ;
+; TIMER:inst4|IO_COUNT[10]                            ; IO_DECODER:inst3|TIMER_EN ; yes                    ;
+; TIMER:inst4|IO_COUNT[11]                            ; IO_DECODER:inst3|TIMER_EN ; yes                    ;
+; TIMER:inst4|IO_COUNT[12]                            ; IO_DECODER:inst3|TIMER_EN ; yes                    ;
+; TIMER:inst4|IO_COUNT[13]                            ; IO_DECODER:inst3|TIMER_EN ; yes                    ;
+; TIMER:inst4|IO_COUNT[14]                            ; IO_DECODER:inst3|TIMER_EN ; yes                    ;
+; TIMER:inst4|IO_COUNT[15]                            ; IO_DECODER:inst3|TIMER_EN ; yes                    ;
+; Number of user-specified and inferred latches = 16  ;                           ;                        ;
++-----------------------------------------------------+---------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                          ;
++--------------------------------------------------------------+----------------------------------------------+
+; Register name                                                ; Reason for Removal                           ;
++--------------------------------------------------------------+----------------------------------------------+
+; DIG_IN:inst7|B_DI[10..15]                                    ; Stuck at GND due to stuck port data_in       ;
+; NeoPixelController:inst13|ram_write_buffer[0..2,8..10,16,17] ; Stuck at GND due to stuck port data_in       ;
+; NeoPixelController:inst13|wstate                             ; Merged with NeoPixelController:inst13|ram_we ;
+; SCOMP:inst|state.ex_nop                                      ; Lost fanout                                  ;
+; NeoPixelController:inst13|ram_read_addr[2..7]                ; Lost fanout                                  ;
+; Total Number of Removed Registers = 22                       ;                                              ;
++--------------------------------------------------------------+----------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                   ;
++--------------------------------------------+--------------------+---------------------------------------------+
+; Register name                              ; Reason for Removal ; Registers Removed due to This Register      ;
++--------------------------------------------+--------------------+---------------------------------------------+
+; NeoPixelController:inst13|ram_read_addr[7] ; Lost Fanouts       ; NeoPixelController:inst13|ram_read_addr[6], ;
+;                                            ;                    ; NeoPixelController:inst13|ram_read_addr[5], ;
+;                                            ;                    ; NeoPixelController:inst13|ram_read_addr[4], ;
+;                                            ;                    ; NeoPixelController:inst13|ram_read_addr[3], ;
+;                                            ;                    ; NeoPixelController:inst13|ram_read_addr[2]  ;
++--------------------------------------------+--------------------+---------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 326   ;
+; Number of registers using Synchronous Clear  ; 33    ;
+; Number of registers using Synchronous Load   ; 122   ;
+; Number of registers using Asynchronous Clear ; 116   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 195   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------+
+; Inverted Register Statistics                       ;
++------------------------------------------+---------+
+; Inverted Register                        ; Fan out ;
++------------------------------------------+---------+
+; NeoPixelController:inst13|reset_count[9] ; 2       ;
+; NeoPixelController:inst13|reset_count[8] ; 2       ;
+; NeoPixelController:inst13|reset_count[7] ; 2       ;
+; NeoPixelController:inst13|reset_count[6] ; 2       ;
+; NeoPixelController:inst13|reset_count[5] ; 2       ;
+; NeoPixelController:inst13|reset_count[3] ; 2       ;
+; NeoPixelController:inst13|bit_count[4]   ; 3       ;
+; NeoPixelController:inst13|bit_count[2]   ; 4       ;
+; NeoPixelController:inst13|bit_count[1]   ; 5       ;
+; NeoPixelController:inst13|bit_count[0]   ; 6       ;
+; Total number of inverted registers = 10  ;         ;
++------------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |SCOMP_System|NeoPixelController:inst13|pixel_count[0]   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|ram_read_addr[3] ;
+; 3:1                ; 99 bits   ; 198 LEs       ; 0 LEs                ; 198 LEs                ; Yes        ; |SCOMP_System|SCOMP:inst|PC_stack[6][8]                  ;
+; 4:1                ; 23 bits   ; 46 LEs        ; 0 LEs                ; 46 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|pixel_buffer[23] ;
+; 11:1               ; 11 bits   ; 77 LEs        ; 22 LEs               ; 55 LEs                 ; Yes        ; |SCOMP_System|SCOMP:inst|PC[10]                          ;
+; 12:1               ; 16 bits   ; 128 LEs       ; 96 LEs               ; 32 LEs                 ; Yes        ; |SCOMP_System|SCOMP:inst|AC[1]                           ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |SCOMP_System|NeoPixelController:inst13|enc_count        ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |SCOMP_System|NeoPixelController:inst13|reset_count      ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |SCOMP_System|NeoPixelController:inst13|bit_count        ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |SCOMP_System|IO_DATA[9]                                 ;
+; 12:1               ; 16 bits   ; 128 LEs       ; 128 LEs              ; 0 LEs                  ; No         ; |SCOMP_System|SCOMP:inst|Add1                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------+
+; Source assignments for NeoPixelController:inst13|altsyncram:pixelRAM|altsyncram_g524:auto_generated ;
++---------------------------------+--------------------+------+---------------------------------------+
+; Assignment                      ; Value              ; From ; To                                    ;
++---------------------------------+--------------------+------+---------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                     ;
++---------------------------------+--------------------+------+---------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------+
+; Source assignments for SCOMP:inst|altsyncram:altsyncram_component|altsyncram_qm24:auto_generated ;
++---------------------------------+--------------------+------+------------------------------------+
+; Assignment                      ; Value              ; From ; To                                 ;
++---------------------------------+--------------------+------+------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                  ;
++---------------------------------+--------------------+------+------------------------------------+
+
+
++--------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: NeoPixelController:inst13|altsyncram:pixelRAM ;
++------------------------------------+----------------------+--------------------------------+
+; Parameter Name                     ; Value                ; Type                           ;
++------------------------------------+----------------------+--------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                        ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                   ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                 ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                        ;
+; OPERATION_MODE                     ; BIDIR_DUAL_PORT      ; Untyped                        ;
+; WIDTH_A                            ; 24                   ; Signed Integer                 ;
+; WIDTHAD_A                          ; 8                    ; Signed Integer                 ;
+; NUMWORDS_A                         ; 4                    ; Signed Integer                 ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                        ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                        ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                        ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                        ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                        ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                        ;
+; WIDTH_B                            ; 24                   ; Signed Integer                 ;
+; WIDTHAD_B                          ; 8                    ; Signed Integer                 ;
+; NUMWORDS_B                         ; 4                    ; Signed Integer                 ;
+; INDATA_REG_B                       ; CLOCK0               ; Untyped                        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK0               ; Untyped                        ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                        ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped                        ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                        ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                        ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                        ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                        ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                        ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                        ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                        ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                        ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                 ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Signed Integer                 ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                        ;
+; BYTE_SIZE                          ; 8                    ; Signed Integer                 ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA             ; Untyped                        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                        ;
+; INIT_FILE                          ; pixeldata.mif        ; Untyped                        ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                        ;
+; MAXIMUM_DEPTH                      ; 0                    ; Signed Integer                 ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                        ;
+; CLOCK_ENABLE_INPUT_B               ; BYPASS               ; Untyped                        ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                        ;
+; CLOCK_ENABLE_OUTPUT_B              ; BYPASS               ; Untyped                        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                        ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                        ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Signed Integer                 ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                        ;
+; CBXI_PARAMETER                     ; altsyncram_g524      ; Untyped                        ;
++------------------------------------+----------------------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i ;
++--------------------------------------+------------------------+-------------------------------------------------+
+; Parameter Name                       ; Value                  ; Type                                            ;
++--------------------------------------+------------------------+-------------------------------------------------+
+; reference_clock_frequency            ; 50.0 MHz               ; String                                          ;
+; fractional_vco_multiplier            ; false                  ; String                                          ;
+; pll_type                             ; General                ; String                                          ;
+; pll_subtype                          ; General                ; String                                          ;
+; number_of_clocks                     ; 1                      ; Signed Integer                                  ;
+; operation_mode                       ; direct                 ; String                                          ;
+; deserialization_factor               ; 4                      ; Signed Integer                                  ;
+; data_rate                            ; 0                      ; Signed Integer                                  ;
+; sim_additional_refclk_cycles_to_lock ; 0                      ; Signed Integer                                  ;
+; output_clock_frequency0              ; 10.000000 MHz          ; String                                          ;
+; phase_shift0                         ; 0 ps                   ; String                                          ;
+; duty_cycle0                          ; 50                     ; Signed Integer                                  ;
+; output_clock_frequency1              ; 0 MHz                  ; String                                          ;
+; phase_shift1                         ; 0 ps                   ; String                                          ;
+; duty_cycle1                          ; 50                     ; Signed Integer                                  ;
+; output_clock_frequency2              ; 0 MHz                  ; String                                          ;
+; phase_shift2                         ; 0 ps                   ; String                                          ;
+; duty_cycle2                          ; 50                     ; Signed Integer                                  ;
+; output_clock_frequency3              ; 0 MHz                  ; String                                          ;
+; phase_shift3                         ; 0 ps                   ; String                                          ;
+; duty_cycle3                          ; 50                     ; Signed Integer                                  ;
+; output_clock_frequency4              ; 0 MHz                  ; String                                          ;
+; phase_shift4                         ; 0 ps                   ; String                                          ;
+; duty_cycle4                          ; 50                     ; Signed Integer                                  ;
+; output_clock_frequency5              ; 0 MHz                  ; String                                          ;
+; phase_shift5                         ; 0 ps                   ; String                                          ;
+; duty_cycle5                          ; 50                     ; Signed Integer                                  ;
+; output_clock_frequency6              ; 0 MHz                  ; String                                          ;
+; phase_shift6                         ; 0 ps                   ; String                                          ;
+; duty_cycle6                          ; 50                     ; Signed Integer                                  ;
+; output_clock_frequency7              ; 0 MHz                  ; String                                          ;
+; phase_shift7                         ; 0 ps                   ; String                                          ;
+; duty_cycle7                          ; 50                     ; Signed Integer                                  ;
+; output_clock_frequency8              ; 0 MHz                  ; String                                          ;
+; phase_shift8                         ; 0 ps                   ; String                                          ;
+; duty_cycle8                          ; 50                     ; Signed Integer                                  ;
+; output_clock_frequency9              ; 0 MHz                  ; String                                          ;
+; phase_shift9                         ; 0 ps                   ; String                                          ;
+; duty_cycle9                          ; 50                     ; Signed Integer                                  ;
+; output_clock_frequency10             ; 0 MHz                  ; String                                          ;
+; phase_shift10                        ; 0 ps                   ; String                                          ;
+; duty_cycle10                         ; 50                     ; Signed Integer                                  ;
+; output_clock_frequency11             ; 0 MHz                  ; String                                          ;
+; phase_shift11                        ; 0 ps                   ; String                                          ;
+; duty_cycle11                         ; 50                     ; Signed Integer                                  ;
+; output_clock_frequency12             ; 0 MHz                  ; String                                          ;
+; phase_shift12                        ; 0 ps                   ; String                                          ;
+; duty_cycle12                         ; 50                     ; Signed Integer                                  ;
+; output_clock_frequency13             ; 0 MHz                  ; String                                          ;
+; phase_shift13                        ; 0 ps                   ; String                                          ;
+; duty_cycle13                         ; 50                     ; Signed Integer                                  ;
+; output_clock_frequency14             ; 0 MHz                  ; String                                          ;
+; phase_shift14                        ; 0 ps                   ; String                                          ;
+; duty_cycle14                         ; 50                     ; Signed Integer                                  ;
+; output_clock_frequency15             ; 0 MHz                  ; String                                          ;
+; phase_shift15                        ; 0 ps                   ; String                                          ;
+; duty_cycle15                         ; 50                     ; Signed Integer                                  ;
+; output_clock_frequency16             ; 0 MHz                  ; String                                          ;
+; phase_shift16                        ; 0 ps                   ; String                                          ;
+; duty_cycle16                         ; 50                     ; Signed Integer                                  ;
+; output_clock_frequency17             ; 0 MHz                  ; String                                          ;
+; phase_shift17                        ; 0 ps                   ; String                                          ;
+; duty_cycle17                         ; 50                     ; Signed Integer                                  ;
+; clock_name_0                         ;                        ; String                                          ;
+; clock_name_1                         ;                        ; String                                          ;
+; clock_name_2                         ;                        ; String                                          ;
+; clock_name_3                         ;                        ; String                                          ;
+; clock_name_4                         ;                        ; String                                          ;
+; clock_name_5                         ;                        ; String                                          ;
+; clock_name_6                         ;                        ; String                                          ;
+; clock_name_7                         ;                        ; String                                          ;
+; clock_name_8                         ;                        ; String                                          ;
+; clock_name_global_0                  ; false                  ; String                                          ;
+; clock_name_global_1                  ; false                  ; String                                          ;
+; clock_name_global_2                  ; false                  ; String                                          ;
+; clock_name_global_3                  ; false                  ; String                                          ;
+; clock_name_global_4                  ; false                  ; String                                          ;
+; clock_name_global_5                  ; false                  ; String                                          ;
+; clock_name_global_6                  ; false                  ; String                                          ;
+; clock_name_global_7                  ; false                  ; String                                          ;
+; clock_name_global_8                  ; false                  ; String                                          ;
+; m_cnt_hi_div                         ; 1                      ; Signed Integer                                  ;
+; m_cnt_lo_div                         ; 1                      ; Signed Integer                                  ;
+; m_cnt_bypass_en                      ; false                  ; String                                          ;
+; m_cnt_odd_div_duty_en                ; false                  ; String                                          ;
+; n_cnt_hi_div                         ; 1                      ; Signed Integer                                  ;
+; n_cnt_lo_div                         ; 1                      ; Signed Integer                                  ;
+; n_cnt_bypass_en                      ; false                  ; String                                          ;
+; n_cnt_odd_div_duty_en                ; false                  ; String                                          ;
+; c_cnt_hi_div0                        ; 1                      ; Signed Integer                                  ;
+; c_cnt_lo_div0                        ; 1                      ; Signed Integer                                  ;
+; c_cnt_bypass_en0                     ; false                  ; String                                          ;
+; c_cnt_in_src0                        ; ph_mux_clk             ; String                                          ;
+; c_cnt_odd_div_duty_en0               ; false                  ; String                                          ;
+; c_cnt_prst0                          ; 1                      ; Signed Integer                                  ;
+; c_cnt_ph_mux_prst0                   ; 0                      ; Signed Integer                                  ;
+; c_cnt_hi_div1                        ; 1                      ; Signed Integer                                  ;
+; c_cnt_lo_div1                        ; 1                      ; Signed Integer                                  ;
+; c_cnt_bypass_en1                     ; false                  ; String                                          ;
+; c_cnt_in_src1                        ; ph_mux_clk             ; String                                          ;
+; c_cnt_odd_div_duty_en1               ; false                  ; String                                          ;
+; c_cnt_prst1                          ; 1                      ; Signed Integer                                  ;
+; c_cnt_ph_mux_prst1                   ; 0                      ; Signed Integer                                  ;
+; c_cnt_hi_div2                        ; 1                      ; Signed Integer                                  ;
+; c_cnt_lo_div2                        ; 1                      ; Signed Integer                                  ;
+; c_cnt_bypass_en2                     ; false                  ; String                                          ;
+; c_cnt_in_src2                        ; ph_mux_clk             ; String                                          ;
+; c_cnt_odd_div_duty_en2               ; false                  ; String                                          ;
+; c_cnt_prst2                          ; 1                      ; Signed Integer                                  ;
+; c_cnt_ph_mux_prst2                   ; 0                      ; Signed Integer                                  ;
+; c_cnt_hi_div3                        ; 1                      ; Signed Integer                                  ;
+; c_cnt_lo_div3                        ; 1                      ; Signed Integer                                  ;
+; c_cnt_bypass_en3                     ; false                  ; String                                          ;
+; c_cnt_in_src3                        ; ph_mux_clk             ; String                                          ;
+; c_cnt_odd_div_duty_en3               ; false                  ; String                                          ;
+; c_cnt_prst3                          ; 1                      ; Signed Integer                                  ;
+; c_cnt_ph_mux_prst3                   ; 0                      ; Signed Integer                                  ;
+; c_cnt_hi_div4                        ; 1                      ; Signed Integer                                  ;
+; c_cnt_lo_div4                        ; 1                      ; Signed Integer                                  ;
+; c_cnt_bypass_en4                     ; false                  ; String                                          ;
+; c_cnt_in_src4                        ; ph_mux_clk             ; String                                          ;
+; c_cnt_odd_div_duty_en4               ; false                  ; String                                          ;
+; c_cnt_prst4                          ; 1                      ; Signed Integer                                  ;
+; c_cnt_ph_mux_prst4                   ; 0                      ; Signed Integer                                  ;
+; c_cnt_hi_div5                        ; 1                      ; Signed Integer                                  ;
+; c_cnt_lo_div5                        ; 1                      ; Signed Integer                                  ;
+; c_cnt_bypass_en5                     ; false                  ; String                                          ;
+; c_cnt_in_src5                        ; ph_mux_clk             ; String                                          ;
+; c_cnt_odd_div_duty_en5               ; false                  ; String                                          ;
+; c_cnt_prst5                          ; 1                      ; Signed Integer                                  ;
+; c_cnt_ph_mux_prst5                   ; 0                      ; Signed Integer                                  ;
+; c_cnt_hi_div6                        ; 1                      ; Signed Integer                                  ;
+; c_cnt_lo_div6                        ; 1                      ; Signed Integer                                  ;
+; c_cnt_bypass_en6                     ; false                  ; String                                          ;
+; c_cnt_in_src6                        ; ph_mux_clk             ; String                                          ;
+; c_cnt_odd_div_duty_en6               ; false                  ; String                                          ;
+; c_cnt_prst6                          ; 1                      ; Signed Integer                                  ;
+; c_cnt_ph_mux_prst6                   ; 0                      ; Signed Integer                                  ;
+; c_cnt_hi_div7                        ; 1                      ; Signed Integer                                  ;
+; c_cnt_lo_div7                        ; 1                      ; Signed Integer                                  ;
+; c_cnt_bypass_en7                     ; false                  ; String                                          ;
+; c_cnt_in_src7                        ; ph_mux_clk             ; String                                          ;
+; c_cnt_odd_div_duty_en7               ; false                  ; String                                          ;
+; c_cnt_prst7                          ; 1                      ; Signed Integer                                  ;
+; c_cnt_ph_mux_prst7                   ; 0                      ; Signed Integer                                  ;
+; c_cnt_hi_div8                        ; 1                      ; Signed Integer                                  ;
+; c_cnt_lo_div8                        ; 1                      ; Signed Integer                                  ;
+; c_cnt_bypass_en8                     ; false                  ; String                                          ;
+; c_cnt_in_src8                        ; ph_mux_clk             ; String                                          ;
+; c_cnt_odd_div_duty_en8               ; false                  ; String                                          ;
+; c_cnt_prst8                          ; 1                      ; Signed Integer                                  ;
+; c_cnt_ph_mux_prst8                   ; 0                      ; Signed Integer                                  ;
+; c_cnt_hi_div9                        ; 1                      ; Signed Integer                                  ;
+; c_cnt_lo_div9                        ; 1                      ; Signed Integer                                  ;
+; c_cnt_bypass_en9                     ; false                  ; String                                          ;
+; c_cnt_in_src9                        ; ph_mux_clk             ; String                                          ;
+; c_cnt_odd_div_duty_en9               ; false                  ; String                                          ;
+; c_cnt_prst9                          ; 1                      ; Signed Integer                                  ;
+; c_cnt_ph_mux_prst9                   ; 0                      ; Signed Integer                                  ;
+; c_cnt_hi_div10                       ; 1                      ; Signed Integer                                  ;
+; c_cnt_lo_div10                       ; 1                      ; Signed Integer                                  ;
+; c_cnt_bypass_en10                    ; false                  ; String                                          ;
+; c_cnt_in_src10                       ; ph_mux_clk             ; String                                          ;
+; c_cnt_odd_div_duty_en10              ; false                  ; String                                          ;
+; c_cnt_prst10                         ; 1                      ; Signed Integer                                  ;
+; c_cnt_ph_mux_prst10                  ; 0                      ; Signed Integer                                  ;
+; c_cnt_hi_div11                       ; 1                      ; Signed Integer                                  ;
+; c_cnt_lo_div11                       ; 1                      ; Signed Integer                                  ;
+; c_cnt_bypass_en11                    ; false                  ; String                                          ;
+; c_cnt_in_src11                       ; ph_mux_clk             ; String                                          ;
+; c_cnt_odd_div_duty_en11              ; false                  ; String                                          ;
+; c_cnt_prst11                         ; 1                      ; Signed Integer                                  ;
+; c_cnt_ph_mux_prst11                  ; 0                      ; Signed Integer                                  ;
+; c_cnt_hi_div12                       ; 1                      ; Signed Integer                                  ;
+; c_cnt_lo_div12                       ; 1                      ; Signed Integer                                  ;
+; c_cnt_bypass_en12                    ; false                  ; String                                          ;
+; c_cnt_in_src12                       ; ph_mux_clk             ; String                                          ;
+; c_cnt_odd_div_duty_en12              ; false                  ; String                                          ;
+; c_cnt_prst12                         ; 1                      ; Signed Integer                                  ;
+; c_cnt_ph_mux_prst12                  ; 0                      ; Signed Integer                                  ;
+; c_cnt_hi_div13                       ; 1                      ; Signed Integer                                  ;
+; c_cnt_lo_div13                       ; 1                      ; Signed Integer                                  ;
+; c_cnt_bypass_en13                    ; false                  ; String                                          ;
+; c_cnt_in_src13                       ; ph_mux_clk             ; String                                          ;
+; c_cnt_odd_div_duty_en13              ; false                  ; String                                          ;
+; c_cnt_prst13                         ; 1                      ; Signed Integer                                  ;
+; c_cnt_ph_mux_prst13                  ; 0                      ; Signed Integer                                  ;
+; c_cnt_hi_div14                       ; 1                      ; Signed Integer                                  ;
+; c_cnt_lo_div14                       ; 1                      ; Signed Integer                                  ;
+; c_cnt_bypass_en14                    ; false                  ; String                                          ;
+; c_cnt_in_src14                       ; ph_mux_clk             ; String                                          ;
+; c_cnt_odd_div_duty_en14              ; false                  ; String                                          ;
+; c_cnt_prst14                         ; 1                      ; Signed Integer                                  ;
+; c_cnt_ph_mux_prst14                  ; 0                      ; Signed Integer                                  ;
+; c_cnt_hi_div15                       ; 1                      ; Signed Integer                                  ;
+; c_cnt_lo_div15                       ; 1                      ; Signed Integer                                  ;
+; c_cnt_bypass_en15                    ; false                  ; String                                          ;
+; c_cnt_in_src15                       ; ph_mux_clk             ; String                                          ;
+; c_cnt_odd_div_duty_en15              ; false                  ; String                                          ;
+; c_cnt_prst15                         ; 1                      ; Signed Integer                                  ;
+; c_cnt_ph_mux_prst15                  ; 0                      ; Signed Integer                                  ;
+; c_cnt_hi_div16                       ; 1                      ; Signed Integer                                  ;
+; c_cnt_lo_div16                       ; 1                      ; Signed Integer                                  ;
+; c_cnt_bypass_en16                    ; false                  ; String                                          ;
+; c_cnt_in_src16                       ; ph_mux_clk             ; String                                          ;
+; c_cnt_odd_div_duty_en16              ; false                  ; String                                          ;
+; c_cnt_prst16                         ; 1                      ; Signed Integer                                  ;
+; c_cnt_ph_mux_prst16                  ; 0                      ; Signed Integer                                  ;
+; c_cnt_hi_div17                       ; 1                      ; Signed Integer                                  ;
+; c_cnt_lo_div17                       ; 1                      ; Signed Integer                                  ;
+; c_cnt_bypass_en17                    ; false                  ; String                                          ;
+; c_cnt_in_src17                       ; ph_mux_clk             ; String                                          ;
+; c_cnt_odd_div_duty_en17              ; false                  ; String                                          ;
+; c_cnt_prst17                         ; 1                      ; Signed Integer                                  ;
+; c_cnt_ph_mux_prst17                  ; 0                      ; Signed Integer                                  ;
+; pll_vco_div                          ; 1                      ; Signed Integer                                  ;
+; pll_slf_rst                          ; false                  ; String                                          ;
+; pll_bw_sel                           ; low                    ; String                                          ;
+; pll_output_clk_frequency             ; 0 MHz                  ; String                                          ;
+; pll_cp_current                       ; 0                      ; Signed Integer                                  ;
+; pll_bwctrl                           ; 0                      ; Signed Integer                                  ;
+; pll_fractional_division              ; 1                      ; Signed Integer                                  ;
+; pll_fractional_cout                  ; 24                     ; Signed Integer                                  ;
+; pll_dsm_out_sel                      ; 1st_order              ; String                                          ;
+; mimic_fbclk_type                     ; gclk                   ; String                                          ;
+; pll_fbclk_mux_1                      ; glb                    ; String                                          ;
+; pll_fbclk_mux_2                      ; fb_1                   ; String                                          ;
+; pll_m_cnt_in_src                     ; ph_mux_clk             ; String                                          ;
+; pll_vcoph_div                        ; 1                      ; Signed Integer                                  ;
+; refclk1_frequency                    ; 0 MHz                  ; String                                          ;
+; pll_clkin_0_src                      ; clk_0                  ; String                                          ;
+; pll_clkin_1_src                      ; clk_0                  ; String                                          ;
+; pll_clk_loss_sw_en                   ; false                  ; String                                          ;
+; pll_auto_clk_sw_en                   ; false                  ; String                                          ;
+; pll_manu_clk_sw_en                   ; false                  ; String                                          ;
+; pll_clk_sw_dly                       ; 0                      ; Signed Integer                                  ;
+; pll_extclk_0_cnt_src                 ; pll_extclk_cnt_src_vss ; String                                          ;
+; pll_extclk_1_cnt_src                 ; pll_extclk_cnt_src_vss ; String                                          ;
++--------------------------------------+------------------------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: SCOMP:inst|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+-----------------------------+
+; Parameter Name                     ; Value                ; Type                        ;
++------------------------------------+----------------------+-----------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                     ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                  ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE              ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                     ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped                     ;
+; WIDTH_A                            ; 16                   ; Signed Integer              ;
+; WIDTHAD_A                          ; 11                   ; Signed Integer              ;
+; NUMWORDS_A                         ; 2048                 ; Signed Integer              ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                     ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                     ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                     ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                     ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                     ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                     ;
+; WIDTH_B                            ; 1                    ; Signed Integer              ;
+; WIDTHAD_B                          ; 1                    ; Signed Integer              ;
+; NUMWORDS_B                         ; 0                    ; Signed Integer              ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                     ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                     ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                     ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                     ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                     ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                     ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                     ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                     ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                     ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                     ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                     ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                     ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer              ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Signed Integer              ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                     ;
+; BYTE_SIZE                          ; 8                    ; Signed Integer              ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                     ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                     ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                     ;
+; INIT_FILE                          ; PixelTest.mif        ; Untyped                     ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                     ;
+; MAXIMUM_DEPTH                      ; 0                    ; Signed Integer              ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                     ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                     ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                     ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                     ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                     ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                     ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                     ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                     ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Signed Integer              ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                     ;
+; CBXI_PARAMETER                     ; altsyncram_qm24      ; Untyped                     ;
++------------------------------------+----------------------+-----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: SCOMP:inst|LPM_CLSHIFT:shifter ;
++----------------+-----------------+------------------------------------------+
+; Parameter Name ; Value           ; Type                                     ;
++----------------+-----------------+------------------------------------------+
+; LPM_PIPELINE   ; 0               ; Untyped                                  ;
+; LPM_SHIFTTYPE  ; arithmetic      ; Untyped                                  ;
+; LPM_WIDTH      ; 16              ; Signed Integer                           ;
+; LPM_WIDTHDIST  ; 4               ; Signed Integer                           ;
+; CBXI_PARAMETER ; lpm_clshift_fuc ; Untyped                                  ;
++----------------+-----------------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: SCOMP:inst|LPM_BUSTRI:io_bus ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; LPM_WIDTH      ; 16    ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: TIMER:inst4|LPM_BUSTRI:IO_BUS ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; LPM_WIDTH      ; 16    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: DIG_IN:inst7|LPM_BUSTRI:IO_BUS ;
++----------------+-------+----------------------------------------------------+
+; Parameter Name ; Value ; Type                                               ;
++----------------+-------+----------------------------------------------------+
+; LPM_WIDTH      ; 16    ; Signed Integer                                     ;
++----------------+-------+----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                          ;
++-------------------------------------------+-----------------------------------------------+
+; Name                                      ; Value                                         ;
++-------------------------------------------+-----------------------------------------------+
+; Number of entity instances                ; 2                                             ;
+; Entity Instance                           ; NeoPixelController:inst13|altsyncram:pixelRAM ;
+;     -- OPERATION_MODE                     ; BIDIR_DUAL_PORT                               ;
+;     -- WIDTH_A                            ; 24                                            ;
+;     -- NUMWORDS_A                         ; 4                                             ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                  ;
+;     -- WIDTH_B                            ; 24                                            ;
+;     -- NUMWORDS_B                         ; 4                                             ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                        ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                  ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                          ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                      ;
+; Entity Instance                           ; SCOMP:inst|altsyncram:altsyncram_component    ;
+;     -- OPERATION_MODE                     ; SINGLE_PORT                                   ;
+;     -- WIDTH_A                            ; 16                                            ;
+;     -- NUMWORDS_A                         ; 2048                                          ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                  ;
+;     -- WIDTH_B                            ; 1                                             ;
+;     -- NUMWORDS_B                         ; 0                                             ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                        ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                  ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                          ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                     ;
++-------------------------------------------+-----------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 326                         ;
+;     CLR               ; 97                          ;
+;     CLR SCLR          ; 1                           ;
+;     ENA               ; 42                          ;
+;     ENA CLR           ; 18                          ;
+;     ENA SCLR          ; 13                          ;
+;     ENA SLD           ; 122                         ;
+;     SCLR              ; 19                          ;
+;     plain             ; 14                          ;
+; arriav_lcell_comb     ; 454                         ;
+;     arith             ; 74                          ;
+;         1 data inputs ; 57                          ;
+;         2 data inputs ; 1                           ;
+;         5 data inputs ; 16                          ;
+;     extend            ; 1                           ;
+;         7 data inputs ; 1                           ;
+;     normal            ; 379                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 7                           ;
+;         2 data inputs ; 12                          ;
+;         3 data inputs ; 47                          ;
+;         4 data inputs ; 75                          ;
+;         5 data inputs ; 137                         ;
+;         6 data inputs ; 100                         ;
+; boundary_port         ; 64                          ;
+; generic_pll           ; 1                           ;
+; stratixv_ram_block    ; 40                          ;
+;                       ;                             ;
+; Max LUT depth         ; 4.50                        ;
+; Average LUT depth     ; 2.28                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+    Info: Processing started: Wed Mar 16 17:02:59 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SCOMP -c SCOMP
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file neopixelcontroller.vhd
+    Info (12022): Found design unit 1: NeoPixelController-internals File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/NeoPixelController.vhd Line: 27
+    Info (12023): Found entity 1: NeoPixelController File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/NeoPixelController.vhd Line: 13
+Info (12021): Found 2 design units, including 1 entities, in source file hex_disp.vhd
+    Info (12022): Found design unit 1: HEX_DISP-a File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/HEX_DISP.vhd Line: 17
+    Info (12023): Found entity 1: HEX_DISP File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/HEX_DISP.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file dig_out.vhd
+    Info (12022): Found design unit 1: DIG_OUT-a File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/DIG_OUT.vhd Line: 26
+    Info (12023): Found entity 1: DIG_OUT File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/DIG_OUT.vhd Line: 16
+Info (12021): Found 2 design units, including 1 entities, in source file dig_in.vhd
+    Info (12022): Found design unit 1: DIG_IN-a File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/DIG_IN.vhd Line: 19
+    Info (12023): Found entity 1: DIG_IN File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/DIG_IN.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file clk_div.vhd
+    Info (12022): Found design unit 1: clk_div-a File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/clk_div.vhd Line: 26
+    Info (12023): Found entity 1: clk_div File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/clk_div.vhd Line: 11
+Info (12021): Found 2 design units, including 1 entities, in source file timer.vhd
+    Info (12022): Found design unit 1: TIMER-a File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/TIMER.vhd Line: 27
+    Info (12023): Found entity 1: TIMER File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/TIMER.vhd Line: 17
+Info (12021): Found 2 design units, including 1 entities, in source file io_decoder.vhd
+    Info (12022): Found design unit 1: IO_DECODER-a File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/IO_DECODER.vhd Line: 26
+    Info (12023): Found entity 1: IO_DECODER File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/IO_DECODER.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file scomp.vhd
+    Info (12022): Found design unit 1: SCOMP-a File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/SCOMP.vhd Line: 33
+    Info (12023): Found entity 1: SCOMP File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/SCOMP.vhd Line: 16
+Info (12021): Found 1 design units, including 1 entities, in source file scomp_system.bdf
+    Info (12023): Found entity 1: SCOMP_System
+Info (12021): Found 1 design units, including 1 entities, in source file hex_disp_6.bdf
+    Info (12023): Found entity 1: HEX_DISP_6
+Info (12021): Found 2 design units, including 1 entities, in source file pll_main.vhd
+    Info (12022): Found design unit 1: PLL_main-rtl File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/PLL_main.vhd Line: 20
+    Info (12023): Found entity 1: PLL_main File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/PLL_main.vhd Line: 11
+Info (12021): Found 1 design units, including 1 entities, in source file pll_main/pll_main_0002.v
+    Info (12023): Found entity 1: PLL_main_0002 File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/PLL_main/PLL_main_0002.v Line: 2
+Info (12127): Elaborating entity "SCOMP_System" for the top level hierarchy
+Info (12128): Elaborating entity "NeoPixelController" for hierarchy "NeoPixelController:inst13"
+Info (12128): Elaborating entity "altsyncram" for hierarchy "NeoPixelController:inst13|altsyncram:pixelRAM" File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/NeoPixelController.vhd Line: 52
+Info (12130): Elaborated megafunction instantiation "NeoPixelController:inst13|altsyncram:pixelRAM" File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/NeoPixelController.vhd Line: 52
+Info (12133): Instantiated megafunction "NeoPixelController:inst13|altsyncram:pixelRAM" with the following parameter: File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/NeoPixelController.vhd Line: 52
+    Info (12134): Parameter "address_aclr_a" = "UNUSED"
+    Info (12134): Parameter "address_aclr_b" = "NONE"
+    Info (12134): Parameter "address_reg_b" = "CLOCK0"
+    Info (12134): Parameter "byte_size" = "8"
+    Info (12134): Parameter "byteena_aclr_a" = "UNUSED"
+    Info (12134): Parameter "byteena_aclr_b" = "NONE"
+    Info (12134): Parameter "byteena_reg_b" = "CLOCK1"
+    Info (12134): Parameter "clock_enable_core_a" = "USE_INPUT_CLKEN"
+    Info (12134): Parameter "clock_enable_core_b" = "USE_INPUT_CLKEN"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_input_b" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_b" = "BYPASS"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "ecc_pipeline_stage_enabled" = "FALSE"
+    Info (12134): Parameter "enable_ecc" = "FALSE"
+    Info (12134): Parameter "implement_in_les" = "OFF"
+    Info (12134): Parameter "indata_aclr_a" = "UNUSED"
+    Info (12134): Parameter "indata_aclr_b" = "NONE"
+    Info (12134): Parameter "indata_reg_b" = "CLOCK0"
+    Info (12134): Parameter "init_file" = "pixeldata.mif"
+    Info (12134): Parameter "init_file_layout" = "PORT_A"
+    Info (12134): Parameter "maximum_depth" = "0"
+    Info (12134): Parameter "numwords_a" = "4"
+    Info (12134): Parameter "numwords_b" = "4"
+    Info (12134): Parameter "operation_mode" = "BIDIR_DUAL_PORT"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_aclr_b" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info (12134): Parameter "outdata_reg_b" = "UNREGISTERED"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "ram_block_type" = "AUTO"
+    Info (12134): Parameter "rdcontrol_aclr_b" = "NONE"
+    Info (12134): Parameter "rdcontrol_reg_b" = "CLOCK1"
+    Info (12134): Parameter "read_during_write_mode_mixed_ports" = "OLD_DATA"
+    Info (12134): Parameter "read_during_write_mode_port_a" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "read_during_write_mode_port_b" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "stratixiv_m144k_allow_dual_clocks" = "ON"
+    Info (12134): Parameter "width_a" = "24"
+    Info (12134): Parameter "width_b" = "24"
+    Info (12134): Parameter "width_byteena_a" = "1"
+    Info (12134): Parameter "width_byteena_b" = "1"
+    Info (12134): Parameter "width_eccstatus" = "3"
+    Info (12134): Parameter "widthad_a" = "8"
+    Info (12134): Parameter "widthad_b" = "8"
+    Info (12134): Parameter "wrcontrol_aclr_a" = "UNUSED"
+    Info (12134): Parameter "wrcontrol_aclr_b" = "NONE"
+    Info (12134): Parameter "wrcontrol_wraddress_reg_b" = "CLOCK0"
+    Info (12134): Parameter "lpm_hint" = "UNUSED"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+Warning (287001): Assertion warning: Not using extra address lines in altsyncram megafunction design -- 4 memory words in side A specified but total number of address lines is 8 File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/db/altsyncram_g524.tdf Line: 945
+Warning (287001): Assertion warning: Not using extra address lines in altsyncram megafunction design -- 4 memory words in side B specified but total number of address lines is 8 File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/db/altsyncram_g524.tdf Line: 948
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_g524.tdf
+    Info (12023): Found entity 1: altsyncram_g524 File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/db/altsyncram_g524.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_g524" for hierarchy "NeoPixelController:inst13|altsyncram:pixelRAM|altsyncram_g524:auto_generated" File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12128): Elaborating entity "PLL_main" for hierarchy "PLL_main:inst1"
+Info (12128): Elaborating entity "PLL_main_0002" for hierarchy "PLL_main:inst1|PLL_main_0002:pll_main_inst" File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/PLL_main.vhd Line: 32
+Info (12128): Elaborating entity "altera_pll" for hierarchy "PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i" File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/PLL_main/PLL_main_0002.v Line: 85
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "wire_to_nowhere_64" into its bus
+Info (12130): Elaborated megafunction instantiation "PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i" File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/PLL_main/PLL_main_0002.v Line: 85
+Info (12133): Instantiated megafunction "PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i" with the following parameter: File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/PLL_main/PLL_main_0002.v Line: 85
+    Info (12134): Parameter "fractional_vco_multiplier" = "false"
+    Info (12134): Parameter "reference_clock_frequency" = "50.0 MHz"
+    Info (12134): Parameter "operation_mode" = "direct"
+    Info (12134): Parameter "number_of_clocks" = "1"
+    Info (12134): Parameter "output_clock_frequency0" = "10.000000 MHz"
+    Info (12134): Parameter "phase_shift0" = "0 ps"
+    Info (12134): Parameter "duty_cycle0" = "50"
+    Info (12134): Parameter "output_clock_frequency1" = "0 MHz"
+    Info (12134): Parameter "phase_shift1" = "0 ps"
+    Info (12134): Parameter "duty_cycle1" = "50"
+    Info (12134): Parameter "output_clock_frequency2" = "0 MHz"
+    Info (12134): Parameter "phase_shift2" = "0 ps"
+    Info (12134): Parameter "duty_cycle2" = "50"
+    Info (12134): Parameter "output_clock_frequency3" = "0 MHz"
+    Info (12134): Parameter "phase_shift3" = "0 ps"
+    Info (12134): Parameter "duty_cycle3" = "50"
+    Info (12134): Parameter "output_clock_frequency4" = "0 MHz"
+    Info (12134): Parameter "phase_shift4" = "0 ps"
+    Info (12134): Parameter "duty_cycle4" = "50"
+    Info (12134): Parameter "output_clock_frequency5" = "0 MHz"
+    Info (12134): Parameter "phase_shift5" = "0 ps"
+    Info (12134): Parameter "duty_cycle5" = "50"
+    Info (12134): Parameter "output_clock_frequency6" = "0 MHz"
+    Info (12134): Parameter "phase_shift6" = "0 ps"
+    Info (12134): Parameter "duty_cycle6" = "50"
+    Info (12134): Parameter "output_clock_frequency7" = "0 MHz"
+    Info (12134): Parameter "phase_shift7" = "0 ps"
+    Info (12134): Parameter "duty_cycle7" = "50"
+    Info (12134): Parameter "output_clock_frequency8" = "0 MHz"
+    Info (12134): Parameter "phase_shift8" = "0 ps"
+    Info (12134): Parameter "duty_cycle8" = "50"
+    Info (12134): Parameter "output_clock_frequency9" = "0 MHz"
+    Info (12134): Parameter "phase_shift9" = "0 ps"
+    Info (12134): Parameter "duty_cycle9" = "50"
+    Info (12134): Parameter "output_clock_frequency10" = "0 MHz"
+    Info (12134): Parameter "phase_shift10" = "0 ps"
+    Info (12134): Parameter "duty_cycle10" = "50"
+    Info (12134): Parameter "output_clock_frequency11" = "0 MHz"
+    Info (12134): Parameter "phase_shift11" = "0 ps"
+    Info (12134): Parameter "duty_cycle11" = "50"
+    Info (12134): Parameter "output_clock_frequency12" = "0 MHz"
+    Info (12134): Parameter "phase_shift12" = "0 ps"
+    Info (12134): Parameter "duty_cycle12" = "50"
+    Info (12134): Parameter "output_clock_frequency13" = "0 MHz"
+    Info (12134): Parameter "phase_shift13" = "0 ps"
+    Info (12134): Parameter "duty_cycle13" = "50"
+    Info (12134): Parameter "output_clock_frequency14" = "0 MHz"
+    Info (12134): Parameter "phase_shift14" = "0 ps"
+    Info (12134): Parameter "duty_cycle14" = "50"
+    Info (12134): Parameter "output_clock_frequency15" = "0 MHz"
+    Info (12134): Parameter "phase_shift15" = "0 ps"
+    Info (12134): Parameter "duty_cycle15" = "50"
+    Info (12134): Parameter "output_clock_frequency16" = "0 MHz"
+    Info (12134): Parameter "phase_shift16" = "0 ps"
+    Info (12134): Parameter "duty_cycle16" = "50"
+    Info (12134): Parameter "output_clock_frequency17" = "0 MHz"
+    Info (12134): Parameter "phase_shift17" = "0 ps"
+    Info (12134): Parameter "duty_cycle17" = "50"
+    Info (12134): Parameter "pll_type" = "General"
+    Info (12134): Parameter "pll_subtype" = "General"
+Info (12128): Elaborating entity "SCOMP" for hierarchy "SCOMP:inst"
+Info (12128): Elaborating entity "altsyncram" for hierarchy "SCOMP:inst|altsyncram:altsyncram_component" File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/SCOMP.vhd Line: 61
+Info (12130): Elaborated megafunction instantiation "SCOMP:inst|altsyncram:altsyncram_component" File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/SCOMP.vhd Line: 61
+Info (12133): Instantiated megafunction "SCOMP:inst|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/SCOMP.vhd Line: 61
+    Info (12134): Parameter "address_aclr_a" = "UNUSED"
+    Info (12134): Parameter "address_aclr_b" = "NONE"
+    Info (12134): Parameter "address_reg_b" = "CLOCK1"
+    Info (12134): Parameter "byte_size" = "8"
+    Info (12134): Parameter "byteena_aclr_a" = "UNUSED"
+    Info (12134): Parameter "byteena_aclr_b" = "NONE"
+    Info (12134): Parameter "byteena_reg_b" = "CLOCK1"
+    Info (12134): Parameter "clock_enable_core_a" = "USE_INPUT_CLKEN"
+    Info (12134): Parameter "clock_enable_core_b" = "USE_INPUT_CLKEN"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_input_b" = "NORMAL"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_b" = "NORMAL"
+    Info (12134): Parameter "intended_device_family" = "MAX 10"
+    Info (12134): Parameter "ecc_pipeline_stage_enabled" = "FALSE"
+    Info (12134): Parameter "enable_ecc" = "FALSE"
+    Info (12134): Parameter "implement_in_les" = "OFF"
+    Info (12134): Parameter "indata_aclr_a" = "UNUSED"
+    Info (12134): Parameter "indata_aclr_b" = "NONE"
+    Info (12134): Parameter "indata_reg_b" = "CLOCK1"
+    Info (12134): Parameter "init_file" = "PixelTest.mif"
+    Info (12134): Parameter "init_file_layout" = "PORT_A"
+    Info (12134): Parameter "maximum_depth" = "0"
+    Info (12134): Parameter "numwords_a" = "2048"
+    Info (12134): Parameter "numwords_b" = "0"
+    Info (12134): Parameter "operation_mode" = "SINGLE_PORT"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_aclr_b" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info (12134): Parameter "outdata_reg_b" = "UNREGISTERED"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "ram_block_type" = "AUTO"
+    Info (12134): Parameter "rdcontrol_aclr_b" = "NONE"
+    Info (12134): Parameter "rdcontrol_reg_b" = "CLOCK1"
+    Info (12134): Parameter "read_during_write_mode_mixed_ports" = "DONT_CARE"
+    Info (12134): Parameter "read_during_write_mode_port_a" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "read_during_write_mode_port_b" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "stratixiv_m144k_allow_dual_clocks" = "ON"
+    Info (12134): Parameter "width_a" = "16"
+    Info (12134): Parameter "width_b" = "1"
+    Info (12134): Parameter "width_byteena_a" = "1"
+    Info (12134): Parameter "width_byteena_b" = "1"
+    Info (12134): Parameter "width_eccstatus" = "3"
+    Info (12134): Parameter "widthad_a" = "11"
+    Info (12134): Parameter "widthad_b" = "1"
+    Info (12134): Parameter "wrcontrol_aclr_a" = "UNUSED"
+    Info (12134): Parameter "wrcontrol_aclr_b" = "NONE"
+    Info (12134): Parameter "wrcontrol_wraddress_reg_b" = "CLOCK1"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_qm24.tdf
+    Info (12023): Found entity 1: altsyncram_qm24 File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/db/altsyncram_qm24.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_qm24" for hierarchy "SCOMP:inst|altsyncram:altsyncram_component|altsyncram_qm24:auto_generated" File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Warning (113031): 6 out of 2048 addresses are reinitialized. The latest initialized data will replace the existing data. There are 6 warnings found, and 6 warnings are reported. File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/PixelTest.mif Line: 1
+    Warning (113030): Memory Initialization File address 0 is reinitialized File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/ Line: 13
+    Warning (113030): Memory Initialization File address 1 is reinitialized File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/ Line: 14
+    Warning (113030): Memory Initialization File address 2 is reinitialized File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/ Line: 15
+    Warning (113030): Memory Initialization File address 3 is reinitialized File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/ Line: 16
+    Warning (113030): Memory Initialization File address 4 is reinitialized File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/ Line: 17
+    Warning (113030): Memory Initialization File address 5 is reinitialized File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/ Line: 18
+Info (12128): Elaborating entity "LPM_CLSHIFT" for hierarchy "SCOMP:inst|LPM_CLSHIFT:shifter" File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/SCOMP.vhd Line: 88
+Info (12130): Elaborated megafunction instantiation "SCOMP:inst|LPM_CLSHIFT:shifter" File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/SCOMP.vhd Line: 88
+Info (12133): Instantiated megafunction "SCOMP:inst|LPM_CLSHIFT:shifter" with the following parameter: File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/SCOMP.vhd Line: 88
+    Info (12134): Parameter "LPM_WIDTH" = "16"
+    Info (12134): Parameter "LPM_WIDTHDIST" = "4"
+    Info (12134): Parameter "LPM_SHIFTTYPE" = "arithmetic"
+    Info (12134): Parameter "LPM_TYPE" = "LPM_CLSHIFT"
+    Info (12134): Parameter "LPM_HINT" = "UNUSED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_clshift_fuc.tdf
+    Info (12023): Found entity 1: lpm_clshift_fuc File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/db/lpm_clshift_fuc.tdf Line: 23
+Info (12128): Elaborating entity "lpm_clshift_fuc" for hierarchy "SCOMP:inst|LPM_CLSHIFT:shifter|lpm_clshift_fuc:auto_generated" File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_clshift.tdf Line: 54
+Info (12128): Elaborating entity "LPM_BUSTRI" for hierarchy "SCOMP:inst|LPM_BUSTRI:io_bus" File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/SCOMP.vhd Line: 115
+Info (12130): Elaborated megafunction instantiation "SCOMP:inst|LPM_BUSTRI:io_bus" File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/SCOMP.vhd Line: 115
+Info (12133): Instantiated megafunction "SCOMP:inst|LPM_BUSTRI:io_bus" with the following parameter: File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/SCOMP.vhd Line: 115
+    Info (12134): Parameter "LPM_WIDTH" = "16"
+    Info (12134): Parameter "LPM_TYPE" = "LPM_BUSTRI"
+    Info (12134): Parameter "LPM_HINT" = "UNUSED"
+Info (12128): Elaborating entity "TIMER" for hierarchy "TIMER:inst4"
+Warning (10631): VHDL Process Statement warning at TIMER.vhd(59): inferring latch(es) for signal or variable "IO_COUNT", which holds its previous value in one or more paths through the process File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[0]" at TIMER.vhd(59) File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[1]" at TIMER.vhd(59) File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[2]" at TIMER.vhd(59) File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[3]" at TIMER.vhd(59) File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[4]" at TIMER.vhd(59) File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[5]" at TIMER.vhd(59) File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[6]" at TIMER.vhd(59) File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[7]" at TIMER.vhd(59) File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[8]" at TIMER.vhd(59) File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[9]" at TIMER.vhd(59) File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[10]" at TIMER.vhd(59) File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[11]" at TIMER.vhd(59) File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[12]" at TIMER.vhd(59) File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[13]" at TIMER.vhd(59) File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[14]" at TIMER.vhd(59) File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[15]" at TIMER.vhd(59) File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/TIMER.vhd Line: 59
+Info (12128): Elaborating entity "clk_div" for hierarchy "clk_div:inst5"
+Info (12128): Elaborating entity "IO_DECODER" for hierarchy "IO_DECODER:inst3"
+Info (12128): Elaborating entity "DIG_IN" for hierarchy "DIG_IN:inst7"
+Info (12128): Elaborating entity "HEX_DISP_6" for hierarchy "HEX_DISP_6:inst9"
+Info (12128): Elaborating entity "HEX_DISP" for hierarchy "HEX_DISP_6:inst9|HEX_DISP:inst1"
+Info (12128): Elaborating entity "DIG_OUT" for hierarchy "DIG_OUT:inst6"
+Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
+    Warning (13048): Converted tri-state node "IO_DATA[15]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
+    Warning (13048): Converted tri-state node "IO_DATA[14]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
+    Warning (13048): Converted tri-state node "IO_DATA[13]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
+    Warning (13048): Converted tri-state node "IO_DATA[12]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
+    Warning (13048): Converted tri-state node "IO_DATA[11]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
+    Warning (13048): Converted tri-state node "IO_DATA[10]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
+    Warning (13048): Converted tri-state node "IO_DATA[9]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
+    Warning (13048): Converted tri-state node "IO_DATA[8]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
+    Warning (13048): Converted tri-state node "IO_DATA[7]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
+    Warning (13048): Converted tri-state node "IO_DATA[6]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
+    Warning (13048): Converted tri-state node "IO_DATA[5]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
+    Warning (13048): Converted tri-state node "IO_DATA[4]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
+    Warning (13048): Converted tri-state node "IO_DATA[3]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
+    Warning (13048): Converted tri-state node "IO_DATA[2]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
+    Warning (13048): Converted tri-state node "IO_DATA[1]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/NeoPixelController.vhd Line: 200
+    Warning (13048): Converted tri-state node "IO_DATA[0]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/NeoPixelController.vhd Line: 200
+Info (286030): Timing-Driven Synthesis is running
+Critical Warning (18061): Ignored Power-Up Level option on the following registers
+    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[9] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/NeoPixelController.vhd Line: 119
+    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[8] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/NeoPixelController.vhd Line: 119
+    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[7] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/NeoPixelController.vhd Line: 119
+    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[6] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/NeoPixelController.vhd Line: 119
+    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[5] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/NeoPixelController.vhd Line: 119
+    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[3] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/NeoPixelController.vhd Line: 119
+    Critical Warning (18010): Register NeoPixelController:inst13|bit_count[4] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/NeoPixelController.vhd Line: 119
+    Critical Warning (18010): Register NeoPixelController:inst13|bit_count[2] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/NeoPixelController.vhd Line: 119
+    Critical Warning (18010): Register NeoPixelController:inst13|bit_count[1] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/NeoPixelController.vhd Line: 119
+    Critical Warning (18010): Register NeoPixelController:inst13|bit_count[0] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/ECE2031/SCOMP_Project_spr22/NeoPixelController.vhd Line: 119
+Info (17049): 7 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 771 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 12 input pins
+    Info (21059): Implemented 52 output pins
+    Info (21061): Implemented 666 logic cells
+    Info (21064): Implemented 40 RAM segments
+    Info (21065): Implemented 1 PLLs
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 38 warnings
+    Info: Peak virtual memory: 4930 megabytes
+    Info: Processing ended: Wed Mar 16 17:03:10 2022
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:25
+
+
