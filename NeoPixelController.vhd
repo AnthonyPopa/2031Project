@@ -19,7 +19,9 @@ entity NeoPixelController is
 		cs_addr   : in   std_logic ;
 		cs_data   : in   std_logic ;
 		data_in   : in   std_logic_vector(15 downto 0);
+		all_pxls	 : in	  std_logic;
 		sda       : out  std_logic
+		
 	); 
 
 end entity;
@@ -40,8 +42,10 @@ architecture internals of NeoPixelController is
 	signal ram_write_buffer : std_logic_vector(23 downto 0);
 
 	-- RAM interface state machine signals
-	type write_states is (idle, storing);
+	type write_states is (idle, storing, write_all);
 	signal wstate: write_states;
+	type increment_states is (init, increment);
+	signal istate: increment_states;
 
 	
 begin
@@ -192,7 +196,10 @@ begin
 	
 	
 	
-	process(clk_10M, resetn, cs_addr)
+	process(clk_10M, resetn, cs_addr, all_pxls)
+	
+		variable all_pxls_addr : integer range 0 to 255;
+
 	begin
 		-- For this implementation, saving the memory address
 		-- doesn't require anything special.  Just latch it when
@@ -203,6 +210,18 @@ begin
 			-- If SCOMP is writing to the address register...
 			if (io_write = '1') and (cs_addr='1') then
 				ram_write_addr <= data_in(7 downto 0);
+			elsif (all_pxls = '1') then
+				case istate is
+				when init =>
+					ram_write_addr <= x"00";
+					istate <= increment;
+				when increment =>
+					if (ram_write_addr > x"7F") then
+						istate <= init;
+					else
+						ram_write_addr <= ram_write_addr + 1;
+					end if;
+				end case;
 			end if;
 		end if;
 	
@@ -228,16 +247,34 @@ begin
 		elsif rising_edge(clk_10M) then
 			case wstate is
 			when idle =>
-				if (io_write = '1') and (cs_data='1') then
-					-- latch the current data into the temporary storage register,
-					-- because this is the only time it'll be available.
-					-- Convert RGB565 to 24-bit color
-					ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
-					-- can raise ram_we on the upcoming transition, because data
-					-- won't be stored until next clock cycle.
-					ram_we <= '1';
-					-- Change state
+				if ((io_write = '1') and ((cs_data='1') or (all_pxls = '1'))) then
+					if (all_pxls = '1') then
+						ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
+						ram_we <= '1';
+						if (ram_write_addr > x"7F") then
+							wstate <= storing;
+						end if;
+					else
+						-- latch the current data into the temporary storage register,
+						-- because this is the only time it'll be available.
+						-- Convert RGB565 to 24-bit color
+						ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
+						-- can raise ram_we on the upcoming transition, because data
+						-- won't be stored until next clock cycle.
+						ram_we <= '1';
+						--Change state
+						wstate <= storing;
+					end if;
+				end if;
+			when write_all =>
+				if (ram_write_addr >= x"7F") then
 					wstate <= storing;
+				else
+					--ram_write_addr <= std_logic_vector((ram_write_addr) + 1);
+					--all_pxls_addr := all_pxls_addr + 1;
+					--ram_write_addr <= std_logic_vector(unsigned(ram_write_addr) + 1);
+					--std_logic_vector( to_unsigned( all_pxls_addr, ram_write_addr'length));
+					--ram_write_addr <= ram_write_addr + 1;
 				end if;
 			when storing =>
 				-- All that's needed here is to lower ram_we.  The RAM will be

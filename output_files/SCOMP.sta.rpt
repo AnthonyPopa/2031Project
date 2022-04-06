@@ -1,5 +1,5 @@
 Timing Analyzer report for SCOMP
-Wed Mar 16 17:04:37 2022
+Wed Apr 06 17:32:11 2022
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -100,21 +100,17 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 16          ;
-; Maximum allowed            ; 8           ;
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.51        ;
-; Maximum used               ; 8           ;
+; Average used               ; 1.36        ;
+; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   7.8%      ;
-;     Processor 3            ;   7.6%      ;
-;     Processor 4            ;   7.5%      ;
-;     Processor 5            ;   7.1%      ;
-;     Processor 6            ;   7.1%      ;
-;     Processor 7            ;   7.1%      ;
-;     Processor 8            ;   7.1%      ;
+;     Processor 2            ;  12.0%      ;
+;     Processor 3            ;  11.9%      ;
+;     Processor 4            ;  11.9%      ;
 +----------------------------+-------------+
 
 
@@ -123,7 +119,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------+--------+--------------------------+
 ; SDC File Path ; Status ; Read at                  ;
 +---------------+--------+--------------------------+
-; SCOMP.sdc     ; OK     ; Wed Mar 16 17:04:31 2022 ;
+; SCOMP.sdc     ; OK     ; Wed Apr 06 17:32:04 2022 ;
 +---------------+--------+--------------------------+
 
 
@@ -140,15 +136,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------+-----------+---------+------------+-------+--------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------------------------------------------------------------------------+-------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------+
-; Slow 1100mV 85C Model Fmax Summary                                                                               ;
-+------------+-----------------+----------------------------------------------------------------------------+------+
-; Fmax       ; Restricted Fmax ; Clock Name                                                                 ; Note ;
-+------------+-----------------+----------------------------------------------------------------------------+------+
-; 68.86 MHz  ; 68.86 MHz       ; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
-; 78.64 MHz  ; 78.64 MHz       ; SCOMP:inst|IO_CYCLE                                                        ;      ;
-; 352.11 MHz ; 352.11 MHz      ; clk_div:inst5|clock_10Hz                                                   ;      ;
-+------------+-----------------+----------------------------------------------------------------------------+------+
++-----------------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Fmax Summary                                                                              ;
++-----------+-----------------+----------------------------------------------------------------------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name                                                                 ; Note ;
++-----------+-----------------+----------------------------------------------------------------------------+------+
+; 75.21 MHz ; 75.21 MHz       ; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
+; 89.05 MHz ; 89.05 MHz       ; SCOMP:inst|IO_CYCLE                                                        ;      ;
+; 370.1 MHz ; 370.1 MHz       ; clk_div:inst5|clock_10Hz                                                   ;      ;
++-----------+-----------------+----------------------------------------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
@@ -163,21 +159,21 @@ HTML report is unavailable in plain text report export.
 +----------------------------------------------------------------------------+---------+---------------+
 ; Clock                                                                      ; Slack   ; End Point TNS ;
 +----------------------------------------------------------------------------+---------+---------------+
-; SCOMP:inst|IO_CYCLE                                                        ; -13.276 ; -468.077      ;
-; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -7.615  ; -228.330      ;
-; clk_div:inst5|clock_10Hz                                                   ; -1.840  ; -33.745       ;
+; SCOMP:inst|IO_CYCLE                                                        ; -12.216 ; -461.097      ;
+; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -6.434  ; -264.976      ;
+; clk_div:inst5|clock_10Hz                                                   ; -1.702  ; -37.131       ;
 +----------------------------------------------------------------------------+---------+---------------+
 
 
-+-----------------------------------------------------------------------------------------------------+
-; Slow 1100mV 85C Model Hold Summary                                                                  ;
-+----------------------------------------------------------------------------+--------+---------------+
-; Clock                                                                      ; Slack  ; End Point TNS ;
-+----------------------------------------------------------------------------+--------+---------------+
-; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -0.598 ; -0.978        ;
-; SCOMP:inst|IO_CYCLE                                                        ; 0.136  ; 0.000         ;
-; clk_div:inst5|clock_10Hz                                                   ; 0.391  ; 0.000         ;
-+----------------------------------------------------------------------------+--------+---------------+
++----------------------------------------------------------------------------------------------------+
+; Slow 1100mV 85C Model Hold Summary                                                                 ;
++----------------------------------------------------------------------------+-------+---------------+
+; Clock                                                                      ; Slack ; End Point TNS ;
++----------------------------------------------------------------------------+-------+---------------+
+; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.279 ; 0.000         ;
+; clk_div:inst5|clock_10Hz                                                   ; 0.428 ; 0.000         ;
+; SCOMP:inst|IO_CYCLE                                                        ; 1.394 ; 0.000         ;
++----------------------------------------------------------------------------+-------+---------------+
 
 
 +---------------------------------------------------+
@@ -185,7 +181,7 @@ HTML report is unavailable in plain text report export.
 +--------------------------+--------+---------------+
 ; Clock                    ; Slack  ; End Point TNS ;
 +--------------------------+--------+---------------+
-; clk_div:inst5|clock_10Hz ; -8.525 ; -187.532      ;
+; clk_div:inst5|clock_10Hz ; -8.434 ; -219.221      ;
 +--------------------------+--------+---------------+
 
 
@@ -194,7 +190,7 @@ HTML report is unavailable in plain text report export.
 +--------------------------+-------+---------------+
 ; Clock                    ; Slack ; End Point TNS ;
 +--------------------------+-------+---------------+
-; clk_div:inst5|clock_10Hz ; 1.090 ; 0.000         ;
+; clk_div:inst5|clock_10Hz ; 0.623 ; 0.000         ;
 +--------------------------+-------+---------------+
 
 
@@ -203,11 +199,11 @@ HTML report is unavailable in plain text report export.
 +----------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                      ; Slack  ; End Point TNS ;
 +----------------------------------------------------------------------------+--------+---------------+
-; SCOMP:inst|IO_CYCLE                                                        ; -0.520 ; -29.540       ;
-; clk_div:inst5|clock_10Hz                                                   ; -0.394 ; -11.192       ;
+; SCOMP:inst|IO_CYCLE                                                        ; -0.499 ; -27.432       ;
+; clk_div:inst5|clock_10Hz                                                   ; -0.394 ; -13.553       ;
 ; inst1|pll_main_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 1.666  ; 0.000         ;
 ; clock_50                                                                   ; 9.670  ; 0.000         ;
-; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 48.779 ; 0.000         ;
+; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 48.780 ; 0.000         ;
 +----------------------------------------------------------------------------+--------+---------------+
 
 
@@ -218,20 +214,20 @@ The design MTBF is not calculated because there are no specified synchronizers i
 Number of Synchronizer Chains Found: 16
 Shortest Synchronizer Chain: 2 Registers
 Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 97.148 ns
+Worst Case Available Settling Time: 97.884 ns
 
 
 
 
-+------------------------------------------------------------------------------------------------------------------+
-; Slow 1100mV 0C Model Fmax Summary                                                                                ;
-+------------+-----------------+----------------------------------------------------------------------------+------+
-; Fmax       ; Restricted Fmax ; Clock Name                                                                 ; Note ;
-+------------+-----------------+----------------------------------------------------------------------------+------+
-; 71.01 MHz  ; 71.01 MHz       ; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
-; 80.45 MHz  ; 80.45 MHz       ; SCOMP:inst|IO_CYCLE                                                        ;      ;
-; 340.48 MHz ; 340.48 MHz      ; clk_div:inst5|clock_10Hz                                                   ;      ;
-+------------+-----------------+----------------------------------------------------------------------------+------+
++-----------------------------------------------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Fmax Summary                                                                               ;
++-----------+-----------------+----------------------------------------------------------------------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name                                                                 ; Note ;
++-----------+-----------------+----------------------------------------------------------------------------+------+
+; 78.11 MHz ; 78.11 MHz       ; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ;      ;
+; 91.74 MHz ; 91.74 MHz       ; SCOMP:inst|IO_CYCLE                                                        ;      ;
+; 356.0 MHz ; 356.0 MHz       ; clk_div:inst5|clock_10Hz                                                   ;      ;
++-----------+-----------------+----------------------------------------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
@@ -240,21 +236,21 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------------------------------------------------------------------------+---------+---------------+
 ; Clock                                                                      ; Slack   ; End Point TNS ;
 +----------------------------------------------------------------------------+---------+---------------+
-; SCOMP:inst|IO_CYCLE                                                        ; -13.165 ; -462.572      ;
-; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -6.864  ; -206.158      ;
-; clk_div:inst5|clock_10Hz                                                   ; -1.937  ; -34.992       ;
+; SCOMP:inst|IO_CYCLE                                                        ; -12.083 ; -455.191      ;
+; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -5.825  ; -239.021      ;
+; clk_div:inst5|clock_10Hz                                                   ; -1.809  ; -39.103       ;
 +----------------------------------------------------------------------------+---------+---------------+
 
 
-+-----------------------------------------------------------------------------------------------------+
-; Slow 1100mV 0C Model Hold Summary                                                                   ;
-+----------------------------------------------------------------------------+--------+---------------+
-; Clock                                                                      ; Slack  ; End Point TNS ;
-+----------------------------------------------------------------------------+--------+---------------+
-; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -0.968 ; -1.866        ;
-; SCOMP:inst|IO_CYCLE                                                        ; 0.149  ; 0.000         ;
-; clk_div:inst5|clock_10Hz                                                   ; 0.369  ; 0.000         ;
-+----------------------------------------------------------------------------+--------+---------------+
++----------------------------------------------------------------------------------------------------+
+; Slow 1100mV 0C Model Hold Summary                                                                  ;
++----------------------------------------------------------------------------+-------+---------------+
+; Clock                                                                      ; Slack ; End Point TNS ;
++----------------------------------------------------------------------------+-------+---------------+
+; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.209 ; 0.000         ;
+; clk_div:inst5|clock_10Hz                                                   ; 0.442 ; 0.000         ;
+; SCOMP:inst|IO_CYCLE                                                        ; 1.238 ; 0.000         ;
++----------------------------------------------------------------------------+-------+---------------+
 
 
 +---------------------------------------------------+
@@ -262,7 +258,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +--------------------------+--------+---------------+
 ; Clock                    ; Slack  ; End Point TNS ;
 +--------------------------+--------+---------------+
-; clk_div:inst5|clock_10Hz ; -8.460 ; -186.094      ;
+; clk_div:inst5|clock_10Hz ; -8.453 ; -219.724      ;
 +--------------------------+--------+---------------+
 
 
@@ -271,7 +267,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +--------------------------+-------+---------------+
 ; Clock                    ; Slack ; End Point TNS ;
 +--------------------------+-------+---------------+
-; clk_div:inst5|clock_10Hz ; 1.056 ; 0.000         ;
+; clk_div:inst5|clock_10Hz ; 0.646 ; 0.000         ;
 +--------------------------+-------+---------------+
 
 
@@ -280,11 +276,11 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                      ; Slack  ; End Point TNS ;
 +----------------------------------------------------------------------------+--------+---------------+
-; SCOMP:inst|IO_CYCLE                                                        ; -0.542 ; -29.641       ;
-; clk_div:inst5|clock_10Hz                                                   ; -0.394 ; -11.248       ;
+; SCOMP:inst|IO_CYCLE                                                        ; -0.510 ; -27.222       ;
+; clk_div:inst5|clock_10Hz                                                   ; -0.394 ; -13.369       ;
 ; inst1|pll_main_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 1.666  ; 0.000         ;
 ; clock_50                                                                   ; 9.673  ; 0.000         ;
-; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 48.755 ; 0.000         ;
+; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 48.756 ; 0.000         ;
 +----------------------------------------------------------------------------+--------+---------------+
 
 
@@ -295,7 +291,7 @@ The design MTBF is not calculated because there are no specified synchronizers i
 Number of Synchronizer Chains Found: 16
 Shortest Synchronizer Chain: 2 Registers
 Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 97.318 ns
+Worst Case Available Settling Time: 98.017 ns
 
 
 
@@ -305,9 +301,9 @@ Worst Case Available Settling Time: 97.318 ns
 +----------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                      ; Slack  ; End Point TNS ;
 +----------------------------------------------------------------------------+--------+---------------+
-; SCOMP:inst|IO_CYCLE                                                        ; -7.783 ; -278.187      ;
-; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -5.847 ; -176.728      ;
-; clk_div:inst5|clock_10Hz                                                   ; -0.661 ; -11.835       ;
+; SCOMP:inst|IO_CYCLE                                                        ; -7.124 ; -269.562      ;
+; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -5.315 ; -211.219      ;
+; clk_div:inst5|clock_10Hz                                                   ; -0.571 ; -11.859       ;
 +----------------------------------------------------------------------------+--------+---------------+
 
 
@@ -316,9 +312,9 @@ Worst Case Available Settling Time: 97.318 ns
 +----------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                      ; Slack ; End Point TNS ;
 +----------------------------------------------------------------------------+-------+---------------+
-; clk_div:inst5|clock_10Hz                                                   ; 0.155 ; 0.000         ;
+; clk_div:inst5|clock_10Hz                                                   ; 0.158 ; 0.000         ;
 ; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.164 ; 0.000         ;
-; SCOMP:inst|IO_CYCLE                                                        ; 0.194 ; 0.000         ;
+; SCOMP:inst|IO_CYCLE                                                        ; 0.859 ; 0.000         ;
 +----------------------------------------------------------------------------+-------+---------------+
 
 
@@ -327,7 +323,7 @@ Worst Case Available Settling Time: 97.318 ns
 +--------------------------+--------+---------------+
 ; Clock                    ; Slack  ; End Point TNS ;
 +--------------------------+--------+---------------+
-; clk_div:inst5|clock_10Hz ; -4.348 ; -95.630       ;
+; clk_div:inst5|clock_10Hz ; -4.219 ; -109.670      ;
 +--------------------------+--------+---------------+
 
 
@@ -336,7 +332,7 @@ Worst Case Available Settling Time: 97.318 ns
 +--------------------------+-------+---------------+
 ; Clock                    ; Slack ; End Point TNS ;
 +--------------------------+-------+---------------+
-; clk_div:inst5|clock_10Hz ; 0.426 ; 0.000         ;
+; clk_div:inst5|clock_10Hz ; 0.170 ; 0.000         ;
 +--------------------------+-------+---------------+
 
 
@@ -345,11 +341,11 @@ Worst Case Available Settling Time: 97.318 ns
 +----------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                      ; Slack  ; End Point TNS ;
 +----------------------------------------------------------------------------+--------+---------------+
-; SCOMP:inst|IO_CYCLE                                                        ; -0.311 ; -5.282        ;
-; clk_div:inst5|clock_10Hz                                                   ; 0.152  ; 0.000         ;
+; SCOMP:inst|IO_CYCLE                                                        ; -0.280 ; -3.165        ;
+; clk_div:inst5|clock_10Hz                                                   ; 0.134  ; 0.000         ;
 ; inst1|pll_main_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 1.666  ; 0.000         ;
 ; clock_50                                                                   ; 9.336  ; 0.000         ;
-; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 48.894 ; 0.000         ;
+; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 48.895 ; 0.000         ;
 +----------------------------------------------------------------------------+--------+---------------+
 
 
@@ -360,7 +356,7 @@ The design MTBF is not calculated because there are no specified synchronizers i
 Number of Synchronizer Chains Found: 16
 Shortest Synchronizer Chain: 2 Registers
 Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 98.046 ns
+Worst Case Available Settling Time: 98.577 ns
 
 
 
@@ -370,21 +366,21 @@ Worst Case Available Settling Time: 98.046 ns
 +----------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                      ; Slack  ; End Point TNS ;
 +----------------------------------------------------------------------------+--------+---------------+
-; SCOMP:inst|IO_CYCLE                                                        ; -7.177 ; -253.134      ;
-; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -4.702 ; -141.519      ;
-; clk_div:inst5|clock_10Hz                                                   ; -0.604 ; -10.444       ;
+; SCOMP:inst|IO_CYCLE                                                        ; -6.557 ; -245.364      ;
+; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -4.264 ; -168.290      ;
+; clk_div:inst5|clock_10Hz                                                   ; -0.534 ; -10.682       ;
 +----------------------------------------------------------------------------+--------+---------------+
 
 
-+-----------------------------------------------------------------------------------------------------+
-; Fast 1100mV 0C Model Hold Summary                                                                   ;
-+----------------------------------------------------------------------------+--------+---------------+
-; Clock                                                                      ; Slack  ; End Point TNS ;
-+----------------------------------------------------------------------------+--------+---------------+
-; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -0.158 ; -0.261        ;
-; clk_div:inst5|clock_10Hz                                                   ; 0.129  ; 0.000         ;
-; SCOMP:inst|IO_CYCLE                                                        ; 0.190  ; 0.000         ;
-+----------------------------------------------------------------------------+--------+---------------+
++----------------------------------------------------------------------------------------------------+
+; Fast 1100mV 0C Model Hold Summary                                                                  ;
++----------------------------------------------------------------------------+-------+---------------+
+; Clock                                                                      ; Slack ; End Point TNS ;
++----------------------------------------------------------------------------+-------+---------------+
+; clk_div:inst5|clock_10Hz                                                   ; 0.144 ; 0.000         ;
+; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 0.152 ; 0.000         ;
+; SCOMP:inst|IO_CYCLE                                                        ; 0.699 ; 0.000         ;
++----------------------------------------------------------------------------+-------+---------------+
 
 
 +---------------------------------------------------+
@@ -392,7 +388,7 @@ Worst Case Available Settling Time: 98.046 ns
 +--------------------------+--------+---------------+
 ; Clock                    ; Slack  ; End Point TNS ;
 +--------------------------+--------+---------------+
-; clk_div:inst5|clock_10Hz ; -4.148 ; -91.224       ;
+; clk_div:inst5|clock_10Hz ; -4.043 ; -105.094      ;
 +--------------------------+--------+---------------+
 
 
@@ -401,7 +397,7 @@ Worst Case Available Settling Time: 98.046 ns
 +--------------------------+-------+---------------+
 ; Clock                    ; Slack ; End Point TNS ;
 +--------------------------+-------+---------------+
-; clk_div:inst5|clock_10Hz ; 0.364 ; 0.000         ;
+; clk_div:inst5|clock_10Hz ; 0.144 ; 0.000         ;
 +--------------------------+-------+---------------+
 
 
@@ -410,11 +406,11 @@ Worst Case Available Settling Time: 98.046 ns
 +----------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                      ; Slack  ; End Point TNS ;
 +----------------------------------------------------------------------------+--------+---------------+
-; SCOMP:inst|IO_CYCLE                                                        ; -0.234 ; -3.376        ;
-; clk_div:inst5|clock_10Hz                                                   ; 0.148  ; 0.000         ;
+; SCOMP:inst|IO_CYCLE                                                        ; -0.213 ; -1.994        ;
+; clk_div:inst5|clock_10Hz                                                   ; 0.138  ; 0.000         ;
 ; inst1|pll_main_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; 1.666  ; 0.000         ;
 ; clock_50                                                                   ; 9.286  ; 0.000         ;
-; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 48.892 ; 0.000         ;
+; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 48.891 ; 0.000         ;
 +----------------------------------------------------------------------------+--------+---------------+
 
 
@@ -425,29 +421,29 @@ The design MTBF is not calculated because there are no specified synchronizers i
 Number of Synchronizer Chains Found: 16
 Shortest Synchronizer Chain: 2 Registers
 Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-Worst Case Available Settling Time: 98.292 ns
+Worst Case Available Settling Time: 98.773 ns
 
 
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------+
-; Multicorner Timing Analysis Summary                                                                                                        ;
-+-----------------------------------------------------------------------------+----------+--------+----------+---------+---------------------+
-; Clock                                                                       ; Setup    ; Hold   ; Recovery ; Removal ; Minimum Pulse Width ;
-+-----------------------------------------------------------------------------+----------+--------+----------+---------+---------------------+
-; Worst-case Slack                                                            ; -13.276  ; -0.968 ; -8.525   ; 0.364   ; -0.542              ;
-;  SCOMP:inst|IO_CYCLE                                                        ; -13.276  ; 0.136  ; N/A      ; N/A     ; -0.542              ;
-;  clk_div:inst5|clock_10Hz                                                   ; -1.937   ; 0.129  ; -8.525   ; 0.364   ; -0.394              ;
-;  clock_50                                                                   ; N/A      ; N/A    ; N/A      ; N/A     ; 9.286               ;
-;  inst1|pll_main_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; N/A      ; N/A    ; N/A      ; N/A     ; 1.666               ;
-;  inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -7.615   ; -0.968 ; N/A      ; N/A     ; 48.755              ;
-; Design-wide TNS                                                             ; -730.152 ; -1.866 ; -187.532 ; 0.0     ; -40.889             ;
-;  SCOMP:inst|IO_CYCLE                                                        ; -468.077 ; 0.000  ; N/A      ; N/A     ; -29.641             ;
-;  clk_div:inst5|clock_10Hz                                                   ; -34.992  ; 0.000  ; -187.532 ; 0.000   ; -11.248             ;
-;  clock_50                                                                   ; N/A      ; N/A    ; N/A      ; N/A     ; 0.000               ;
-;  inst1|pll_main_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; N/A      ; N/A    ; N/A      ; N/A     ; 0.000               ;
-;  inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -228.330 ; -1.866 ; N/A      ; N/A     ; 0.000               ;
-+-----------------------------------------------------------------------------+----------+--------+----------+---------+---------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                                                                                       ;
++-----------------------------------------------------------------------------+----------+-------+----------+---------+---------------------+
+; Clock                                                                       ; Setup    ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++-----------------------------------------------------------------------------+----------+-------+----------+---------+---------------------+
+; Worst-case Slack                                                            ; -12.216  ; 0.144 ; -8.453   ; 0.144   ; -0.510              ;
+;  SCOMP:inst|IO_CYCLE                                                        ; -12.216  ; 0.699 ; N/A      ; N/A     ; -0.510              ;
+;  clk_div:inst5|clock_10Hz                                                   ; -1.809   ; 0.144 ; -8.453   ; 0.144   ; -0.394              ;
+;  clock_50                                                                   ; N/A      ; N/A   ; N/A      ; N/A     ; 9.286               ;
+;  inst1|pll_main_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; N/A      ; N/A   ; N/A      ; N/A     ; 1.666               ;
+;  inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -6.434   ; 0.152 ; N/A      ; N/A     ; 48.756              ;
+; Design-wide TNS                                                             ; -763.204 ; 0.0   ; -219.724 ; 0.0     ; -40.985             ;
+;  SCOMP:inst|IO_CYCLE                                                        ; -461.097 ; 0.000 ; N/A      ; N/A     ; -27.432             ;
+;  clk_div:inst5|clock_10Hz                                                   ; -39.103  ; 0.000 ; -219.724 ; 0.000   ; -13.553             ;
+;  clock_50                                                                   ; N/A      ; N/A   ; N/A      ; N/A     ; 0.000               ;
+;  inst1|pll_main_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]   ; N/A      ; N/A   ; N/A      ; N/A     ; 0.000               ;
+;  inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; -264.976 ; 0.000 ; N/A      ; N/A     ; 0.000               ;
++-----------------------------------------------------------------------------+----------+-------+----------+---------+---------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -775,9 +771,9 @@ Worst Case Available Settling Time: 98.292 ns
 +----------------------------------------------------------------------------+----------------------------------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                                                 ; To Clock                                                                   ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +----------------------------------------------------------------------------+----------------------------------------------------------------------------+----------+----------+----------+----------+
-; clk_div:inst5|clock_10Hz                                                   ; clk_div:inst5|clock_10Hz                                                   ; 173      ; 0        ; 0        ; 0        ;
-; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 8197     ; 0        ; 0        ; 0        ;
-; SCOMP:inst|IO_CYCLE                                                        ; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 113      ; 57       ; 0        ; 0        ;
+; clk_div:inst5|clock_10Hz                                                   ; clk_div:inst5|clock_10Hz                                                   ; 219      ; 0        ; 0        ; 0        ;
+; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 11958    ; 0        ; 0        ; 0        ;
+; SCOMP:inst|IO_CYCLE                                                        ; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 166      ; 98       ; 0        ; 0        ;
 ; clk_div:inst5|clock_10Hz                                                   ; SCOMP:inst|IO_CYCLE                                                        ; 16       ; 0        ; 0        ; 0        ;
 ; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; SCOMP:inst|IO_CYCLE                                                        ; 429      ; 0        ; 0        ; 0        ;
 ; SCOMP:inst|IO_CYCLE                                                        ; SCOMP:inst|IO_CYCLE                                                        ; 93       ; 33       ; 0        ; 0        ;
@@ -790,9 +786,9 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +----------------------------------------------------------------------------+----------------------------------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                                                 ; To Clock                                                                   ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +----------------------------------------------------------------------------+----------------------------------------------------------------------------+----------+----------+----------+----------+
-; clk_div:inst5|clock_10Hz                                                   ; clk_div:inst5|clock_10Hz                                                   ; 173      ; 0        ; 0        ; 0        ;
-; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 8197     ; 0        ; 0        ; 0        ;
-; SCOMP:inst|IO_CYCLE                                                        ; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 113      ; 57       ; 0        ; 0        ;
+; clk_div:inst5|clock_10Hz                                                   ; clk_div:inst5|clock_10Hz                                                   ; 219      ; 0        ; 0        ; 0        ;
+; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 11958    ; 0        ; 0        ; 0        ;
+; SCOMP:inst|IO_CYCLE                                                        ; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; 166      ; 98       ; 0        ; 0        ;
 ; clk_div:inst5|clock_10Hz                                                   ; SCOMP:inst|IO_CYCLE                                                        ; 16       ; 0        ; 0        ; 0        ;
 ; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; SCOMP:inst|IO_CYCLE                                                        ; 429      ; 0        ; 0        ; 0        ;
 ; SCOMP:inst|IO_CYCLE                                                        ; SCOMP:inst|IO_CYCLE                                                        ; 93       ; 33       ; 0        ; 0        ;
@@ -805,8 +801,8 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +----------------------------------------------------------------------------+--------------------------+----------+----------+----------+----------+
 ; From Clock                                                                 ; To Clock                 ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +----------------------------------------------------------------------------+--------------------------+----------+----------+----------+----------+
-; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; clk_div:inst5|clock_10Hz ; 264      ; 0        ; 0        ; 0        ;
-; SCOMP:inst|IO_CYCLE                                                        ; clk_div:inst5|clock_10Hz ; 22       ; 22       ; 0        ; 0        ;
+; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; clk_div:inst5|clock_10Hz ; 312      ; 0        ; 0        ; 0        ;
+; SCOMP:inst|IO_CYCLE                                                        ; clk_div:inst5|clock_10Hz ; 26       ; 26       ; 0        ; 0        ;
 +----------------------------------------------------------------------------+--------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -816,8 +812,8 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +----------------------------------------------------------------------------+--------------------------+----------+----------+----------+----------+
 ; From Clock                                                                 ; To Clock                 ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +----------------------------------------------------------------------------+--------------------------+----------+----------+----------+----------+
-; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; clk_div:inst5|clock_10Hz ; 264      ; 0        ; 0        ; 0        ;
-; SCOMP:inst|IO_CYCLE                                                        ; clk_div:inst5|clock_10Hz ; 22       ; 22       ; 0        ; 0        ;
+; inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk ; clk_div:inst5|clock_10Hz ; 312      ; 0        ; 0        ; 0        ;
+; SCOMP:inst|IO_CYCLE                                                        ; clk_div:inst5|clock_10Hz ; 26       ; 26       ; 0        ; 0        ;
 +----------------------------------------------------------------------------+--------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -1023,10 +1019,10 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Wed Mar 16 17:04:29 2022
+    Info: Processing started: Wed Apr 06 17:32:02 2022
 Info: Command: quartus_sta SCOMP -c SCOMP
 Info: qsta_default_script.tcl version: #1
-Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
 Warning (335093): The Timing Analyzer is analyzing 16 combinational loops as latches. For more details, run the Check Timing command in the Timing Analyzer or view the "User-Specified and Inferred Latches" table in the Analysis & Synthesis report.
@@ -1050,40 +1046,40 @@ Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1100mV 85C Model
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -13.276
+Info (332146): Worst-case setup slack is -12.216
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):   -13.276            -468.077 SCOMP:inst|IO_CYCLE 
-    Info (332119):    -7.615            -228.330 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    -1.840             -33.745 clk_div:inst5|clock_10Hz 
-Info (332146): Worst-case hold slack is -0.598
+    Info (332119):   -12.216            -461.097 SCOMP:inst|IO_CYCLE 
+    Info (332119):    -6.434            -264.976 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    -1.702             -37.131 clk_div:inst5|clock_10Hz 
+Info (332146): Worst-case hold slack is 0.279
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.598              -0.978 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     0.136               0.000 SCOMP:inst|IO_CYCLE 
-    Info (332119):     0.391               0.000 clk_div:inst5|clock_10Hz 
-Info (332146): Worst-case recovery slack is -8.525
+    Info (332119):     0.279               0.000 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.428               0.000 clk_div:inst5|clock_10Hz 
+    Info (332119):     1.394               0.000 SCOMP:inst|IO_CYCLE 
+Info (332146): Worst-case recovery slack is -8.434
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -8.525            -187.532 clk_div:inst5|clock_10Hz 
-Info (332146): Worst-case removal slack is 1.090
+    Info (332119):    -8.434            -219.221 clk_div:inst5|clock_10Hz 
+Info (332146): Worst-case removal slack is 0.623
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.090               0.000 clk_div:inst5|clock_10Hz 
-Info (332146): Worst-case minimum pulse width slack is -0.520
+    Info (332119):     0.623               0.000 clk_div:inst5|clock_10Hz 
+Info (332146): Worst-case minimum pulse width slack is -0.499
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.520             -29.540 SCOMP:inst|IO_CYCLE 
-    Info (332119):    -0.394             -11.192 clk_div:inst5|clock_10Hz 
+    Info (332119):    -0.499             -27.432 SCOMP:inst|IO_CYCLE 
+    Info (332119):    -0.394             -13.553 clk_div:inst5|clock_10Hz 
     Info (332119):     1.666               0.000 inst1|pll_main_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
     Info (332119):     9.670               0.000 clock_50 
-    Info (332119):    48.779               0.000 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    48.780               0.000 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332114): Report Metastability: Found 16 synchronizer chains.
     Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
     Info (332114): Number of Synchronizer Chains Found: 16
     Info (332114): Shortest Synchronizer Chain: 2 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 97.148 ns
+    Info (332114): Worst Case Available Settling Time: 97.884 ns
     Info (332114): 
 Info: Analyzing Slow 1100mV 0C Model
 Info (334003): Started post-fitting delay annotation
@@ -1095,40 +1091,40 @@ Info (332097): The following timing edges are non-unate.  The Timing Analyzer wi
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -13.165
+Info (332146): Worst-case setup slack is -12.083
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):   -13.165            -462.572 SCOMP:inst|IO_CYCLE 
-    Info (332119):    -6.864            -206.158 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    -1.937             -34.992 clk_div:inst5|clock_10Hz 
-Info (332146): Worst-case hold slack is -0.968
+    Info (332119):   -12.083            -455.191 SCOMP:inst|IO_CYCLE 
+    Info (332119):    -5.825            -239.021 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    -1.809             -39.103 clk_div:inst5|clock_10Hz 
+Info (332146): Worst-case hold slack is 0.209
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.968              -1.866 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     0.149               0.000 SCOMP:inst|IO_CYCLE 
-    Info (332119):     0.369               0.000 clk_div:inst5|clock_10Hz 
-Info (332146): Worst-case recovery slack is -8.460
+    Info (332119):     0.209               0.000 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.442               0.000 clk_div:inst5|clock_10Hz 
+    Info (332119):     1.238               0.000 SCOMP:inst|IO_CYCLE 
+Info (332146): Worst-case recovery slack is -8.453
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -8.460            -186.094 clk_div:inst5|clock_10Hz 
-Info (332146): Worst-case removal slack is 1.056
+    Info (332119):    -8.453            -219.724 clk_div:inst5|clock_10Hz 
+Info (332146): Worst-case removal slack is 0.646
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.056               0.000 clk_div:inst5|clock_10Hz 
-Info (332146): Worst-case minimum pulse width slack is -0.542
+    Info (332119):     0.646               0.000 clk_div:inst5|clock_10Hz 
+Info (332146): Worst-case minimum pulse width slack is -0.510
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.542             -29.641 SCOMP:inst|IO_CYCLE 
-    Info (332119):    -0.394             -11.248 clk_div:inst5|clock_10Hz 
+    Info (332119):    -0.510             -27.222 SCOMP:inst|IO_CYCLE 
+    Info (332119):    -0.394             -13.369 clk_div:inst5|clock_10Hz 
     Info (332119):     1.666               0.000 inst1|pll_main_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
     Info (332119):     9.673               0.000 clock_50 
-    Info (332119):    48.755               0.000 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    48.756               0.000 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332114): Report Metastability: Found 16 synchronizer chains.
     Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
     Info (332114): Number of Synchronizer Chains Found: 16
     Info (332114): Shortest Synchronizer Chain: 2 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 97.318 ns
+    Info (332114): Worst Case Available Settling Time: 98.017 ns
     Info (332114): 
 Info: Analyzing Fast 1100mV 85C Model
 Info (334003): Started post-fitting delay annotation
@@ -1140,40 +1136,40 @@ Info (332097): The following timing edges are non-unate.  The Timing Analyzer wi
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -7.783
+Info (332146): Worst-case setup slack is -7.124
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -7.783            -278.187 SCOMP:inst|IO_CYCLE 
-    Info (332119):    -5.847            -176.728 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    -0.661             -11.835 clk_div:inst5|clock_10Hz 
-Info (332146): Worst-case hold slack is 0.155
+    Info (332119):    -7.124            -269.562 SCOMP:inst|IO_CYCLE 
+    Info (332119):    -5.315            -211.219 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    -0.571             -11.859 clk_div:inst5|clock_10Hz 
+Info (332146): Worst-case hold slack is 0.158
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.155               0.000 clk_div:inst5|clock_10Hz 
+    Info (332119):     0.158               0.000 clk_div:inst5|clock_10Hz 
     Info (332119):     0.164               0.000 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     0.194               0.000 SCOMP:inst|IO_CYCLE 
-Info (332146): Worst-case recovery slack is -4.348
+    Info (332119):     0.859               0.000 SCOMP:inst|IO_CYCLE 
+Info (332146): Worst-case recovery slack is -4.219
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -4.348             -95.630 clk_div:inst5|clock_10Hz 
-Info (332146): Worst-case removal slack is 0.426
+    Info (332119):    -4.219            -109.670 clk_div:inst5|clock_10Hz 
+Info (332146): Worst-case removal slack is 0.170
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.426               0.000 clk_div:inst5|clock_10Hz 
-Info (332146): Worst-case minimum pulse width slack is -0.311
+    Info (332119):     0.170               0.000 clk_div:inst5|clock_10Hz 
+Info (332146): Worst-case minimum pulse width slack is -0.280
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.311              -5.282 SCOMP:inst|IO_CYCLE 
-    Info (332119):     0.152               0.000 clk_div:inst5|clock_10Hz 
+    Info (332119):    -0.280              -3.165 SCOMP:inst|IO_CYCLE 
+    Info (332119):     0.134               0.000 clk_div:inst5|clock_10Hz 
     Info (332119):     1.666               0.000 inst1|pll_main_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
     Info (332119):     9.336               0.000 clock_50 
-    Info (332119):    48.894               0.000 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    48.895               0.000 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332114): Report Metastability: Found 16 synchronizer chains.
     Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
     Info (332114): Number of Synchronizer Chains Found: 16
     Info (332114): Shortest Synchronizer Chain: 2 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 98.046 ns
+    Info (332114): Worst Case Available Settling Time: 98.577 ns
     Info (332114): 
 Info: Analyzing Fast 1100mV 0C Model
 Info (332097): The following timing edges are non-unate.  The Timing Analyzer will assume pos-unate behavior for these edges in the clock network.
@@ -1183,47 +1179,47 @@ Info (332097): The following timing edges are non-unate.  The Timing Analyzer wi
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -7.177
+Info (332146): Worst-case setup slack is -6.557
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -7.177            -253.134 SCOMP:inst|IO_CYCLE 
-    Info (332119):    -4.702            -141.519 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):    -0.604             -10.444 clk_div:inst5|clock_10Hz 
-Info (332146): Worst-case hold slack is -0.158
+    Info (332119):    -6.557            -245.364 SCOMP:inst|IO_CYCLE 
+    Info (332119):    -4.264            -168.290 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    -0.534             -10.682 clk_div:inst5|clock_10Hz 
+Info (332146): Worst-case hold slack is 0.144
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.158              -0.261 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
-    Info (332119):     0.129               0.000 clk_div:inst5|clock_10Hz 
-    Info (332119):     0.190               0.000 SCOMP:inst|IO_CYCLE 
-Info (332146): Worst-case recovery slack is -4.148
+    Info (332119):     0.144               0.000 clk_div:inst5|clock_10Hz 
+    Info (332119):     0.152               0.000 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):     0.699               0.000 SCOMP:inst|IO_CYCLE 
+Info (332146): Worst-case recovery slack is -4.043
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -4.148             -91.224 clk_div:inst5|clock_10Hz 
-Info (332146): Worst-case removal slack is 0.364
+    Info (332119):    -4.043            -105.094 clk_div:inst5|clock_10Hz 
+Info (332146): Worst-case removal slack is 0.144
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.364               0.000 clk_div:inst5|clock_10Hz 
-Info (332146): Worst-case minimum pulse width slack is -0.234
+    Info (332119):     0.144               0.000 clk_div:inst5|clock_10Hz 
+Info (332146): Worst-case minimum pulse width slack is -0.213
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.234              -3.376 SCOMP:inst|IO_CYCLE 
-    Info (332119):     0.148               0.000 clk_div:inst5|clock_10Hz 
+    Info (332119):    -0.213              -1.994 SCOMP:inst|IO_CYCLE 
+    Info (332119):     0.138               0.000 clk_div:inst5|clock_10Hz 
     Info (332119):     1.666               0.000 inst1|pll_main_inst|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0] 
     Info (332119):     9.286               0.000 clock_50 
-    Info (332119):    48.892               0.000 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
+    Info (332119):    48.891               0.000 inst1|pll_main_inst|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk 
 Info (332114): Report Metastability: Found 16 synchronizer chains.
     Info (332114): The design MTBF is not calculated because there are no specified synchronizers in the design.
     Info (332114): Number of Synchronizer Chains Found: 16
     Info (332114): Shortest Synchronizer Chain: 2 Registers
     Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 1.000
-    Info (332114): Worst Case Available Settling Time: 98.292 ns
+    Info (332114): Worst Case Available Settling Time: 98.773 ns
     Info (332114): 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 5253 megabytes
-    Info: Processing ended: Wed Mar 16 17:04:37 2022
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:10
+    Info: Peak virtual memory: 5206 megabytes
+    Info: Processing ended: Wed Apr 06 17:32:11 2022
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:11
 
 

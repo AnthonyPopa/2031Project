@@ -1,0 +1,77 @@
+MIF/HEX Update report for SCOMP
+Wed Mar 30 18:27:28 2022
+Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. MIF/HEX Update Summary
+  3. MIF/HEX Update Processed Files
+  4. MIF/HEX Update Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2019  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++---------------------------------------------------------------+
+; MIF/HEX Update Summary                                        ;
++-----------------------+---------------------------------------+
+; MIF/HEX Update Status ; Successful - Wed Mar 30 18:27:28 2022 ;
+; Revision Name         ; SCOMP                                 ;
+; Top-level Entity Name ; SCOMP_System                          ;
+; Family                ; Cyclone V                             ;
+; Device                ; 5CSXFC6D6F31C6                        ;
++-----------------------+---------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; MIF/HEX Update Processed Files                                                                                                      ;
++-------------------------------------------------------------------------------------------------------------------------------------+
+; File Name                                                                                                                           ;
++-------------------------------------------------------------------------------------------------------------------------------------+
+; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/pixeldata.mif ;
+; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/pixeltest.mif ;
++-------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-------------------------+
+; MIF/HEX Update Messages ;
++-------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime MIF/HEX Update
+    Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+    Info: Processing started: Wed Mar 30 18:27:23 2022
+Info: Command: quartus_cdb SCOMP -c SCOMP --update_mif
+Warning (113031): 2 out of 2048 addresses are reinitialized. The latest initialized data will replace the existing data. There are 2 warnings found, and 2 warnings are reported. File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/pixeltest.mif Line: 1
+    Warning (113030): Memory Initialization File address 0 is reinitialized File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/ Line: 13
+    Warning (113030): Memory Initialization File address 1 is reinitialized File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/ Line: 14
+Info (39024): Processed the following Memory Initialization File(s)
+    Info (39025): Processed Memory Initialization File C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/pixeldata.mif File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/pixeldata.mif Line: 0
+    Info (39025): Processed Memory Initialization File C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/pixeltest.mif File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/pixeltest.mif Line: 0
+Info: Quartus Prime MIF/HEX Update was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 4881 megabytes
+    Info: Processing ended: Wed Mar 30 18:27:28 2022
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:04
+
+
