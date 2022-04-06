@@ -53,7 +53,7 @@ architecture internals of NeoPixelController is
 	signal ibus : std_logic_vector(15 downto 0);
 
 	-- RAM interface state machine signals
-	type write_states is (idle, storing, write_all);
+	type write_states is (idle, storing);
 	signal wstate: write_states;
 	type increment_states is (init, increment);
 	signal istate: increment_states;
@@ -241,7 +241,7 @@ begin
 					ram_write_addr <= x"00";
 					istate <= increment;
 				when increment =>
-					if (ram_write_addr > x"7F") then
+					if (ram_write_addr >= x"ff") then
 						istate <= init;
 					else
 						ram_write_addr <= ram_write_addr + 1;
@@ -276,7 +276,7 @@ begin
 					if (all_pxls = '1') then
 						ram_write_buffer <= ibus(10 downto 5) & "00" & ibus(15 downto 11) & "000" & ibus(4 downto 0) & "000"; --data in to the buffer
 						ram_we <= '1';
-						if (ram_write_addr > x"7F") then
+						if (ram_write_addr > x"ff") then
 							wstate <= storing;
 						end if;
 					else
@@ -290,16 +290,6 @@ begin
 						--Change state
 						wstate <= storing;
 					end if;
-				end if;
-			when write_all =>
-				if (ram_write_addr >= x"7F") then
-					wstate <= storing;
-				else
-					--ram_write_addr <= std_logic_vector((ram_write_addr) + 1);
-					--all_pxls_addr := all_pxls_addr + 1;
-					--ram_write_addr <= std_logic_vector(unsigned(ram_write_addr) + 1);
-					--std_logic_vector( to_unsigned( all_pxls_addr, ram_write_addr'length));
-					--ram_write_addr <= ram_write_addr + 1;
 				end if;
 			when storing =>
 				-- All that's needed here is to lower ram_we.  The RAM will be
