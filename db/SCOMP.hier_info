@@ -298,6 +298,7 @@ all_pxls => ram_write_addr.OUTPUTSELECT
 all_pxls => istate.OUTPUTSELECT
 all_pxls => process_1.IN1
 all_pxls => wstate.OUTPUTSELECT
+all_pxls => process_1.IN1
 sda <= sda~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
