@@ -45,12 +45,10 @@ architecture internals of NeoPixelController is
 	signal ram_write_buffer : std_logic_vector(23 downto 0);
 
 	-- RAM interface state machine signals
-	type write_states is (idle, storing, write_all);
+	type write_states is (idle, idle2, idle3, storing);
 	signal wstate: write_states;
 	type increment_states is (init, increment);
 	signal istate: increment_states;
-	type color_states is (red, green, blue);
-	signal cstate: color_states;
 	
 
 	
@@ -253,37 +251,17 @@ begin
 		elsif rising_edge(clk_10M) then
 			case wstate is
 			when idle =>
-				if ((io_write = '1') and ((cs_data='1') or (all_pxls = '1') or (bit24 = '1'))) then
+				if (io_write = '1' and (cs_data='1' or all_pxls = '1' or bit24 = '1')) then
 					if (all_pxls = '1') then
 						ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
 						ram_we <= '1';
-						if (ram_write_addr > x"7F") then
+						if (ram_write_addr >= x"FF") then
 							wstate <= storing;
 						end if;
 					elsif (bit24 = '1') then
+						ram_write_buffer <= ram_write_buffer(23 downto 16) & data_in(7 downto 0) & ram_write_buffer(7 downto 0);
 						ram_we <= '1';
-						cstate <= red;
-						case cstate is
-						when red =>
-							ram_write_buffer <= ram_write_buffer(23 downto 16) & data_in(7 downto 0) & ram_write_buffer(7 downto 0);
-							if (bit24_2 = '1') then
-								cstate <= green;
-							else
-								cstate <= red;
-							end if;
-						when green =>
-							ram_write_buffer <= data_in(7 downto 0) & ram_write_buffer(15 downto 0);
-							if (bit24_3 = '1') then
-								cstate <= blue;
-							else
-								cstate <= green;
-							end if;
-						when blue =>
-							ram_write_buffer <= ram_write_buffer(23 downto 8) & data_in(7 downto 0);
-							if (bit24 = '0' and bit24_2 = '0' and bit24_3 = '0') then
-								wstate <= storing;
-							end if;
-						end case;
+						wstate <= idle2;
 					else
 						-- latch the current data into the temporary storage register,
 						-- because this is the only time it'll be available.
@@ -296,15 +274,15 @@ begin
 						wstate <= storing;
 					end if;
 				end if;
-			when write_all =>
-				if (ram_write_addr >= x"7F") then
+			when idle2 =>
+				if (io_write = '1' and bit24_2 = '1') then
+					ram_write_buffer <= data_in(7 downto 0) & ram_write_buffer(15 downto 0);
+					wstate <= idle3;
+				end if;
+			when idle3 =>
+				if (io_write = '1' and bit24_3 = '1') then
+					ram_write_buffer <= ram_write_buffer(23 downto 8) & data_in(7 downto 0);
 					wstate <= storing;
-				else
-					--ram_write_addr <= std_logic_vector((ram_write_addr) + 1);
-					--all_pxls_addr := all_pxls_addr + 1;
-					--ram_write_addr <= std_logic_vector(unsigned(ram_write_addr) + 1);
-					--std_logic_vector( to_unsigned( all_pxls_addr, ram_write_addr'length));
-					--ram_write_addr <= ram_write_addr + 1;
 				end if;
 			when storing =>
 				-- All that's needed here is to lower ram_we.  The RAM will be
