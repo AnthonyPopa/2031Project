@@ -20,6 +20,9 @@ entity NeoPixelController is
 		cs_data   : in   std_logic ;
 		data_in   : in   std_logic_vector(15 downto 0);
 		all_pxls	 : in	  std_logic;
+		bit24     : in   std_logic;
+		bit24_2   : in   std_logic;
+		bit24_3   : in   std_logic;
 		sda       : out  std_logic
 		
 	); 
@@ -46,6 +49,9 @@ architecture internals of NeoPixelController is
 	signal wstate: write_states;
 	type increment_states is (init, increment);
 	signal istate: increment_states;
+	type color_states is (red, green, blue);
+	signal cstate: color_states;
+	
 
 	
 begin
@@ -216,7 +222,7 @@ begin
 					ram_write_addr <= x"00";
 					istate <= increment;
 				when increment =>
-					if (ram_write_addr > x"7F") then
+					if (ram_write_addr >= x"FF") then
 						istate <= init;
 					else
 						ram_write_addr <= ram_write_addr + 1;
@@ -247,13 +253,37 @@ begin
 		elsif rising_edge(clk_10M) then
 			case wstate is
 			when idle =>
-				if ((io_write = '1') and ((cs_data='1') or (all_pxls = '1'))) then
+				if ((io_write = '1') and ((cs_data='1') or (all_pxls = '1') or (bit24 = '1'))) then
 					if (all_pxls = '1') then
 						ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
 						ram_we <= '1';
 						if (ram_write_addr > x"7F") then
 							wstate <= storing;
 						end if;
+					elsif (bit24 = '1') then
+						ram_we <= '1';
+						cstate <= red;
+						case cstate is
+						when red =>
+							ram_write_buffer <= ram_write_buffer(23 downto 16) & data_in(7 downto 0) & ram_write_buffer(7 downto 0);
+							if (bit24_2 = '1') then
+								cstate <= green;
+							else
+								cstate <= red;
+							end if;
+						when green =>
+							ram_write_buffer <= data_in(7 downto 0) & ram_write_buffer(15 downto 0);
+							if (bit24_3 = '1') then
+								cstate <= blue;
+							else
+								cstate <= green;
+							end if;
+						when blue =>
+							ram_write_buffer <= ram_write_buffer(23 downto 8) & data_in(7 downto 0);
+							if (bit24 = '0' and bit24_2 = '0' and bit24_3 = '0') then
+								wstate <= storing;
+							end if;
+						end case;
 					else
 						-- latch the current data into the temporary storage register,
 						-- because this is the only time it'll be available.

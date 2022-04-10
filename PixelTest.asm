@@ -1,8 +1,9 @@
 ; Simple test for the NeoPixel peripheral
 
 ORG 0
-    LOADI  &HFFFF
-    OUT    ALL_PXLS
+Loop: IN 	 Switches
+      OUT    ALL_PXLS
+	  JUMP   Loop
 
 
 ; IO address constants

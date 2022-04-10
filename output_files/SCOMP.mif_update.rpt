@@ -1,5 +1,5 @@
 MIF/HEX Update report for SCOMP
-Wed Mar 30 18:27:28 2022
+Wed Apr 06 18:01:27 2022
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -36,7 +36,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------+
 ; MIF/HEX Update Summary                                        ;
 +-----------------------+---------------------------------------+
-; MIF/HEX Update Status ; Successful - Wed Mar 30 18:27:28 2022 ;
+; MIF/HEX Update Status ; Successful - Wed Apr 06 18:01:27 2022 ;
 ; Revision Name         ; SCOMP                                 ;
 ; Top-level Entity Name ; SCOMP_System                          ;
 ; Family                ; Cyclone V                             ;
@@ -44,14 +44,14 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------+---------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------+
-; MIF/HEX Update Processed Files                                                                                                      ;
-+-------------------------------------------------------------------------------------------------------------------------------------+
-; File Name                                                                                                                           ;
-+-------------------------------------------------------------------------------------------------------------------------------------+
-; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/pixeldata.mif ;
-; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/pixeltest.mif ;
-+-------------------------------------------------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------+
+; MIF/HEX Update Processed Files                                     ;
++--------------------------------------------------------------------+
+; File Name                                                          ;
++--------------------------------------------------------------------+
+; C:/Users/Anthony Popa/OneDrive/Documents/2031Project/pixeldata.mif ;
+; C:/Users/Anthony Popa/OneDrive/Documents/2031Project/pixeltest.mif ;
++--------------------------------------------------------------------+
 
 
 +-------------------------+
@@ -60,18 +60,20 @@ https://fpgasoftware.intel.com/eula.
 Info: *******************************************************************
 Info: Running Quartus Prime MIF/HEX Update
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Wed Mar 30 18:27:23 2022
+    Info: Processing started: Wed Apr 06 18:01:23 2022
 Info: Command: quartus_cdb SCOMP -c SCOMP --update_mif
-Warning (113031): 2 out of 2048 addresses are reinitialized. The latest initialized data will replace the existing data. There are 2 warnings found, and 2 warnings are reported. File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/pixeltest.mif Line: 1
-    Warning (113030): Memory Initialization File address 0 is reinitialized File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/ Line: 13
-    Warning (113030): Memory Initialization File address 1 is reinitialized File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/ Line: 14
+Critical Warning (127005): Memory depth (256) in the design file differs from memory depth (4) in the Memory Initialization File "C:/Users/Anthony Popa/OneDrive/Documents/2031Project/pixeldata.mif" -- setting initial value for remaining addresses to 0
+Warning (113031): 3 out of 2048 addresses are reinitialized. The latest initialized data will replace the existing data. There are 3 warnings found, and 3 warnings are reported. File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/pixeltest.mif Line: 1
+    Warning (113030): Memory Initialization File address 0 is reinitialized File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/ Line: 13
+    Warning (113030): Memory Initialization File address 1 is reinitialized File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/ Line: 14
+    Warning (113030): Memory Initialization File address 2 is reinitialized File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/ Line: 15
 Info (39024): Processed the following Memory Initialization File(s)
-    Info (39025): Processed Memory Initialization File C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/pixeldata.mif File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/pixeldata.mif Line: 0
-    Info (39025): Processed Memory Initialization File C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/pixeltest.mif File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/pixeltest.mif Line: 0
-Info: Quartus Prime MIF/HEX Update was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 4881 megabytes
-    Info: Processing ended: Wed Mar 30 18:27:28 2022
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:04
+    Info (39025): Processed Memory Initialization File C:/Users/Anthony Popa/OneDrive/Documents/2031Project/pixeldata.mif File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/pixeldata.mif Line: 0
+    Info (39025): Processed Memory Initialization File C:/Users/Anthony Popa/OneDrive/Documents/2031Project/pixeltest.mif File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/pixeltest.mif Line: 0
+Info: Quartus Prime MIF/HEX Update was successful. 0 errors, 5 warnings
+    Info: Peak virtual memory: 4879 megabytes
+    Info: Processing ended: Wed Apr 06 18:01:27 2022
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:03
 
 

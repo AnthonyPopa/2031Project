@@ -10,6 +10,7 @@ CONTENT
   BEGIN
     [000..7FF] : 0000;  -- Default to NOP
 
-           000 : BFFF;  --     LOADI  &HFFFF
-           001 : 98B2;  --     OUT    ALL_PXLS
+           000 : 9000;  -- Loop: IN 	 Switches
+           001 : 98B2;  --       OUT    ALL_PXLS
+           002 : 2800;  -- 	  JUMP   Loop
   END;
