@@ -20,7 +20,8 @@ entity NeoPixelController is
 		cs_data   : in   std_logic ;
 		data_in   : in   std_logic_vector(15 downto 0);
 		all_pxls	 : in	  std_logic;
-		sda       : out  std_logic
+		sda       : out  std_logic;
+		fade_color : in std_logic
 		
 	); 
 
@@ -196,9 +197,10 @@ begin
 	
 	
 	
-	process(clk_10M, resetn, cs_addr, all_pxls)
+	process(clk_10M, resetn, cs_addr, all_pxls, fade_color)
 	
 		variable all_pxls_addr : integer range 0 to 255;
+		variable fade : integer range -31 to 32;
 
 	begin
 		-- For this implementation, saving the memory address
@@ -249,7 +251,12 @@ begin
 			when idle =>
 				if ((io_write = '1') and ((cs_data='1') or (all_pxls = '1'))) then
 					if (all_pxls = '1') then
-						ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
+						if (fade_color = '1') then 
+							ram_write_buffer <= (data_in(10 downto 5) - fade) & "00" & (data_in(15 downto 11) - fade) & "000" & 
+																										(data_in(4 downto 0) - fade) & "000";
+						else
+							ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
+						end if;
 						ram_we <= '1';
 						if (ram_write_addr > x"ff") then
 							wstate <= storing;
