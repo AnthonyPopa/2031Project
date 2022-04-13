@@ -19,7 +19,8 @@ ENTITY IO_DECODER IS
     HEX1_EN       : OUT STD_LOGIC;
     PXL_A_EN      : OUT STD_LOGIC;
     PXL_D_EN      : OUT STD_LOGIC;
-	 ALL_PXLS		: OUT STD_LOGIC
+	 ALL_PXLS		: OUT STD_LOGIC;
+	 FADE_COLOR		: OUT STD_LOGIC
   );
 
 END ENTITY;
@@ -40,6 +41,6 @@ begin
   PXL_A_EN     <= '1' WHEN (ADDR_INT = 16#0B0#) and (IO_CYCLE = '1') ELSE '0';
   PXL_D_EN     <= '1' WHEN (ADDR_INT = 16#0B1#) and (IO_CYCLE = '1') ELSE '0';
   ALL_PXLS		<= '1' WHEN (ADDR_INT = 16#0B2#) and (IO_CYCLE = '1') ELSE '0';
-	
+  FADE_COLOR   <= '1' WHEN (ADDR_INT = 16#0B3#) and (IO_CYCLE = '1') ELSE '0';
  
 END a;
