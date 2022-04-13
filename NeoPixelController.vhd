@@ -45,9 +45,12 @@ architecture internals of NeoPixelController is
 	-- RAM interface state machine signals
 	type write_states is (idle, storing);
 	signal wstate: write_states;
+	
 	type increment_states is (init, increment);
 	signal istate: increment_states;
 
+	type brightness is (up, down);
+	signal bright: brightness;
 	
 begin
 
@@ -200,7 +203,7 @@ begin
 	process(clk_10M, resetn, cs_addr, all_pxls, fade_color)
 	
 		variable all_pxls_addr : integer range 0 to 255;
-		variable fade : integer range -31 to 32;
+		variable fade : integer;
 
 	begin
 		-- For this implementation, saving the memory address
@@ -212,16 +215,31 @@ begin
 			-- If SCOMP is writing to the address register...
 			if (io_write = '1') and (cs_addr='1') then
 				ram_write_addr <= data_in(7 downto 0);
-			elsif (all_pxls = '1') then
+			elsif (all_pxls = '1' or fade_color = '1') then
 				case istate is
 				when init =>
 					ram_write_addr <= x"00";
+					fade := 0;
 					istate <= increment;
 				when increment =>
 					if (ram_write_addr >= x"ff") then
 						istate <= init;
 					else
 						ram_write_addr <= ram_write_addr + 1;
+					end if;
+					if (fade_color = '1') then
+						case bright is 
+							when up =>
+								fade := fade - 2;
+								if (fade >= 32) then
+									bright <= down;
+								end if;
+							when down =>
+								fade := fade + 2;
+								if (fade <= 0) then
+									bright <= up;
+								end if;
+						end case;
 					end if;
 				end case;
 			end if;
@@ -249,18 +267,19 @@ begin
 		elsif rising_edge(clk_10M) then
 			case wstate is
 			when idle =>
-				if ((io_write = '1') and ((cs_data='1') or (all_pxls = '1'))) then
+				if ((io_write = '1') and ((cs_data='1') or (all_pxls = '1') or (fade_color = '1'))) then
 					if (all_pxls = '1') then
-						if (fade_color = '1') then 
-							ram_write_buffer <= (data_in(10 downto 5) - fade) & "00" & (data_in(15 downto 11) - fade) & "000" & 
-																										(data_in(4 downto 0) - fade) & "000";
-						else
-							ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
-						end if;
+						ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
 						ram_we <= '1';
 						if (ram_write_addr > x"ff") then
 							wstate <= storing;
 						end if;
+					elsif (fade_color = '1') then
+						ram_write_buffer <= (data_in(10 downto 5) - fade) & "00" & (data_in(15 downto 11) - fade) & "000" & 
+																										(data_in(4 downto 0) - fade) & "000";
+						--wait;
+					   ram_we <= '1';
+						wstate <= storing;
 					else
 						-- latch the current data into the temporary storage register,
 						-- because this is the only time it'll be available.
