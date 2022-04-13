@@ -2,10 +2,30 @@
 
 ORG 0
 
+
+		LOADI 3
+		OUT PXL_A
+		LOADI &HFFFF
+		OUT RED
 		LOADI 0
-		OUT PXL_A 
-		LOADI &HF000
+		OUT GREEN
+		LOADI &HFFFF
+		OUT BLUE
+		
+Loop:	IN Switches
+		JZERO Loop
+		
+		LOADI 4
+		OUT PXL_A
+		LOADI &H000F
 		OUT PXL_D
+		LOAD  Test
+		OUT PXL_D
+		LOAD  Test1
+		OUT PXL_D
+		
+Test:	DW &HF000
+Test1:	DW &HF0F0
 
 ; IO address constants
 Switches:  EQU 000

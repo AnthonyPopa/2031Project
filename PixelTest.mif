@@ -10,8 +10,24 @@ CONTENT
   BEGIN
     [000..7FF] : 0000;  -- Default to NOP
 
-           000 : B800;  -- 		LOADI 0
-           001 : 98B0;  -- 		OUT PXL_A 
-           002 : B800;  -- 		LOADI &HF000
-           003 : 98B1;  -- 		OUT PXL_D
+           000 : B803;  -- 		LOADI 3
+           001 : 98B0;  -- 		OUT PXL_A
+           002 : BFFF;  -- 		LOADI &HFFFF
+           003 : 98B3;  -- 		OUT RED
+           004 : B800;  -- 		LOADI 0
+           005 : 98B4;  -- 		OUT GREEN
+           006 : BFFF;  -- 		LOADI &HFFFF
+           007 : 98B5;  -- 		OUT BLUE
+           008 : 9000;  -- Loop:	IN Switches
+           009 : 4008;  -- 		JZERO Loop
+           00A : B804;  -- 		LOADI 4
+           00B : 98B0;  -- 		OUT PXL_A
+           00C : B80F;  -- 		LOADI &H000F
+           00D : 98B1;  -- 		OUT PXL_D
+           00E : 0812;  -- 		LOAD  Test
+           00F : 98B1;  -- 		OUT PXL_D
+           010 : 0813;  -- 		LOAD  Test1
+           011 : 98B1;  -- 		OUT PXL_D
+           012 : F000;  -- Test:	DW &HF000
+           013 : F0F0;  -- Test1:	DW &HF0F0
   END;

@@ -226,8 +226,8 @@ begin
 						ram_write_addr <= ram_write_addr + 1;
 					end if;
 				end case;
---			elsif (wstate = storing and bit24 = '0') then
---				ram_write_addr <= ram_write_addr + 1;
+			elsif ((wstate = storing) and (all_pxls /= '1') and (bit24 /= '1') and (ram_write_addr <= 255)) then
+				ram_write_addr <= ram_write_addr + 1;
 			end if;
 		end if;
 	
