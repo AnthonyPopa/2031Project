@@ -18,7 +18,7 @@ entity NeoPixelController is
 		io_write  : in   std_logic ;
 		cs_addr   : in   std_logic ;
 		cs_data   : in   std_logic ;
-		data_in   : in   std_logic_vector(15 downto 0);
+		data_in   : inout   std_logic_vector(15 downto 0);
 		all_pxls	 : in	  std_logic;
 		bit24     : in   std_logic;
 		bit24_2   : in   std_logic;
@@ -98,7 +98,7 @@ begin
 		q_b => ram_read_data
 	);
 	
-
+	
 
 	-- This process implements the NeoPixel protocol by
 	-- using several counters to keep track of clock cycles,
@@ -200,7 +200,7 @@ begin
 	
 	
 	
-	process(clk_10M, resetn, cs_addr, all_pxls)
+	process(clk_10M, resetn, cs_addr, all_pxls, bit24)
 	
 		variable all_pxls_addr : integer range 0 to 255;
 
@@ -226,6 +226,8 @@ begin
 						ram_write_addr <= ram_write_addr + 1;
 					end if;
 				end case;
+--			elsif (wstate = storing and bit24 = '0') then
+--				ram_write_addr <= ram_write_addr + 1;
 			end if;
 		end if;
 	
@@ -273,7 +275,7 @@ begin
 						--Change state
 						wstate <= storing;
 					end if;
-				end if;
+  				end if;
 			when idle2 =>
 				if (io_write = '1' and bit24_2 = '1') then
 					ram_write_buffer <= data_in(7 downto 0) & ram_write_buffer(15 downto 0);
