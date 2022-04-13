@@ -42,7 +42,7 @@ architecture internals of NeoPixelController is
 	signal ram_write_buffer : std_logic_vector(23 downto 0);
 
 	-- RAM interface state machine signals
-	type write_states is (idle, storing);
+	type write_states is (idle, storing, autoi_addr);
 	signal wstate: write_states;
 	type increment_states is (init, increment);
 	signal istate: increment_states;
@@ -222,7 +222,7 @@ begin
 						ram_write_addr <= ram_write_addr + 1;
 					end if;
 				end case;
-			elsif ((wstate = storing) and (all_pxls /= '1')) then
+			elsif ((wstate = autoi_addr) and (all_pxls /= '1') and (ram_write_addr <= 255)) then
 				ram_write_addr <= ram_write_addr + 1;
 			end if;
 		end if;
@@ -273,6 +273,12 @@ begin
 				-- storing data on this clock edge, so ram_we can go low at the
 				-- same time.
 				ram_we <= '0';
+				if (io_write = '1' and cs_data = '1') then
+					wstate <= autoi_addr;
+				else
+					wstate <= idle;
+				end if;
+			when autoi_addr =>
 				wstate <= idle;
 			when others =>
 				wstate <= idle;

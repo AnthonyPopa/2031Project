@@ -1,5 +1,5 @@
 Analysis & Synthesis report for SCOMP
-Fri Apr 08 12:38:26 2022
+Wed Apr 13 12:42:31 2022
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -16,24 +16,25 @@ Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis IP Cores Summary
  10. State Machine - |SCOMP_System|SCOMP:inst|state
- 11. User-Specified and Inferred Latches
- 12. Registers Removed During Synthesis
- 13. General Register Statistics
- 14. Inverted Register Statistics
- 15. Multiplexer Restructuring Statistics (Restructuring Performed)
- 16. Source assignments for NeoPixelController:inst13|altsyncram:pixelRAM|altsyncram_2c24:auto_generated
- 17. Source assignments for SCOMP:inst|altsyncram:altsyncram_component|altsyncram_qm24:auto_generated
- 18. Parameter Settings for User Entity Instance: NeoPixelController:inst13|altsyncram:pixelRAM
- 19. Parameter Settings for User Entity Instance: PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i
- 20. Parameter Settings for User Entity Instance: SCOMP:inst|altsyncram:altsyncram_component
- 21. Parameter Settings for User Entity Instance: SCOMP:inst|LPM_CLSHIFT:shifter
- 22. Parameter Settings for User Entity Instance: SCOMP:inst|LPM_BUSTRI:io_bus
- 23. Parameter Settings for User Entity Instance: TIMER:inst4|LPM_BUSTRI:IO_BUS
- 24. Parameter Settings for User Entity Instance: DIG_IN:inst7|LPM_BUSTRI:IO_BUS
- 25. altsyncram Parameter Settings by Entity Instance
- 26. Post-Synthesis Netlist Statistics for Top Partition
- 27. Elapsed Time Per Partition
- 28. Analysis & Synthesis Messages
+ 11. State Machine - |SCOMP_System|NeoPixelController:inst13|wstate
+ 12. User-Specified and Inferred Latches
+ 13. Registers Removed During Synthesis
+ 14. General Register Statistics
+ 15. Inverted Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Source assignments for NeoPixelController:inst13|altsyncram:pixelRAM|altsyncram_2c24:auto_generated
+ 18. Source assignments for SCOMP:inst|altsyncram:altsyncram_component|altsyncram_qm24:auto_generated
+ 19. Parameter Settings for User Entity Instance: NeoPixelController:inst13|altsyncram:pixelRAM
+ 20. Parameter Settings for User Entity Instance: PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i
+ 21. Parameter Settings for User Entity Instance: SCOMP:inst|altsyncram:altsyncram_component
+ 22. Parameter Settings for User Entity Instance: SCOMP:inst|LPM_CLSHIFT:shifter
+ 23. Parameter Settings for User Entity Instance: SCOMP:inst|LPM_BUSTRI:io_bus
+ 24. Parameter Settings for User Entity Instance: TIMER:inst4|LPM_BUSTRI:IO_BUS
+ 25. Parameter Settings for User Entity Instance: DIG_IN:inst7|LPM_BUSTRI:IO_BUS
+ 26. altsyncram Parameter Settings by Entity Instance
+ 27. Post-Synthesis Netlist Statistics for Top Partition
+ 28. Elapsed Time Per Partition
+ 29. Analysis & Synthesis Messages
 
 
 
@@ -60,13 +61,13 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Fri Apr 08 12:38:26 2022       ;
+; Analysis & Synthesis Status     ; Successful - Wed Apr 13 12:42:31 2022       ;
 ; Quartus Prime Version           ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name                   ; SCOMP                                       ;
 ; Top-level Entity Name           ; SCOMP_System                                ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 346                                         ;
+; Total registers                 ; 348                                         ;
 ; Total pins                      ; 64                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 38,912                                      ;
@@ -229,16 +230,16 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-----------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                             ;
 +---------------------------------------------+-----------------------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 363                                                                               ;
+; Estimate of Logic utilization (ALMs needed) ; 364                                                                               ;
 ;                                             ;                                                                                   ;
-; Combinational ALUT usage for logic          ; 496                                                                               ;
+; Combinational ALUT usage for logic          ; 498                                                                               ;
 ;     -- 7 input functions                    ; 0                                                                                 ;
 ;     -- 6 input functions                    ; 100                                                                               ;
-;     -- 5 input functions                    ; 157                                                                               ;
-;     -- 4 input functions                    ; 96                                                                                ;
-;     -- <=3 input functions                  ; 143                                                                               ;
+;     -- 5 input functions                    ; 158                                                                               ;
+;     -- 4 input functions                    ; 95                                                                                ;
+;     -- <=3 input functions                  ; 145                                                                               ;
 ;                                             ;                                                                                   ;
-; Dedicated logic registers                   ; 346                                                                               ;
+; Dedicated logic registers                   ; 348                                                                               ;
 ;                                             ;                                                                                   ;
 ; I/O pins                                    ; 64                                                                                ;
 ; Total MLAB memory bits                      ; 0                                                                                 ;
@@ -250,9 +251,9 @@ https://fpgasoftware.intel.com/eula.
 ;     -- PLLs                                 ; 1                                                                                 ;
 ;                                             ;                                                                                   ;
 ; Maximum fan-out node                        ; PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
-; Maximum fan-out                             ; 371                                                                               ;
-; Total fan-out                               ; 4184                                                                              ;
-; Average fan-out                             ; 4.14                                                                              ;
+; Maximum fan-out                             ; 373                                                                               ;
+; Total fan-out                               ; 4195                                                                              ;
+; Average fan-out                             ; 4.13                                                                              ;
 +---------------------------------------------+-----------------------------------------------------------------------------------+
 
 
@@ -261,7 +262,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------+--------------------+--------------+
 ; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                        ; Entity Name        ; Library Name ;
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------+--------------------+--------------+
-; |SCOMP_System                             ; 496 (28)            ; 346 (0)                   ; 38912             ; 0          ; 64   ; 0            ; |SCOMP_System                                                                              ; SCOMP_System       ; work         ;
+; |SCOMP_System                             ; 498 (28)            ; 348 (0)                   ; 38912             ; 0          ; 64   ; 0            ; |SCOMP_System                                                                              ; SCOMP_System       ; work         ;
 ;    |DIG_IN:inst7|                         ; 0 (0)               ; 10 (10)                   ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|DIG_IN:inst7                                                                 ; DIG_IN             ; work         ;
 ;    |DIG_OUT:inst6|                        ; 0 (0)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|DIG_OUT:inst6                                                                ; DIG_OUT            ; work         ;
 ;    |HEX_DISP_6:inst9|                     ; 44 (2)              ; 24 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9                                                             ; HEX_DISP_6         ; work         ;
@@ -271,8 +272,8 @@ https://fpgasoftware.intel.com/eula.
 ;       |HEX_DISP:inst4|                    ; 7 (7)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9|HEX_DISP:inst4                                              ; HEX_DISP           ; work         ;
 ;       |HEX_DISP:inst5|                    ; 7 (7)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9|HEX_DISP:inst5                                              ; HEX_DISP           ; work         ;
 ;       |HEX_DISP:inst6|                    ; 7 (7)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9|HEX_DISP:inst6                                              ; HEX_DISP           ; work         ;
-;    |IO_DECODER:inst3|                     ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|IO_DECODER:inst3                                                             ; IO_DECODER         ; work         ;
-;    |NeoPixelController:inst13|            ; 99 (99)             ; 88 (88)                   ; 6144              ; 0          ; 0    ; 0            ; |SCOMP_System|NeoPixelController:inst13                                                    ; NeoPixelController ; work         ;
+;    |IO_DECODER:inst3|                     ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|IO_DECODER:inst3                                                             ; IO_DECODER         ; work         ;
+;    |NeoPixelController:inst13|            ; 100 (100)           ; 90 (90)                   ; 6144              ; 0          ; 0    ; 0            ; |SCOMP_System|NeoPixelController:inst13                                                    ; NeoPixelController ; work         ;
 ;       |altsyncram:pixelRAM|               ; 0 (0)               ; 0 (0)                     ; 6144              ; 0          ; 0    ; 0            ; |SCOMP_System|NeoPixelController:inst13|altsyncram:pixelRAM                                ; altsyncram         ; work         ;
 ;          |altsyncram_2c24:auto_generated| ; 0 (0)               ; 0 (0)                     ; 6144              ; 0          ; 0    ; 0            ; |SCOMP_System|NeoPixelController:inst13|altsyncram:pixelRAM|altsyncram_2c24:auto_generated ; altsyncram_2c24    ; work         ;
 ;    |PLL_main:inst1|                       ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|PLL_main:inst1                                                               ; PLL_main           ; pll_main     ;
@@ -345,6 +346,18 @@ Encoding Type:  One-Hot
 +------------------+---------------+--------------+--------------+-------------+----------------+--------------+-------------+--------------+-----------------+---------------+---------------+----------------+---------------+---------------+--------------+---------------+--------------+----------------+------------------+-----------------+----------------+-----------------+----------------+---------------+--------------+--------------+-------------+------------+
 
 
+Encoding Type:  One-Hot
++----------------------------------------------------------------------+
+; State Machine - |SCOMP_System|NeoPixelController:inst13|wstate       ;
++-------------------+-------------------+----------------+-------------+
+; Name              ; wstate.autoi_addr ; wstate.storing ; wstate.idle ;
++-------------------+-------------------+----------------+-------------+
+; wstate.idle       ; 0                 ; 0              ; 0           ;
+; wstate.storing    ; 0                 ; 1              ; 1           ;
+; wstate.autoi_addr ; 1                 ; 0              ; 1           ;
++-------------------+-------------------+----------------+-------------+
+
+
 +----------------------------------------------------------------------------------------------------------+
 ; User-Specified and Inferred Latches                                                                      ;
 +-----------------------------------------------------+---------------------------+------------------------+
@@ -388,10 +401,10 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 346   ;
+; Total registers                              ; 348   ;
 ; Number of registers using Synchronous Clear  ; 54    ;
 ; Number of registers using Synchronous Load   ; 130   ;
-; Number of registers using Asynchronous Clear ; 123   ;
+; Number of registers using Asynchronous Clear ; 125   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 215   ;
 ; Number of registers using Preset             ; 0     ;
@@ -422,17 +435,17 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|pixel_count[5]    ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|pixel_count[7]    ;
 ; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|ram_read_addr[0]  ;
-; 3:1                ; 99 bits   ; 198 LEs       ; 0 LEs                ; 198 LEs                ; Yes        ; |SCOMP_System|SCOMP:inst|PC_stack[6][7]                   ;
-; 4:1                ; 23 bits   ; 46 LEs        ; 0 LEs                ; 46 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|pixel_buffer[2]   ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|ram_write_addr[7] ;
-; 11:1               ; 11 bits   ; 77 LEs        ; 22 LEs               ; 55 LEs                 ; Yes        ; |SCOMP_System|SCOMP:inst|PC[2]                            ;
-; 12:1               ; 16 bits   ; 128 LEs       ; 96 LEs               ; 32 LEs                 ; Yes        ; |SCOMP_System|SCOMP:inst|AC[12]                           ;
+; 3:1                ; 99 bits   ; 198 LEs       ; 0 LEs                ; 198 LEs                ; Yes        ; |SCOMP_System|SCOMP:inst|PC_stack[0][9]                   ;
+; 4:1                ; 23 bits   ; 46 LEs        ; 0 LEs                ; 46 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|pixel_buffer[23]  ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|ram_write_addr[2] ;
+; 11:1               ; 11 bits   ; 77 LEs        ; 22 LEs               ; 55 LEs                 ; Yes        ; |SCOMP_System|SCOMP:inst|PC[4]                            ;
+; 12:1               ; 16 bits   ; 128 LEs       ; 96 LEs               ; 32 LEs                 ; Yes        ; |SCOMP_System|SCOMP:inst|AC[15]                           ;
 ; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |SCOMP_System|NeoPixelController:inst13|enc_count         ;
 ; 3:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |SCOMP_System|NeoPixelController:inst13|reset_count       ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |SCOMP_System|IO_DATA[9]                                  ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |SCOMP_System|NeoPixelController:inst13|bit_count         ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |SCOMP_System|IO_DATA[3]                                  ;
 ; 12:1               ; 16 bits   ; 128 LEs       ; 128 LEs              ; 0 LEs                  ; No         ; |SCOMP_System|SCOMP:inst|Add1                             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
 
@@ -904,8 +917,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 346                         ;
-;     CLR               ; 99                          ;
+; arriav_ff             ; 348                         ;
+;     CLR               ; 101                         ;
 ;     ENA               ; 42                          ;
 ;     ENA CLR           ; 16                          ;
 ;     ENA CLR SCLR SLD  ; 8                           ;
@@ -913,18 +926,18 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     ENA SLD           ; 122                         ;
 ;     SCLR              ; 19                          ;
 ;     plain             ; 13                          ;
-; arriav_lcell_comb     ; 502                         ;
+; arriav_lcell_comb     ; 504                         ;
 ;     arith             ; 96                          ;
 ;         1 data inputs ; 79                          ;
 ;         2 data inputs ; 1                           ;
 ;         5 data inputs ; 16                          ;
-;     normal            ; 406                         ;
+;     normal            ; 408                         ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 7                           ;
 ;         2 data inputs ; 18                          ;
-;         3 data inputs ; 43                          ;
-;         4 data inputs ; 96                          ;
-;         5 data inputs ; 141                         ;
+;         3 data inputs ; 45                          ;
+;         4 data inputs ; 95                          ;
+;         5 data inputs ; 142                         ;
 ;         6 data inputs ; 100                         ;
 ; boundary_port         ; 64                          ;
 ; generic_pll           ; 1                           ;
@@ -940,7 +953,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -950,7 +963,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Fri Apr 08 12:38:13 2022
+    Info: Processing started: Wed Apr 13 12:42:10 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SCOMP -c SCOMP
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file neopixelcontroller.vhd
@@ -1240,16 +1253,16 @@ Critical Warning (18061): Ignored Power-Up Level option on the following registe
 Info (17049): 1 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 821 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 825 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 12 input pins
     Info (21059): Implemented 52 output pins
-    Info (21061): Implemented 716 logic cells
+    Info (21061): Implemented 720 logic cells
     Info (21064): Implemented 40 RAM segments
     Info (21065): Implemented 1 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 29 warnings
-    Info: Peak virtual memory: 4880 megabytes
-    Info: Processing ended: Fri Apr 08 12:38:26 2022
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:21
+    Info: Peak virtual memory: 4878 megabytes
+    Info: Processing ended: Wed Apr 13 12:42:31 2022
+    Info: Elapsed time: 00:00:21
+    Info: Total CPU time (on all processors): 00:00:36
 
 
