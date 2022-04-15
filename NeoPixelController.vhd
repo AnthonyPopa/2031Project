@@ -7,20 +7,26 @@ use ieee.numeric_std.all;
 use ieee.std_logic_unsigned.all;
 use ieee.std_logic_arith.all;
 
+-- these are the lib.
 library altera_mf;
+-- use these compn.
 use altera_mf.altera_mf_components.all;
 
 entity NeoPixelController is
 
 	port(
-		clk_10M   : in   std_logic;
-		resetn    : in   std_logic;
-		io_write  : in   std_logic ;
-		cs_addr   : in   std_logic ;
-		cs_data   : in   std_logic ;
+		clk_10M   : in   std_logic; -- clk cycle
+		resetn    : in   std_logic; -- external reset
+		io_write  : in   std_logic ; -- signal from scomp that writes to every device
+		cs_addr   : in   std_logic ; -- chip select address, scomp is saying we are going to be writing the address
+		cs_data   : in   std_logic ; -- chip select data, signal that says that data is going to be pushed through the IO Bus
 		data_in   : in   std_logic_vector(15 downto 0);
-		all_pxls	 : in	  std_logic;
-		sda       : out  std_logic
+		all_pxls	 : in	  std_logic; -- display color to all 256 pixels
+		bit24     : in   std_logic; -- red color input
+		bit24_2   : in   std_logic; -- green color input
+		bit24_3   : in   std_logic; -- blue color input
+		fade_c    : in   std_logic; -- user inputted color fade
+		sda       : out  std_logic -- single data output
 		
 	); 
 
@@ -42,10 +48,12 @@ architecture internals of NeoPixelController is
 	signal ram_write_buffer : std_logic_vector(23 downto 0);
 
 	-- RAM interface state machine signals
-	type write_states is (idle, storing);
+	type write_states is (idle, idle2, idle3, storing, no_change, up, down);
 	signal wstate: write_states;
+	signal bright: write_states;
 	type increment_states is (init, increment);
 	signal istate: increment_states;
+	
 
 	
 begin
@@ -94,7 +102,6 @@ begin
 		q_b => ram_read_data
 	);
 	
-
 
 	-- This process implements the NeoPixel protocol by
 	-- using several counters to keep track of clock cycles,
@@ -175,7 +182,6 @@ begin
 				ram_read_addr <= ram_read_addr + 1;
 			end if;
 			
-			
 			-- This IF block controls sda
 			if reset_count > 0 then
 				-- sda is 0 during reset/latch
@@ -196,7 +202,7 @@ begin
 	
 	
 	
-	process(clk_10M, resetn, cs_addr, all_pxls)
+	process(clk_10M, resetn, cs_addr, all_pxls, fade_c)
 	
 		variable all_pxls_addr : integer range 0 to 255;
 
@@ -210,13 +216,13 @@ begin
 			-- If SCOMP is writing to the address register...
 			if (io_write = '1') and (cs_addr='1') then
 				ram_write_addr <= data_in(7 downto 0);
-			elsif (all_pxls = '1') then
+			elsif (all_pxls = '1') or (fade_c = '1') then
 				case istate is
 				when init =>
 					ram_write_addr <= x"00";
 					istate <= increment;
 				when increment =>
-					if (ram_write_addr >= x"ff") then
+					if (ram_write_addr >= x"FF") then
 						istate <= init;
 					else
 						ram_write_addr <= ram_write_addr + 1;
@@ -247,13 +253,19 @@ begin
 		elsif rising_edge(clk_10M) then
 			case wstate is
 			when idle =>
-				if ((io_write = '1') and ((cs_data='1') or (all_pxls = '1'))) then
+				if (io_write = '1' and (cs_data='1' or all_pxls = '1' or bit24 = '1')) then
 					if (all_pxls = '1') then
 						ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
 						ram_we <= '1';
-						if (ram_write_addr > x"ff") then
+						if (ram_write_addr >= x"FF") then
 							wstate <= storing;
 						end if;
+					elsif(fade_c = '1') then
+						wstate <= no_change;
+					elsif (bit24 = '1') then
+						ram_write_buffer <= ram_write_buffer(23 downto 16) & data_in(7 downto 0) & ram_write_buffer(7 downto 0);
+						ram_we <= '1';
+						wstate <= idle2;
 					else
 						-- latch the current data into the temporary storage register,
 						-- because this is the only time it'll be available.
@@ -265,6 +277,36 @@ begin
 						--Change state
 						wstate <= storing;
 					end if;
+				end if;
+			when no_change =>	
+				if(fade_c = '1') then
+					bright <= down;
+				else
+					bright <= no_change;
+				end if;
+			when down =>
+				if (ram_write_buffer = x"000000") then
+					bright <= up;
+				else
+					ram_write_buffer <= '0' & ram_write_buffer(23 downto 1);
+					bright <= down;
+				end if;
+			when up =>
+				if (ram_write_buffer = x"ffffff") then
+					bright <= down;
+				else
+					ram_write_buffer <= ram_write_buffer(22 downto 0) & '1';
+					bright <= up;
+				end if;
+			when idle2 =>
+				if (io_write = '1' and bit24_2 = '1') then
+					ram_write_buffer <= data_in(7 downto 0) & ram_write_buffer(15 downto 0);
+					wstate <= idle3;
+				end if;
+			when idle3 =>
+				if (io_write = '1' and bit24_3 = '1') then
+					ram_write_buffer <= ram_write_buffer(23 downto 8) & data_in(7 downto 0);
+					wstate <= storing;
 				end if;
 			when storing =>
 				-- All that's needed here is to lower ram_we.  The RAM will be
