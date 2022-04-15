@@ -10,6 +10,10 @@ CONTENT
   BEGIN
     [000..7FF] : 0000;  -- Default to NOP
 
-           000 : BFFF;  --     LOADI  &HFFFF
-           001 : 98B2;  --     OUT    ALL_PXLS
+           000 : B80F;  -- 		LOADI  &HF00F
+           001 : 98B3;  -- 		OUT    fade_c
+           002 : 1005;  -- 	STORE  DelayTime   ; Save the desired delay
+           003 : 9802;  -- 	OUT    Timer       ; Reset the timer
+           004 : 0100;  -- Diff: 	   DW &H0100
+           005 : 0000;  -- DelayTime:  DW 0
   END;
