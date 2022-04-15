@@ -15,9 +15,9 @@ entity NeoPixelController is
 	port(
 		clk_10M   : in   std_logic;
 		resetn    : in   std_logic;
-		io_write  : in   std_logic ;
-		cs_addr   : in   std_logic ;
-		cs_data   : in   std_logic ;
+		io_write  : in   std_logic;
+		cs_addr   : in   std_logic;
+		cs_data   : in   std_logic;
 		data_in   : in   std_logic_vector(15 downto 0);
 		all_pxls	 : in	  std_logic;
 		sda       : out  std_logic;
@@ -49,7 +49,7 @@ architecture internals of NeoPixelController is
 	type increment_states is (init, increment);
 	signal istate: increment_states;
 
-	type brightness is (up, down);
+	type brightness is (no_change, up, down);
 	signal bright: brightness;
 	
 begin
@@ -203,7 +203,7 @@ begin
 	process(clk_10M, resetn, cs_addr, all_pxls, fade_color)
 	
 		variable all_pxls_addr : integer range 0 to 255;
-		variable fade : integer;
+		--variable fade : integer;
 
 	begin
 		-- For this implementation, saving the memory address
@@ -219,7 +219,7 @@ begin
 				case istate is
 				when init =>
 					ram_write_addr <= x"00";
-					fade := 0;
+					--fade := 0;
 					istate <= increment;
 				when increment =>
 					if (ram_write_addr >= x"ff") then
@@ -227,20 +227,20 @@ begin
 					else
 						ram_write_addr <= ram_write_addr + 1;
 					end if;
-					if (fade_color = '1') then
-						case bright is 
-							when up =>
-								fade := fade - 2;
-								if (fade >= 32) then
-									bright <= down;
-								end if;
-							when down =>
-								fade := fade + 2;
-								if (fade <= 0) then
-									bright <= up;
-								end if;
-						end case;
-					end if;
+					--if (fade_color = '1') then
+						--case bright is 
+							--when up =>
+								--fade := fade - 2;
+								--if (fade >= 32) then
+									--bright <= down;
+								--end if;
+							--when down =>
+								--fade := fade + 2;
+								--if (fade <= 0) then
+									--bright <= up;
+								--end if;
+						--end case;
+					--end if;
 				end case;
 			end if;
 		end if;
@@ -261,6 +261,7 @@ begin
 			wstate <= idle;
 			ram_we <= '0';
 			ram_write_buffer <= x"000000";
+			bright <= no_change;
 			-- Note that resetting this device does NOT clear the memory.
 			-- Clearing memory would require cycling through each address
 			-- and setting them all to 0.
@@ -268,18 +269,12 @@ begin
 			case wstate is
 			when idle =>
 				if ((io_write = '1') and ((cs_data='1') or (all_pxls = '1') or (fade_color = '1'))) then
-					if (all_pxls = '1') then
+					if (all_pxls = '1' or fade_color = '1') then
 						ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
 						ram_we <= '1';
 						if (ram_write_addr > x"ff") then
 							wstate <= storing;
 						end if;
-					elsif (fade_color = '1') then
-						ram_write_buffer <= (data_in(10 downto 5) - fade) & "00" & (data_in(15 downto 11) - fade) & "000" & 
-																										(data_in(4 downto 0) - fade) & "000";
-						--wait;
-					   ram_we <= '1';
-						wstate <= storing;
 					else
 						-- latch the current data into the temporary storage register,
 						-- because this is the only time it'll be available.
@@ -300,6 +295,31 @@ begin
 				wstate <= idle;
 			when others =>
 				wstate <= idle;
+				
+			end case;
+			case bright is
+			when no_change =>
+				if (fade_color = '1') then
+					bright <= down;
+				else
+					bright <= no_change;
+				end if;
+			when down =>
+				if (ram_write_buffer = x"000000") then
+					bright <= up;
+				else
+					ram_write_buffer <= '0' & ram_write_buffer(23 downto 1);
+					bright <= down;
+				end if;
+			when up =>
+				if (ram_write_buffer = x"ffffff") then
+					bright <= down;
+				else
+					ram_write_buffer <= ram_write_buffer(22 downto 0) & '1';
+					bright <= up;
+				end if;
+			when others =>
+				bright <= no_change;
 			end case;
 		end if;
 	end process;
