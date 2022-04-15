@@ -115,6 +115,13 @@ https://fpgasoftware.intel.com/eula.
 		(text "BIT24_3" (rect 176 187 211 199)(font "Arial" ))
 		(line (pt 232 192)(pt 216 192)(line_width 1))
 	)
+	(port
+		(pt 232 208)
+		(output)
+		(text "RUN_PXL" (rect 0 0 46 12)(font "Arial" ))
+		(text "RUN_PXL" (rect 165 203 211 215)(font "Arial" ))
+		(line (pt 232 208)(pt 216 208)(line_width 1))
+	)
 	(drawing
 		(rectangle (rect 16 16 216 224)(line_width 1))
 	)

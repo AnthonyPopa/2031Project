@@ -22,7 +22,8 @@ ENTITY IO_DECODER IS
 	 ALL_PXLS		: OUT STD_LOGIC;
 	 BIT24         : OUT STD_LOGIC;
 	 BIT24_2       : OUT STD_LOGIC;
-	 BIT24_3       : OUT STD_LOGIC
+	 BIT24_3       : OUT STD_LOGIC;
+	 RUN_PXL			: OUT STD_LOGIC
   );
 
 END ENTITY;
@@ -46,6 +47,7 @@ begin
   BIT24   		<= '1' WHEN (ADDR_INT = 16#0B3#) and (IO_CYCLE = '1') ELSE '0';
   BIT24_2		<= '1' WHEN (ADDR_INT = 16#0B4#) and (IO_CYCLE = '1') ELSE '0';
   BIT24_3		<= '1' WHEN (ADDR_INT = 16#0B5#) and (IO_CYCLE = '1') ELSE '0';
+  RUN_PXL		<= '1' WHEN (ADDR_INT = 16#0B6#) and (IO_CYCLE = '1') ELSE '0';
 	
  
 END a;

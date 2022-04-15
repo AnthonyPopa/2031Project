@@ -18,11 +18,12 @@ entity NeoPixelController is
 		io_write  : in   std_logic ;
 		cs_addr   : in   std_logic ;
 		cs_data   : in   std_logic ;
-		data_in   : inout   std_logic_vector(15 downto 0);
+		data_in   : in   std_logic_vector(15 downto 0);
 		all_pxls	 : in	  std_logic;
 		bit24     : in   std_logic;
 		bit24_2   : in   std_logic;
 		bit24_3   : in   std_logic;
+		run_pxl   : in   std_logic;
 		sda       : out  std_logic
 		
 	); 
@@ -220,14 +221,18 @@ begin
 					ram_write_addr <= x"00";
 					istate <= increment;
 				when increment =>
-					if (ram_write_addr >= x"FF") then
+					if (ram_write_addr = x"FF") then
 						istate <= init;
 					else
 						ram_write_addr <= ram_write_addr + 1;
 					end if;
 				end case;
-			elsif ((wstate = storing) and (all_pxls /= '1') and (bit24 /= '1') and (ram_write_addr <= 255)) then
-				ram_write_addr <= ram_write_addr + 1;
+			elsif ((wstate = storing) and (all_pxls /= '1') and (bit24 /= '1')) then
+				if (ram_write_addr = x"FF") then
+					ram_write_addr <= x"00";
+				else
+					ram_write_addr <= ram_write_addr + 1;
+				end if;
 			end if;
 		end if;
 	
@@ -253,7 +258,7 @@ begin
 		elsif rising_edge(clk_10M) then
 			case wstate is
 			when idle =>
-				if (io_write = '1' and (cs_data='1' or all_pxls = '1' or bit24 = '1')) then
+				if (io_write = '1' and (cs_data='1' or all_pxls = '1' or bit24 = '1' or run_pxl = '1')) then
 					if (all_pxls = '1') then
 						ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
 						ram_we <= '1';
@@ -264,6 +269,10 @@ begin
 						ram_write_buffer <= ram_write_buffer(23 downto 16) & data_in(7 downto 0) & ram_write_buffer(7 downto 0);
 						ram_we <= '1';
 						wstate <= idle2;
+					elsif (run_pxl = '1') then
+						ram_write_buffer <= x"000000";
+						ram_we <= '1';
+						wstate <= storing;
 					else
 						-- latch the current data into the temporary storage register,
 						-- because this is the only time it'll be available.
@@ -290,6 +299,9 @@ begin
 				-- All that's needed here is to lower ram_we.  The RAM will be
 				-- storing data on this clock edge, so ram_we can go low at the
 				-- same time.
+				if (run_pxl = '1') then
+					ram_write_buffer <= x"FFFFFF";
+				end if;
 				ram_we <= '0';
 				wstate <= idle;
 			when others =>
