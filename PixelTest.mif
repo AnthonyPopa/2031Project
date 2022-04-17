@@ -10,6 +10,18 @@ CONTENT
   BEGIN
     [000..7FF] : 0000;  -- Default to NOP
 
-           000 : BFFF;  --     LOADI  &HFFFF
-           001 : 98B2;  --     OUT    ALL_PXLS
+           000 : B802;  --     LOADI  2
+           001 : 98B0;  --     OUT    PXL_A
+           002 : 080B;  --     LOAD WHITE
+           003 : 98B1;  --     OUT    PXL_D
+           004 : 90B1;  -- 	IN PXL_D
+           005 : 100D;  -- 	STORE VARTEMP
+           006 : B805;  -- 	LOADI 5
+           007 : 98B0;  -- 	OUT PXL_A
+           008 : 080D;  -- 	LOAD VARTEMP
+           009 : 480C;  -- 	AND SANSRED
+           00A : 98B1;  -- 	OUT PXL_D
+           00B : FFFF;  -- WHITE: DW &HFFFF
+           00C : 0FFF;  -- SANSRED: DW &H0FFF
+           00D : 0000;  -- VARTEMP: DW 0
   END;

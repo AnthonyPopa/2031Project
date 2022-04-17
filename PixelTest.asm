@@ -1,9 +1,22 @@
 ; Simple test for the NeoPixel peripheral
 
 ORG 0
-    LOADI  &HFFFF
-    OUT    ALL_PXLS
+    LOADI  2
+    OUT    PXL_A
 
+    LOAD WHITE
+    OUT    PXL_D
+    
+	IN PXL_D
+	STORE VARTEMP
+
+	LOADI 5
+	OUT PXL_A
+	
+	LOAD VARTEMP
+	AND SANSRED
+	OUT PXL_D
+	
 
 ; IO address constants
 Switches:  EQU 000
@@ -13,4 +26,6 @@ Hex0:      EQU 004
 Hex1:      EQU 005
 PXL_A:     EQU &H0B0
 PXL_D:     EQU &H0B1
-ALL_PXLS:  EQU &H0B2
+WHITE: DW &HFFFF
+SANSRED: DW &H0FFF
+VARTEMP: DW 0
