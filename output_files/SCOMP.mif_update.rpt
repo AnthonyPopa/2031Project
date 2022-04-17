@@ -1,5 +1,5 @@
 MIF/HEX Update report for SCOMP
-Wed Mar 30 18:27:28 2022
+Sun Apr 17 16:41:43 2022
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -36,7 +36,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------+
 ; MIF/HEX Update Summary                                        ;
 +-----------------------+---------------------------------------+
-; MIF/HEX Update Status ; Successful - Wed Mar 30 18:27:28 2022 ;
+; MIF/HEX Update Status ; Successful - Sun Apr 17 16:41:43 2022 ;
 ; Revision Name         ; SCOMP                                 ;
 ; Top-level Entity Name ; SCOMP_System                          ;
 ; Family                ; Cyclone V                             ;
@@ -44,14 +44,14 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------+---------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------+
-; MIF/HEX Update Processed Files                                                                                                      ;
-+-------------------------------------------------------------------------------------------------------------------------------------+
-; File Name                                                                                                                           ;
-+-------------------------------------------------------------------------------------------------------------------------------------+
-; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/pixeldata.mif ;
-; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/pixeltest.mif ;
-+-------------------------------------------------------------------------------------------------------------------------------------+
++--------------------------------------------------------------------+
+; MIF/HEX Update Processed Files                                     ;
++--------------------------------------------------------------------+
+; File Name                                                          ;
++--------------------------------------------------------------------+
+; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/PixelTest.mif ;
+; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/pixeldata.mif ;
++--------------------------------------------------------------------+
 
 
 +-------------------------+
