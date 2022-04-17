@@ -10,6 +10,10 @@ use ieee.std_logic_arith.all;
 library altera_mf;
 use altera_mf.altera_mf_components.all;
 
+LIBRARY LPM;
+USE LPM.LPM_COMPONENTS.ALL;
+
+
 entity NeoPixelController is
 
 	port(
@@ -18,9 +22,10 @@ entity NeoPixelController is
 		io_write  : in   std_logic ;
 		cs_addr   : in   std_logic ;
 		cs_data   : in   std_logic ;
-		data_in   : in   std_logic_vector(15 downto 0);
+		
 		all_pxls	 : in	  std_logic;
-		sda       : out  std_logic
+		sda       : out  std_logic;
+		io_bus   : inout   std_logic_vector(15 downto 0)
 		
 	); 
 
@@ -28,7 +33,7 @@ end entity;
 
 architecture internals of NeoPixelController is
 	
-	-- Signals for the RAM read and write addresses
+	-- Signals for the RAM read and write addresses 
 	signal ram_read_addr, ram_write_addr : std_logic_vector(7 downto 0);
 	-- RAM write enable
 	signal ram_we : std_logic;
@@ -40,6 +45,12 @@ architecture internals of NeoPixelController is
 
 	-- Signal SCOMP will write to before it gets stored into memory
 	signal ram_write_buffer : std_logic_vector(23 downto 0);
+	
+	--Signal to indicate to the LPM tristate bus that we want to read
+	signal datatrans_en : std_logic;
+	
+	--Signal to act as the input after the LMP tristate switch 
+	signal ibus : std_logic_vector(15 downto 0);
 
 	-- RAM interface state machine signals
 	type write_states is (idle, storing, write_all);
@@ -49,7 +60,6 @@ architecture internals of NeoPixelController is
 
 	
 begin
-
 	-- This is the RAM that will store the pixel data.
 	-- It is dual-ported.  SCOMP will access port "A",
 	-- and the NeoPixel controller will access port "B".
@@ -84,33 +94,44 @@ begin
 		wrcontrol_wraddress_reg_b => "CLOCK0"
 	)
 	PORT MAP (
-		address_a => ram_write_addr,
-		address_b => ram_read_addr,
-		clock0 => clk_10M,
-		data_a => ram_write_buffer,
-		data_b => x"000000",
-		wren_a => ram_we,
-		wren_b => '0',
-		q_b => ram_read_data
+		address_a => ram_write_addr, -- This connects the RAM-internal address_a to the Neopixel signal
+		address_b => ram_read_addr, --This connects the RAM-internal address_b to the Neopixel Signal ram_read_addr
+		clock0 => clk_10M, -- this connects the RAM clock to the 10 Mhz clock of the Neopixel
+		data_a => ram_write_buffer, -- this connects the RAM write port to the buffer signal that receives data from SCOMP
+		data_b => x"000000", -- This says that data_b can be whatever. In that format of course
+		wren_a => ram_we, -- write enable saying that we can put things into RAM. We connect this to wren_a because a is out data in port
+		wren_b => '0', -- this signal is always '0' because we never want to write to b, only read
+		q_b => ram_read_data -- this will be our output signal. and is always connected to the ram_read_addr
 	);
-	
 
+	 BUS_Switcher: lpm_bustri
+    GENERIC MAP (
+      lpm_width => 16
+    )
+	 
+    PORT MAP (
+      enabledt => datatrans_en, -- We need to create a signal for SCOMP to say that we are looking to read from the neopixels, that will be connected to enabledt so that the data can flow from data[] to tridata to iodata
+      tridata  => io_bus, -- this ibus is really the iobus from SCOMP, so we will connect that to the tridata of the lpm IOBUS
+		enabletr => io_write, -- 
+		result => ibus, --ibus is the data insignal
+		data => ram_read_data(15 downto 11) & ram_read_data(23 downto 18) & ram_read_data(7 downto 3) --obus is the data outsignal
+    );
 
 	-- This process implements the NeoPixel protocol by
 	-- using several counters to keep track of clock cycles,
 	-- which pixel is being written to, and which bit within
-	-- that data is being written.
-	process (clk_10M, resetn)
+	-- that data is being written. This is really just the output block
+	process (clk_10M, resetn) 
 		-- protocol timing values (in 100s of ns)
 		constant t1h : integer := 8; -- high time for '1'
 		constant t0h : integer := 3; -- high time for '0'
 		constant ttot : integer := 12; -- total bit time
 		
-		constant npix : integer := 256;
+		constant npix : integer := 256; -- the number of neopixels we want to control, must match the size of the memory to function properly
 
 		-- which bit in the 24 bits is being sent
-		variable bit_count   : integer range 0 to 31;
-		-- counter to count through the bit encoding
+		variable bit_count   : integer range 0 to 31; 
+		-- counter to count through the bit encoding as in give it enough time to send the signal
 		variable enc_count   : integer range 0 to 31;
 		-- counter for the reset pulse
 		variable reset_count : integer range 0 to 1000;
@@ -120,7 +141,7 @@ begin
 		
 	begin
 		
-		if resetn = '0' then
+		if resetn = '0' then --if the EXTERNAl reset is 0, then that means that SCOMP wants to reset the neopixel controller. When does SCOMP want to do that? We should consider this the default state for the neopixel controller.
 			-- reset all counters
 			bit_count := 23;
 			enc_count := 0;
@@ -128,16 +149,16 @@ begin
 			-- set sda inactive
 			sda <= '0';
 
-		elsif (rising_edge(clk_10M)) then
+		elsif (rising_edge(clk_10M)) then --on the rising edge of the clock, execute the below, but only if the above if statement doesn't go
 
-			-- This IF block controls the various counters
+			-- This IF block controls the various counters. Enc_count controls the counting for a specific bit, bit_count ensures that we increment the pixel count once we pass all 24 bits, pixel_count does what is does.
 			if reset_count /= 0 then -- in reset/end-of-frame period
 				-- during reset period, ensure other counters are reset
-				pixel_count := 0;
-				bit_count := 23;
-				enc_count := 0;
+				pixel_count := 0; --We reset the pixel count because we are now going to start at the 0th pixel upon reset
+				bit_count := 23; --Because there are 24 bits, and this is a decrementing counter
+				enc_count := 0; --still not really sure what this does
 				-- decrement the reset count
-				reset_count := reset_count - 1;
+				reset_count := reset_count - 1; -- We will apparently perform this block for 1000 clock edges, then we will
 				-- load data from memory
 				pixel_buffer <= ram_read_data;
 				
@@ -146,21 +167,21 @@ begin
 				if enc_count = (ttot-1) then -- is end of this bit?
 					enc_count := 0;
 					-- shift to next bit
-					pixel_buffer <= pixel_buffer(22 downto 0) & '0';
-					if bit_count = 0 then -- is end of this pixels's data?
+					pixel_buffer <= pixel_buffer(22 downto 0) & '0'; --resetting output
+					if bit_count = 0 then -- is end of this pixels's data? once this gets to zero, that means when have finished the 24 bits for a pixel, so we start over at 23
 						bit_count := 23; -- start a new pixel
-						pixel_buffer <= ram_read_data;
+						pixel_buffer <= ram_read_data; -- when we start a new pixel, we want to read in the data for the pixel from RAM
 						if pixel_count = npix-1 then -- is end of all pixels?
 							-- begin the reset period
 							reset_count := 1000;
 						else
-							pixel_count := pixel_count + 1;
+							pixel_count := pixel_count + 1; --increment up the pixel list
 						end if;
-					else
+					else -- if there is still bits left for this pixel
 						-- if not end of this pixel's data, decrement count
 						bit_count := bit_count - 1;
 					end if;
-				else
+				else --still inside a byte
 					-- within a bit, count to achieve correct pulse widths
 					enc_count := enc_count + 1;
 				end if;
@@ -168,15 +189,15 @@ begin
 			
 			
 			-- This IF block controls the RAM read address to step through pixels
-			if reset_count /= 0 then
+			if reset_count /= 0 then --if we are in the reset pulse we don't want to read from RAM
 				ram_read_addr <= x"00";
-			elsif (bit_count = 1) AND (enc_count = 0) then
+			elsif (bit_count = 1) AND (enc_count = 0) then --if we are on the 2nd to last bit, and it is ending, we want to increment the read address. 
 				-- increment the RAM address as each pixel ends
 				ram_read_addr <= ram_read_addr + 1;
 			end if;
 			
 			
-			-- This IF block controls sda
+			-- This IF block controls sda to create signals that match the output that would be comprehensible to the neopixel. We shouldn't need to edit this at all. 
 			if reset_count > 0 then
 				-- sda is 0 during reset/latch
 				sda <= '0';
@@ -208,11 +229,15 @@ begin
 			ram_write_addr <= x"00";
 		elsif rising_edge(clk_10M) then
 			-- If SCOMP is writing to the address register...
-			if (io_write = '1') and (cs_addr='1') then
-				ram_write_addr <= data_in(7 downto 0);
-			elsif (all_pxls = '1') then
-				case istate is
-				when init =>
+			if (io_write = '1') and (cs_addr='1') then --iowrite and cs_addr are the signals from SCOMP that dictate that 1) its writing 2) its writing the address
+				datatrans_en <= '0';
+				ram_write_addr <= ibus(7 downto 0);
+			elsif (io_write ='0') and (cs_data = '1') then --this is our read state, when we want to read from the neopixels.
+				datatrans_en <= '1';
+			elsif (all_pxls = '1') then --if the SCOMP is saying it wants to write to all the neopixels
+				datatrans_en <= '0';
+				case istate is --right now, this gives us the ability to increment through all the neopixel addresses
+				when init => 
 					ram_write_addr <= x"00";
 					istate <= increment;
 				when increment =>
@@ -245,11 +270,11 @@ begin
 			-- Clearing memory would require cycling through each address
 			-- and setting them all to 0.
 		elsif rising_edge(clk_10M) then
-			case wstate is
+			case wstate is --write state
 			when idle =>
 				if ((io_write = '1') and ((cs_data='1') or (all_pxls = '1'))) then
 					if (all_pxls = '1') then
-						ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
+						ram_write_buffer <= ibus(10 downto 5) & "00" & ibus(15 downto 11) & "000" & ibus(4 downto 0) & "000"; --data in to the buffer
 						ram_we <= '1';
 						if (ram_write_addr > x"7F") then
 							wstate <= storing;
@@ -258,7 +283,7 @@ begin
 						-- latch the current data into the temporary storage register,
 						-- because this is the only time it'll be available.
 						-- Convert RGB565 to 24-bit color
-						ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
+						ram_write_buffer <= ibus(10 downto 5) & "00" & ibus(15 downto 11) & "000" & ibus(4 downto 0) & "000";
 						-- can raise ram_we on the upcoming transition, because data
 						-- won't be stored until next clock cycle.
 						ram_we <= '1';

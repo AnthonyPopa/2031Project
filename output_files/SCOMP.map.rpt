@@ -1,5 +1,5 @@
 Analysis & Synthesis report for SCOMP
-Wed Apr 06 17:29:47 2022
+Sun Apr 17 15:50:00 2022
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -16,15 +16,15 @@ Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis IP Cores Summary
  10. State Machine - |SCOMP_System|SCOMP:inst|state
- 11. State Machine - |SCOMP_System|NeoPixelController:inst13|wstate
- 12. User-Specified and Inferred Latches
- 13. Registers Removed During Synthesis
- 14. General Register Statistics
- 15. Inverted Register Statistics
- 16. Multiplexer Restructuring Statistics (Restructuring Performed)
- 17. Source assignments for NeoPixelController:inst13|altsyncram:pixelRAM|altsyncram_2c24:auto_generated
- 18. Source assignments for SCOMP:inst|altsyncram:altsyncram_component|altsyncram_qm24:auto_generated
- 19. Parameter Settings for User Entity Instance: NeoPixelController:inst13|altsyncram:pixelRAM
+ 11. User-Specified and Inferred Latches
+ 12. Registers Removed During Synthesis
+ 13. General Register Statistics
+ 14. Inverted Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Source assignments for NeoPixelController:inst13|altsyncram:pixelRAM|altsyncram_2c24:auto_generated
+ 17. Source assignments for SCOMP:inst|altsyncram:altsyncram_component|altsyncram_qm24:auto_generated
+ 18. Parameter Settings for User Entity Instance: NeoPixelController:inst13|altsyncram:pixelRAM
+ 19. Parameter Settings for User Entity Instance: NeoPixelController:inst13|LPM_BUSTRI:BUS_Switcher
  20. Parameter Settings for User Entity Instance: PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i
  21. Parameter Settings for User Entity Instance: SCOMP:inst|altsyncram:altsyncram_component
  22. Parameter Settings for User Entity Instance: SCOMP:inst|LPM_CLSHIFT:shifter
@@ -61,7 +61,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Apr 06 17:29:47 2022       ;
+; Analysis & Synthesis Status     ; Successful - Sun Apr 17 15:50:00 2022       ;
 ; Quartus Prime Version           ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name                   ; SCOMP                                       ;
 ; Top-level Entity Name           ; SCOMP_System                                ;
@@ -174,55 +174,59 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 8           ;
-; Maximum allowed            ; 4           ;
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 8           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 4           ;
+; Maximum used               ; 8           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
 ;     Processor 2            ;   0.0%      ;
 ;     Processor 3            ;   0.0%      ;
 ;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                                                                  ;
-+----------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+----------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                                                                                   ; Library  ;
-+----------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+----------+
-; NeoPixelController.vhd           ; yes             ; User VHDL File                         ; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/NeoPixelController.vhd   ;          ;
-; HEX_DISP.vhd                     ; yes             ; User VHDL File                         ; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/HEX_DISP.vhd             ;          ;
-; DIG_OUT.vhd                      ; yes             ; User VHDL File                         ; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/DIG_OUT.vhd              ;          ;
-; DIG_IN.vhd                       ; yes             ; User VHDL File                         ; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/DIG_IN.vhd               ;          ;
-; clk_div.vhd                      ; yes             ; User VHDL File                         ; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/clk_div.vhd              ;          ;
-; TIMER.vhd                        ; yes             ; User VHDL File                         ; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/TIMER.vhd                ;          ;
-; IO_DECODER.vhd                   ; yes             ; User VHDL File                         ; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/IO_DECODER.vhd           ;          ;
-; SCOMP.vhd                        ; yes             ; User VHDL File                         ; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/SCOMP.vhd                ;          ;
-; SCOMP_System.bdf                 ; yes             ; User Block Diagram/Schematic File      ; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/SCOMP_System.bdf         ;          ;
-; HEX_DISP_6.bdf                   ; yes             ; User Block Diagram/Schematic File      ; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/HEX_DISP_6.bdf           ;          ;
-; PLL_main.vhd                     ; yes             ; User Wizard-Generated File             ; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/PLL_main.vhd             ; PLL_main ;
-; PLL_main/PLL_main_0002.v         ; yes             ; User Verilog HDL File                  ; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/PLL_main/PLL_main_0002.v ; PLL_main ;
-; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altsyncram.tdf                                                                          ;          ;
-; stratix_ram_block.inc            ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/stratix_ram_block.inc                                                                   ;          ;
-; lpm_mux.inc                      ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_mux.inc                                                                             ;          ;
-; lpm_decode.inc                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_decode.inc                                                                          ;          ;
-; aglobal191.inc                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/aglobal191.inc                                                                          ;          ;
-; a_rdenreg.inc                    ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/a_rdenreg.inc                                                                           ;          ;
-; altrom.inc                       ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altrom.inc                                                                              ;          ;
-; altram.inc                       ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altram.inc                                                                              ;          ;
-; altdpram.inc                     ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altdpram.inc                                                                            ;          ;
-; db/altsyncram_2c24.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/db/altsyncram_2c24.tdf   ;          ;
-; pixeldata.mif                    ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/pixeldata.mif            ;          ;
-; altera_pll.v                     ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altera_pll.v                                                                            ;          ;
-; db/altsyncram_qm24.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/db/altsyncram_qm24.tdf   ;          ;
-; pixeltest.mif                    ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/pixeltest.mif            ;          ;
-; lpm_clshift.tdf                  ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_clshift.tdf                                                                         ;          ;
-; db/lpm_clshift_fuc.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/db/lpm_clshift_fuc.tdf   ;          ;
-; lpm_bustri.tdf                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf                                                                          ;          ;
-+----------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------+----------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                 ;
++----------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------------+----------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                  ; Library  ;
++----------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------------+----------+
+; NeoPixelController.vhd           ; yes             ; User VHDL File                         ; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/NeoPixelController.vhd   ;          ;
+; HEX_DISP.vhd                     ; yes             ; User VHDL File                         ; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/HEX_DISP.vhd             ;          ;
+; DIG_OUT.vhd                      ; yes             ; User VHDL File                         ; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/DIG_OUT.vhd              ;          ;
+; DIG_IN.vhd                       ; yes             ; User VHDL File                         ; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/DIG_IN.vhd               ;          ;
+; clk_div.vhd                      ; yes             ; User VHDL File                         ; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/clk_div.vhd              ;          ;
+; TIMER.vhd                        ; yes             ; User VHDL File                         ; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/TIMER.vhd                ;          ;
+; IO_DECODER.vhd                   ; yes             ; User VHDL File                         ; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/IO_DECODER.vhd           ;          ;
+; SCOMP.vhd                        ; yes             ; User VHDL File                         ; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/SCOMP.vhd                ;          ;
+; SCOMP_System.bdf                 ; yes             ; User Block Diagram/Schematic File      ; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/SCOMP_System.bdf         ;          ;
+; HEX_DISP_6.bdf                   ; yes             ; User Block Diagram/Schematic File      ; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/HEX_DISP_6.bdf           ;          ;
+; PLL_main.vhd                     ; yes             ; User Wizard-Generated File             ; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/PLL_main.vhd             ; PLL_main ;
+; PLL_main/PLL_main_0002.v         ; yes             ; User Verilog HDL File                  ; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/PLL_main/PLL_main_0002.v ; PLL_main ;
+; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altsyncram.tdf         ;          ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/stratix_ram_block.inc  ;          ;
+; lpm_mux.inc                      ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_mux.inc            ;          ;
+; lpm_decode.inc                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_decode.inc         ;          ;
+; aglobal191.inc                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/aglobal191.inc         ;          ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/a_rdenreg.inc          ;          ;
+; altrom.inc                       ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altrom.inc             ;          ;
+; altram.inc                       ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altram.inc             ;          ;
+; altdpram.inc                     ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altdpram.inc           ;          ;
+; db/altsyncram_2c24.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/db/altsyncram_2c24.tdf   ;          ;
+; pixeldata.mif                    ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/pixeldata.mif            ;          ;
+; lpm_bustri.tdf                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf         ;          ;
+; altera_pll.v                     ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altera_pll.v           ;          ;
+; db/altsyncram_qm24.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/db/altsyncram_qm24.tdf   ;          ;
+; pixeltest.mif                    ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/pixeltest.mif            ;          ;
+; lpm_clshift.tdf                  ; yes             ; Megafunction                           ; c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_clshift.tdf        ;          ;
+; db/lpm_clshift_fuc.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/db/lpm_clshift_fuc.tdf   ;          ;
++----------------------------------+-----------------+----------------------------------------+-------------------------------------------------------------------------------+----------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------------+
@@ -230,14 +234,14 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-----------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                             ;
 +---------------------------------------------+-----------------------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 363                                                                               ;
+; Estimate of Logic utilization (ALMs needed) ; 407                                                                               ;
 ;                                             ;                                                                                   ;
-; Combinational ALUT usage for logic          ; 498                                                                               ;
-;     -- 7 input functions                    ; 0                                                                                 ;
-;     -- 6 input functions                    ; 98                                                                                ;
-;     -- 5 input functions                    ; 157                                                                               ;
-;     -- 4 input functions                    ; 98                                                                                ;
-;     -- <=3 input functions                  ; 145                                                                               ;
+; Combinational ALUT usage for logic          ; 550                                                                               ;
+;     -- 7 input functions                    ; 1                                                                                 ;
+;     -- 6 input functions                    ; 134                                                                               ;
+;     -- 5 input functions                    ; 171                                                                               ;
+;     -- 4 input functions                    ; 89                                                                                ;
+;     -- <=3 input functions                  ; 155                                                                               ;
 ;                                             ;                                                                                   ;
 ; Dedicated logic registers                   ; 347                                                                               ;
 ;                                             ;                                                                                   ;
@@ -251,9 +255,9 @@ https://fpgasoftware.intel.com/eula.
 ;     -- PLLs                                 ; 1                                                                                 ;
 ;                                             ;                                                                                   ;
 ; Maximum fan-out node                        ; PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
-; Maximum fan-out                             ; 372                                                                               ;
-; Total fan-out                               ; 4183                                                                              ;
-; Average fan-out                             ; 4.13                                                                              ;
+; Maximum fan-out                             ; 371                                                                               ;
+; Total fan-out                               ; 4457                                                                              ;
+; Average fan-out                             ; 4.18                                                                              ;
 +---------------------------------------------+-----------------------------------------------------------------------------------+
 
 
@@ -262,8 +266,9 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------+--------------------+--------------+
 ; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                        ; Entity Name        ; Library Name ;
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------+--------------------+--------------+
-; |SCOMP_System                             ; 498 (29)            ; 347 (0)                   ; 38912             ; 0          ; 64   ; 0            ; |SCOMP_System                                                                              ; SCOMP_System       ; work         ;
-;    |DIG_IN:inst7|                         ; 0 (0)               ; 10 (10)                   ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|DIG_IN:inst7                                                                 ; DIG_IN             ; work         ;
+; |SCOMP_System                             ; 550 (5)             ; 347 (0)                   ; 38912             ; 0          ; 64   ; 0            ; |SCOMP_System                                                                              ; SCOMP_System       ; work         ;
+;    |DIG_IN:inst7|                         ; 14 (0)              ; 10 (10)                   ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|DIG_IN:inst7                                                                 ; DIG_IN             ; work         ;
+;       |lpm_bustri:IO_BUS|                 ; 14 (14)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|DIG_IN:inst7|lpm_bustri:IO_BUS                                               ; lpm_bustri         ; work         ;
 ;    |DIG_OUT:inst6|                        ; 0 (0)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|DIG_OUT:inst6                                                                ; DIG_OUT            ; work         ;
 ;    |HEX_DISP_6:inst9|                     ; 44 (2)              ; 24 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9                                                             ; HEX_DISP_6         ; work         ;
 ;       |HEX_DISP:inst1|                    ; 7 (7)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9|HEX_DISP:inst1                                              ; HEX_DISP           ; work         ;
@@ -273,18 +278,21 @@ https://fpgasoftware.intel.com/eula.
 ;       |HEX_DISP:inst5|                    ; 7 (7)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9|HEX_DISP:inst5                                              ; HEX_DISP           ; work         ;
 ;       |HEX_DISP:inst6|                    ; 7 (7)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9|HEX_DISP:inst6                                              ; HEX_DISP           ; work         ;
 ;    |IO_DECODER:inst3|                     ; 4 (4)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|IO_DECODER:inst3                                                             ; IO_DECODER         ; work         ;
-;    |NeoPixelController:inst13|            ; 99 (99)             ; 89 (89)                   ; 6144              ; 0          ; 0    ; 0            ; |SCOMP_System|NeoPixelController:inst13                                                    ; NeoPixelController ; work         ;
+;    |NeoPixelController:inst13|            ; 116 (100)           ; 89 (89)                   ; 6144              ; 0          ; 0    ; 0            ; |SCOMP_System|NeoPixelController:inst13                                                    ; NeoPixelController ; work         ;
 ;       |altsyncram:pixelRAM|               ; 0 (0)               ; 0 (0)                     ; 6144              ; 0          ; 0    ; 0            ; |SCOMP_System|NeoPixelController:inst13|altsyncram:pixelRAM                                ; altsyncram         ; work         ;
 ;          |altsyncram_2c24:auto_generated| ; 0 (0)               ; 0 (0)                     ; 6144              ; 0          ; 0    ; 0            ; |SCOMP_System|NeoPixelController:inst13|altsyncram:pixelRAM|altsyncram_2c24:auto_generated ; altsyncram_2c24    ; work         ;
+;       |lpm_bustri:BUS_Switcher|           ; 16 (16)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|NeoPixelController:inst13|lpm_bustri:BUS_Switcher                            ; lpm_bustri         ; work         ;
 ;    |PLL_main:inst1|                       ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|PLL_main:inst1                                                               ; PLL_main           ; pll_main     ;
 ;       |PLL_main_0002:pll_main_inst|       ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|PLL_main:inst1|PLL_main_0002:pll_main_inst                                   ; PLL_main_0002      ; PLL_main     ;
 ;          |altera_pll:altera_pll_i|        ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i           ; altera_pll         ; work         ;
-;    |SCOMP:inst|                           ; 264 (224)           ; 178 (178)                 ; 32768             ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst                                                                   ; SCOMP              ; work         ;
+;    |SCOMP:inst|                           ; 294 (220)           ; 178 (178)                 ; 32768             ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst                                                                   ; SCOMP              ; work         ;
 ;       |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 32768             ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst|altsyncram:altsyncram_component                                   ; altsyncram         ; work         ;
 ;          |altsyncram_qm24:auto_generated| ; 0 (0)               ; 0 (0)                     ; 32768             ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst|altsyncram:altsyncram_component|altsyncram_qm24:auto_generated    ; altsyncram_qm24    ; work         ;
-;       |lpm_clshift:shifter|               ; 40 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst|lpm_clshift:shifter                                               ; lpm_clshift        ; work         ;
-;          |lpm_clshift_fuc:auto_generated| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst|lpm_clshift:shifter|lpm_clshift_fuc:auto_generated                ; lpm_clshift_fuc    ; work         ;
-;    |TIMER:inst4|                          ; 33 (33)             ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|TIMER:inst4                                                                  ; TIMER              ; work         ;
+;       |lpm_bustri:io_bus|                 ; 23 (23)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst|lpm_bustri:io_bus                                                 ; lpm_bustri         ; work         ;
+;       |lpm_clshift:shifter|               ; 51 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst|lpm_clshift:shifter                                               ; lpm_clshift        ; work         ;
+;          |lpm_clshift_fuc:auto_generated| ; 51 (51)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst|lpm_clshift:shifter|lpm_clshift_fuc:auto_generated                ; lpm_clshift_fuc    ; work         ;
+;    |TIMER:inst4|                          ; 48 (34)             ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|TIMER:inst4                                                                  ; TIMER              ; work         ;
+;       |lpm_bustri:IO_BUS|                 ; 14 (14)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|TIMER:inst4|lpm_bustri:IO_BUS                                                ; lpm_bustri         ; work         ;
 ;    |clk_div:inst5|                        ; 25 (25)             ; 21 (21)                   ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|clk_div:inst5                                                                ; clk_div            ; work         ;
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------+--------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -346,18 +354,6 @@ Encoding Type:  One-Hot
 +------------------+---------------+--------------+--------------+-------------+----------------+--------------+-------------+--------------+-----------------+---------------+---------------+----------------+---------------+---------------+--------------+---------------+--------------+----------------+------------------+-----------------+----------------+-----------------+----------------+---------------+--------------+--------------+-------------+------------+
 
 
-Encoding Type:  One-Hot
-+--------------------------------------------------------------------+
-; State Machine - |SCOMP_System|NeoPixelController:inst13|wstate     ;
-+------------------+------------------+----------------+-------------+
-; Name             ; wstate.write_all ; wstate.storing ; wstate.idle ;
-+------------------+------------------+----------------+-------------+
-; wstate.idle      ; 0                ; 0              ; 0           ;
-; wstate.storing   ; 0                ; 1              ; 1           ;
-; wstate.write_all ; 1                ; 0              ; 1           ;
-+------------------+------------------+----------------+-------------+
-
-
 +----------------------------------------------------------------------------------------------------------+
 ; User-Specified and Inferred Latches                                                                      ;
 +-----------------------------------------------------+---------------------------+------------------------+
@@ -392,8 +388,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; DIG_IN:inst7|B_DI[10..15]                                    ; Stuck at GND due to stuck port data_in ;
 ; NeoPixelController:inst13|ram_write_buffer[0..2,8..10,16,17] ; Stuck at GND due to stuck port data_in ;
 ; SCOMP:inst|state.ex_nop                                      ; Lost fanout                            ;
-; NeoPixelController:inst13|wstate.write_all                   ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 16                       ;                                        ;
+; Total Number of Removed Registers = 15                       ;                                        ;
 +--------------------------------------------------------------+----------------------------------------+
 
 
@@ -403,11 +398,11 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
 ; Total registers                              ; 347   ;
-; Number of registers using Synchronous Clear  ; 53    ;
-; Number of registers using Synchronous Load   ; 129   ;
-; Number of registers using Asynchronous Clear ; 124   ;
+; Number of registers using Synchronous Clear  ; 54    ;
+; Number of registers using Synchronous Load   ; 130   ;
+; Number of registers using Asynchronous Clear ; 123   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 214   ;
+; Number of registers using Clock Enable       ; 216   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -436,17 +431,15 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|pixel_count[1]    ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|ram_read_addr[7]  ;
-; 3:1                ; 99 bits   ; 198 LEs       ; 0 LEs                ; 198 LEs                ; Yes        ; |SCOMP_System|SCOMP:inst|PC_stack[0][6]                   ;
-; 4:1                ; 23 bits   ; 46 LEs        ; 0 LEs                ; 46 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|pixel_buffer[3]   ;
-; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |SCOMP_System|NeoPixelController:inst13|ram_write_addr[0] ;
-; 11:1               ; 11 bits   ; 77 LEs        ; 22 LEs               ; 55 LEs                 ; Yes        ; |SCOMP_System|SCOMP:inst|PC[3]                            ;
-; 12:1               ; 16 bits   ; 128 LEs       ; 96 LEs               ; 32 LEs                 ; Yes        ; |SCOMP_System|SCOMP:inst|AC[12]                           ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|pixel_count[7]    ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|ram_read_addr[0]  ;
+; 3:1                ; 99 bits   ; 198 LEs       ; 0 LEs                ; 198 LEs                ; Yes        ; |SCOMP_System|SCOMP:inst|PC_stack[7][7]                   ;
+; 4:1                ; 23 bits   ; 46 LEs        ; 0 LEs                ; 46 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|pixel_buffer[21]  ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|ram_write_addr[7] ;
+; 11:1               ; 11 bits   ; 77 LEs        ; 22 LEs               ; 55 LEs                 ; Yes        ; |SCOMP_System|SCOMP:inst|PC[10]                           ;
+; 12:1               ; 16 bits   ; 128 LEs       ; 96 LEs               ; 32 LEs                 ; Yes        ; |SCOMP_System|SCOMP:inst|AC[13]                           ;
 ; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |SCOMP_System|NeoPixelController:inst13|enc_count         ;
 ; 3:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |SCOMP_System|NeoPixelController:inst13|reset_count       ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |SCOMP_System|NeoPixelController:inst13|wstate            ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |SCOMP_System|IO_DATA[3]                                  ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |SCOMP_System|NeoPixelController:inst13|bit_count         ;
 ; 12:1               ; 16 bits   ; 128 LEs       ; 128 LEs              ; 0 LEs                  ; No         ; |SCOMP_System|SCOMP:inst|Add1                             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------+
@@ -528,6 +521,16 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                        ;
 ; CBXI_PARAMETER                     ; altsyncram_2c24      ; Untyped                        ;
 +------------------------------------+----------------------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: NeoPixelController:inst13|LPM_BUSTRI:BUS_Switcher ;
++----------------+-------+-----------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                  ;
++----------------+-------+-----------------------------------------------------------------------+
+; LPM_WIDTH      ; 16    ; Signed Integer                                                        ;
++----------------+-------+-----------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -920,33 +923,35 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; arriav_ff             ; 347                         ;
-;     CLR               ; 101                         ;
-;     ENA               ; 42                          ;
+;     CLR               ; 99                          ;
+;     ENA               ; 43                          ;
 ;     ENA CLR           ; 16                          ;
-;     ENA CLR SCLR SLD  ; 7                           ;
+;     ENA CLR SCLR SLD  ; 8                           ;
 ;     ENA SCLR          ; 27                          ;
 ;     ENA SLD           ; 122                         ;
 ;     SCLR              ; 19                          ;
 ;     plain             ; 13                          ;
-; arriav_lcell_comb     ; 504                         ;
+; arriav_lcell_comb     ; 556                         ;
 ;     arith             ; 96                          ;
 ;         1 data inputs ; 79                          ;
 ;         2 data inputs ; 1                           ;
 ;         5 data inputs ; 16                          ;
-;     normal            ; 408                         ;
+;     extend            ; 1                           ;
+;         7 data inputs ; 1                           ;
+;     normal            ; 459                         ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 7                           ;
-;         2 data inputs ; 19                          ;
-;         3 data inputs ; 44                          ;
-;         4 data inputs ; 98                          ;
-;         5 data inputs ; 141                         ;
-;         6 data inputs ; 98                          ;
+;         2 data inputs ; 20                          ;
+;         3 data inputs ; 53                          ;
+;         4 data inputs ; 89                          ;
+;         5 data inputs ; 155                         ;
+;         6 data inputs ; 134                         ;
 ; boundary_port         ; 64                          ;
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 40                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 4.50                        ;
-; Average LUT depth     ; 2.32                        ;
+; Max LUT depth         ; 5.00                        ;
+; Average LUT depth     ; 2.47                        ;
 +-----------------------+-----------------------------+
 
 
@@ -955,7 +960,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -965,47 +970,47 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Wed Apr 06 17:29:36 2022
+    Info: Processing started: Sun Apr 17 15:49:52 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SCOMP -c SCOMP
-Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file neopixelcontroller.vhd
-    Info (12022): Found design unit 1: NeoPixelController-internals File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/NeoPixelController.vhd Line: 29
-    Info (12023): Found entity 1: NeoPixelController File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/NeoPixelController.vhd Line: 13
+    Info (12022): Found design unit 1: NeoPixelController-internals File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/NeoPixelController.vhd Line: 34
+    Info (12023): Found entity 1: NeoPixelController File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/NeoPixelController.vhd Line: 17
 Info (12021): Found 2 design units, including 1 entities, in source file hex_disp.vhd
-    Info (12022): Found design unit 1: HEX_DISP-a File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/HEX_DISP.vhd Line: 17
-    Info (12023): Found entity 1: HEX_DISP File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/HEX_DISP.vhd Line: 9
+    Info (12022): Found design unit 1: HEX_DISP-a File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/HEX_DISP.vhd Line: 17
+    Info (12023): Found entity 1: HEX_DISP File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/HEX_DISP.vhd Line: 9
 Info (12021): Found 2 design units, including 1 entities, in source file dig_out.vhd
-    Info (12022): Found design unit 1: DIG_OUT-a File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/DIG_OUT.vhd Line: 26
-    Info (12023): Found entity 1: DIG_OUT File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/DIG_OUT.vhd Line: 16
+    Info (12022): Found design unit 1: DIG_OUT-a File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/DIG_OUT.vhd Line: 26
+    Info (12023): Found entity 1: DIG_OUT File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/DIG_OUT.vhd Line: 16
 Info (12021): Found 2 design units, including 1 entities, in source file dig_in.vhd
-    Info (12022): Found design unit 1: DIG_IN-a File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/DIG_IN.vhd Line: 19
-    Info (12023): Found entity 1: DIG_IN File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/DIG_IN.vhd Line: 10
+    Info (12022): Found design unit 1: DIG_IN-a File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/DIG_IN.vhd Line: 19
+    Info (12023): Found entity 1: DIG_IN File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/DIG_IN.vhd Line: 10
 Info (12021): Found 2 design units, including 1 entities, in source file clk_div.vhd
-    Info (12022): Found design unit 1: clk_div-a File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/clk_div.vhd Line: 26
-    Info (12023): Found entity 1: clk_div File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/clk_div.vhd Line: 11
+    Info (12022): Found design unit 1: clk_div-a File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/clk_div.vhd Line: 26
+    Info (12023): Found entity 1: clk_div File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/clk_div.vhd Line: 11
 Info (12021): Found 2 design units, including 1 entities, in source file timer.vhd
-    Info (12022): Found design unit 1: TIMER-a File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/TIMER.vhd Line: 27
-    Info (12023): Found entity 1: TIMER File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/TIMER.vhd Line: 17
+    Info (12022): Found design unit 1: TIMER-a File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/TIMER.vhd Line: 27
+    Info (12023): Found entity 1: TIMER File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/TIMER.vhd Line: 17
 Info (12021): Found 2 design units, including 1 entities, in source file io_decoder.vhd
-    Info (12022): Found design unit 1: IO_DECODER-a File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/IO_DECODER.vhd Line: 27
-    Info (12023): Found entity 1: IO_DECODER File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/IO_DECODER.vhd Line: 9
+    Info (12022): Found design unit 1: IO_DECODER-a File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/IO_DECODER.vhd Line: 27
+    Info (12023): Found entity 1: IO_DECODER File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/IO_DECODER.vhd Line: 9
 Info (12021): Found 2 design units, including 1 entities, in source file scomp.vhd
-    Info (12022): Found design unit 1: SCOMP-a File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/SCOMP.vhd Line: 33
-    Info (12023): Found entity 1: SCOMP File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/SCOMP.vhd Line: 16
+    Info (12022): Found design unit 1: SCOMP-a File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/SCOMP.vhd Line: 33
+    Info (12023): Found entity 1: SCOMP File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/SCOMP.vhd Line: 16
 Info (12021): Found 1 design units, including 1 entities, in source file scomp_system.bdf
     Info (12023): Found entity 1: SCOMP_System
 Info (12021): Found 1 design units, including 1 entities, in source file hex_disp_6.bdf
     Info (12023): Found entity 1: HEX_DISP_6
 Info (12021): Found 2 design units, including 1 entities, in source file pll_main.vhd
-    Info (12022): Found design unit 1: PLL_main-rtl File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/PLL_main.vhd Line: 20
-    Info (12023): Found entity 1: PLL_main File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/PLL_main.vhd Line: 11
+    Info (12022): Found design unit 1: PLL_main-rtl File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/PLL_main.vhd Line: 20
+    Info (12023): Found entity 1: PLL_main File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/PLL_main.vhd Line: 11
 Info (12021): Found 1 design units, including 1 entities, in source file pll_main/pll_main_0002.v
-    Info (12023): Found entity 1: PLL_main_0002 File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/PLL_main/PLL_main_0002.v Line: 2
+    Info (12023): Found entity 1: PLL_main_0002 File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/PLL_main/PLL_main_0002.v Line: 2
 Info (12127): Elaborating entity "SCOMP_System" for the top level hierarchy
 Info (12128): Elaborating entity "NeoPixelController" for hierarchy "NeoPixelController:inst13"
-Info (12128): Elaborating entity "altsyncram" for hierarchy "NeoPixelController:inst13|altsyncram:pixelRAM" File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/NeoPixelController.vhd Line: 56
-Info (12130): Elaborated megafunction instantiation "NeoPixelController:inst13|altsyncram:pixelRAM" File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/NeoPixelController.vhd Line: 56
-Info (12133): Instantiated megafunction "NeoPixelController:inst13|altsyncram:pixelRAM" with the following parameter: File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/NeoPixelController.vhd Line: 56
+Info (12128): Elaborating entity "altsyncram" for hierarchy "NeoPixelController:inst13|altsyncram:pixelRAM" File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/NeoPixelController.vhd Line: 66
+Info (12130): Elaborated megafunction instantiation "NeoPixelController:inst13|altsyncram:pixelRAM" File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/NeoPixelController.vhd Line: 66
+Info (12133): Instantiated megafunction "NeoPixelController:inst13|altsyncram:pixelRAM" with the following parameter: File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/NeoPixelController.vhd Line: 66
     Info (12134): Parameter "address_aclr_a" = "UNUSED"
     Info (12134): Parameter "address_aclr_b" = "NONE"
     Info (12134): Parameter "address_reg_b" = "CLOCK0"
@@ -1057,14 +1062,20 @@ Info (12133): Instantiated megafunction "NeoPixelController:inst13|altsyncram:pi
     Info (12134): Parameter "lpm_hint" = "UNUSED"
     Info (12134): Parameter "lpm_type" = "altsyncram"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_2c24.tdf
-    Info (12023): Found entity 1: altsyncram_2c24 File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/db/altsyncram_2c24.tdf Line: 28
+    Info (12023): Found entity 1: altsyncram_2c24 File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/db/altsyncram_2c24.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_2c24" for hierarchy "NeoPixelController:inst13|altsyncram:pixelRAM|altsyncram_2c24:auto_generated" File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12128): Elaborating entity "LPM_BUSTRI" for hierarchy "NeoPixelController:inst13|LPM_BUSTRI:BUS_Switcher" File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/NeoPixelController.vhd Line: 107
+Info (12130): Elaborated megafunction instantiation "NeoPixelController:inst13|LPM_BUSTRI:BUS_Switcher" File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/NeoPixelController.vhd Line: 107
+Info (12133): Instantiated megafunction "NeoPixelController:inst13|LPM_BUSTRI:BUS_Switcher" with the following parameter: File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/NeoPixelController.vhd Line: 107
+    Info (12134): Parameter "LPM_WIDTH" = "16"
+    Info (12134): Parameter "LPM_TYPE" = "LPM_BUSTRI"
+    Info (12134): Parameter "LPM_HINT" = "UNUSED"
 Info (12128): Elaborating entity "PLL_main" for hierarchy "PLL_main:inst1"
-Info (12128): Elaborating entity "PLL_main_0002" for hierarchy "PLL_main:inst1|PLL_main_0002:pll_main_inst" File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/PLL_main.vhd Line: 32
-Info (12128): Elaborating entity "altera_pll" for hierarchy "PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i" File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/PLL_main/PLL_main_0002.v Line: 85
+Info (12128): Elaborating entity "PLL_main_0002" for hierarchy "PLL_main:inst1|PLL_main_0002:pll_main_inst" File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/PLL_main.vhd Line: 32
+Info (12128): Elaborating entity "altera_pll" for hierarchy "PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i" File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/PLL_main/PLL_main_0002.v Line: 85
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "wire_to_nowhere_64" into its bus
-Info (12130): Elaborated megafunction instantiation "PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i" File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/PLL_main/PLL_main_0002.v Line: 85
-Info (12133): Instantiated megafunction "PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i" with the following parameter: File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/PLL_main/PLL_main_0002.v Line: 85
+Info (12130): Elaborated megafunction instantiation "PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i" File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/PLL_main/PLL_main_0002.v Line: 85
+Info (12133): Instantiated megafunction "PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i" with the following parameter: File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/PLL_main/PLL_main_0002.v Line: 85
     Info (12134): Parameter "fractional_vco_multiplier" = "false"
     Info (12134): Parameter "reference_clock_frequency" = "50.0 MHz"
     Info (12134): Parameter "operation_mode" = "direct"
@@ -1126,9 +1137,9 @@ Info (12133): Instantiated megafunction "PLL_main:inst1|PLL_main_0002:pll_main_i
     Info (12134): Parameter "pll_type" = "General"
     Info (12134): Parameter "pll_subtype" = "General"
 Info (12128): Elaborating entity "SCOMP" for hierarchy "SCOMP:inst"
-Info (12128): Elaborating entity "altsyncram" for hierarchy "SCOMP:inst|altsyncram:altsyncram_component" File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/SCOMP.vhd Line: 61
-Info (12130): Elaborated megafunction instantiation "SCOMP:inst|altsyncram:altsyncram_component" File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/SCOMP.vhd Line: 61
-Info (12133): Instantiated megafunction "SCOMP:inst|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/SCOMP.vhd Line: 61
+Info (12128): Elaborating entity "altsyncram" for hierarchy "SCOMP:inst|altsyncram:altsyncram_component" File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/SCOMP.vhd Line: 61
+Info (12130): Elaborated megafunction instantiation "SCOMP:inst|altsyncram:altsyncram_component" File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/SCOMP.vhd Line: 61
+Info (12133): Instantiated megafunction "SCOMP:inst|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/SCOMP.vhd Line: 61
     Info (12134): Parameter "address_aclr_a" = "UNUSED"
     Info (12134): Parameter "address_aclr_b" = "NONE"
     Info (12134): Parameter "address_reg_b" = "CLOCK1"
@@ -1180,43 +1191,43 @@ Info (12133): Instantiated megafunction "SCOMP:inst|altsyncram:altsyncram_compon
     Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
     Info (12134): Parameter "lpm_type" = "altsyncram"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_qm24.tdf
-    Info (12023): Found entity 1: altsyncram_qm24 File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/db/altsyncram_qm24.tdf Line: 28
+    Info (12023): Found entity 1: altsyncram_qm24 File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/db/altsyncram_qm24.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_qm24" for hierarchy "SCOMP:inst|altsyncram:altsyncram_component|altsyncram_qm24:auto_generated" File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Info (12128): Elaborating entity "LPM_CLSHIFT" for hierarchy "SCOMP:inst|LPM_CLSHIFT:shifter" File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/SCOMP.vhd Line: 88
-Info (12130): Elaborated megafunction instantiation "SCOMP:inst|LPM_CLSHIFT:shifter" File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/SCOMP.vhd Line: 88
-Info (12133): Instantiated megafunction "SCOMP:inst|LPM_CLSHIFT:shifter" with the following parameter: File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/SCOMP.vhd Line: 88
+Info (12128): Elaborating entity "LPM_CLSHIFT" for hierarchy "SCOMP:inst|LPM_CLSHIFT:shifter" File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/SCOMP.vhd Line: 88
+Info (12130): Elaborated megafunction instantiation "SCOMP:inst|LPM_CLSHIFT:shifter" File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/SCOMP.vhd Line: 88
+Info (12133): Instantiated megafunction "SCOMP:inst|LPM_CLSHIFT:shifter" with the following parameter: File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/SCOMP.vhd Line: 88
     Info (12134): Parameter "LPM_WIDTH" = "16"
     Info (12134): Parameter "LPM_WIDTHDIST" = "4"
     Info (12134): Parameter "LPM_SHIFTTYPE" = "arithmetic"
     Info (12134): Parameter "LPM_TYPE" = "LPM_CLSHIFT"
     Info (12134): Parameter "LPM_HINT" = "UNUSED"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_clshift_fuc.tdf
-    Info (12023): Found entity 1: lpm_clshift_fuc File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/db/lpm_clshift_fuc.tdf Line: 23
+    Info (12023): Found entity 1: lpm_clshift_fuc File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/db/lpm_clshift_fuc.tdf Line: 23
 Info (12128): Elaborating entity "lpm_clshift_fuc" for hierarchy "SCOMP:inst|LPM_CLSHIFT:shifter|lpm_clshift_fuc:auto_generated" File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_clshift.tdf Line: 54
-Info (12128): Elaborating entity "LPM_BUSTRI" for hierarchy "SCOMP:inst|LPM_BUSTRI:io_bus" File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/SCOMP.vhd Line: 115
-Info (12130): Elaborated megafunction instantiation "SCOMP:inst|LPM_BUSTRI:io_bus" File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/SCOMP.vhd Line: 115
-Info (12133): Instantiated megafunction "SCOMP:inst|LPM_BUSTRI:io_bus" with the following parameter: File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/SCOMP.vhd Line: 115
+Info (12128): Elaborating entity "LPM_BUSTRI" for hierarchy "SCOMP:inst|LPM_BUSTRI:io_bus" File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/SCOMP.vhd Line: 115
+Info (12130): Elaborated megafunction instantiation "SCOMP:inst|LPM_BUSTRI:io_bus" File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/SCOMP.vhd Line: 115
+Info (12133): Instantiated megafunction "SCOMP:inst|LPM_BUSTRI:io_bus" with the following parameter: File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/SCOMP.vhd Line: 115
     Info (12134): Parameter "LPM_WIDTH" = "16"
     Info (12134): Parameter "LPM_TYPE" = "LPM_BUSTRI"
     Info (12134): Parameter "LPM_HINT" = "UNUSED"
 Info (12128): Elaborating entity "TIMER" for hierarchy "TIMER:inst4"
-Warning (10631): VHDL Process Statement warning at TIMER.vhd(59): inferring latch(es) for signal or variable "IO_COUNT", which holds its previous value in one or more paths through the process File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/TIMER.vhd Line: 59
-Info (10041): Inferred latch for "IO_COUNT[0]" at TIMER.vhd(59) File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/TIMER.vhd Line: 59
-Info (10041): Inferred latch for "IO_COUNT[1]" at TIMER.vhd(59) File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/TIMER.vhd Line: 59
-Info (10041): Inferred latch for "IO_COUNT[2]" at TIMER.vhd(59) File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/TIMER.vhd Line: 59
-Info (10041): Inferred latch for "IO_COUNT[3]" at TIMER.vhd(59) File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/TIMER.vhd Line: 59
-Info (10041): Inferred latch for "IO_COUNT[4]" at TIMER.vhd(59) File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/TIMER.vhd Line: 59
-Info (10041): Inferred latch for "IO_COUNT[5]" at TIMER.vhd(59) File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/TIMER.vhd Line: 59
-Info (10041): Inferred latch for "IO_COUNT[6]" at TIMER.vhd(59) File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/TIMER.vhd Line: 59
-Info (10041): Inferred latch for "IO_COUNT[7]" at TIMER.vhd(59) File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/TIMER.vhd Line: 59
-Info (10041): Inferred latch for "IO_COUNT[8]" at TIMER.vhd(59) File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/TIMER.vhd Line: 59
-Info (10041): Inferred latch for "IO_COUNT[9]" at TIMER.vhd(59) File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/TIMER.vhd Line: 59
-Info (10041): Inferred latch for "IO_COUNT[10]" at TIMER.vhd(59) File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/TIMER.vhd Line: 59
-Info (10041): Inferred latch for "IO_COUNT[11]" at TIMER.vhd(59) File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/TIMER.vhd Line: 59
-Info (10041): Inferred latch for "IO_COUNT[12]" at TIMER.vhd(59) File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/TIMER.vhd Line: 59
-Info (10041): Inferred latch for "IO_COUNT[13]" at TIMER.vhd(59) File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/TIMER.vhd Line: 59
-Info (10041): Inferred latch for "IO_COUNT[14]" at TIMER.vhd(59) File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/TIMER.vhd Line: 59
-Info (10041): Inferred latch for "IO_COUNT[15]" at TIMER.vhd(59) File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/TIMER.vhd Line: 59
+Warning (10631): VHDL Process Statement warning at TIMER.vhd(59): inferring latch(es) for signal or variable "IO_COUNT", which holds its previous value in one or more paths through the process File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[0]" at TIMER.vhd(59) File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[1]" at TIMER.vhd(59) File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[2]" at TIMER.vhd(59) File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[3]" at TIMER.vhd(59) File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[4]" at TIMER.vhd(59) File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[5]" at TIMER.vhd(59) File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[6]" at TIMER.vhd(59) File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[7]" at TIMER.vhd(59) File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[8]" at TIMER.vhd(59) File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[9]" at TIMER.vhd(59) File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[10]" at TIMER.vhd(59) File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[11]" at TIMER.vhd(59) File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[12]" at TIMER.vhd(59) File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[13]" at TIMER.vhd(59) File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[14]" at TIMER.vhd(59) File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/TIMER.vhd Line: 59
+Info (10041): Inferred latch for "IO_COUNT[15]" at TIMER.vhd(59) File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/TIMER.vhd Line: 59
 Info (12128): Elaborating entity "clk_div" for hierarchy "clk_div:inst5"
 Info (12128): Elaborating entity "IO_DECODER" for hierarchy "IO_DECODER:inst3"
 Info (12128): Elaborating entity "DIG_IN" for hierarchy "DIG_IN:inst7"
@@ -1224,47 +1235,64 @@ Info (12128): Elaborating entity "HEX_DISP_6" for hierarchy "HEX_DISP_6:inst9"
 Info (12128): Elaborating entity "HEX_DISP" for hierarchy "HEX_DISP_6:inst9|HEX_DISP:inst1"
 Info (12128): Elaborating entity "DIG_OUT" for hierarchy "DIG_OUT:inst6"
 Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
-    Warning (13048): Converted tri-state node "IO_DATA[15]" into a selector File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node "IO_DATA[14]" into a selector File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node "IO_DATA[13]" into a selector File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node "IO_DATA[12]" into a selector File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node "IO_DATA[11]" into a selector File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node "IO_DATA[10]" into a selector File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node "IO_DATA[9]" into a selector File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node "IO_DATA[8]" into a selector File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node "IO_DATA[7]" into a selector File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node "IO_DATA[6]" into a selector File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node "IO_DATA[5]" into a selector File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node "IO_DATA[4]" into a selector File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node "IO_DATA[3]" into a selector File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node "IO_DATA[2]" into a selector File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node "IO_DATA[1]" into a selector File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node "IO_DATA[0]" into a selector File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/HEX_DISP.vhd Line: 25
+    Warning (13047): Converted the fan-out from the tri-state buffer "NeoPixelController:inst13|lpm_bustri:BUS_Switcher|din[10]" to the node "NeoPixelController:inst13|ram_write_buffer[23]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 47
+    Warning (13047): Converted the fan-out from the tri-state buffer "NeoPixelController:inst13|lpm_bustri:BUS_Switcher|din[0]" to the node "NeoPixelController:inst13|ram_write_addr[0]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 47
+    Warning (13047): Converted the fan-out from the tri-state buffer "NeoPixelController:inst13|lpm_bustri:BUS_Switcher|din[1]" to the node "NeoPixelController:inst13|ram_write_addr[1]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 47
+    Warning (13047): Converted the fan-out from the tri-state buffer "NeoPixelController:inst13|lpm_bustri:BUS_Switcher|din[2]" to the node "NeoPixelController:inst13|ram_write_addr[2]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 47
+    Warning (13047): Converted the fan-out from the tri-state buffer "NeoPixelController:inst13|lpm_bustri:BUS_Switcher|din[3]" to the node "NeoPixelController:inst13|ram_write_addr[3]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 47
+    Warning (13047): Converted the fan-out from the tri-state buffer "NeoPixelController:inst13|lpm_bustri:BUS_Switcher|din[4]" to the node "NeoPixelController:inst13|ram_write_addr[4]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 47
+    Warning (13047): Converted the fan-out from the tri-state buffer "NeoPixelController:inst13|lpm_bustri:BUS_Switcher|din[5]" to the node "NeoPixelController:inst13|ram_write_addr[5]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 47
+    Warning (13047): Converted the fan-out from the tri-state buffer "NeoPixelController:inst13|lpm_bustri:BUS_Switcher|din[6]" to the node "NeoPixelController:inst13|ram_write_addr[6]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 47
+    Warning (13047): Converted the fan-out from the tri-state buffer "NeoPixelController:inst13|lpm_bustri:BUS_Switcher|din[7]" to the node "NeoPixelController:inst13|ram_write_addr[7]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 47
+    Warning (13047): Converted the fan-out from the tri-state buffer "NeoPixelController:inst13|lpm_bustri:BUS_Switcher|din[9]" to the node "NeoPixelController:inst13|ram_write_buffer[22]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 47
+    Warning (13047): Converted the fan-out from the tri-state buffer "NeoPixelController:inst13|lpm_bustri:BUS_Switcher|din[8]" to the node "NeoPixelController:inst13|ram_write_buffer[21]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 47
+    Warning (13047): Converted the fan-out from the tri-state buffer "NeoPixelController:inst13|lpm_bustri:BUS_Switcher|din[11]" to the node "NeoPixelController:inst13|ram_write_buffer[11]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 47
+    Warning (13047): Converted the fan-out from the tri-state buffer "NeoPixelController:inst13|lpm_bustri:BUS_Switcher|din[12]" to the node "NeoPixelController:inst13|ram_write_buffer[12]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 47
+    Warning (13047): Converted the fan-out from the tri-state buffer "NeoPixelController:inst13|lpm_bustri:BUS_Switcher|din[13]" to the node "NeoPixelController:inst13|ram_write_buffer[13]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 47
+    Warning (13047): Converted the fan-out from the tri-state buffer "NeoPixelController:inst13|lpm_bustri:BUS_Switcher|din[14]" to the node "NeoPixelController:inst13|ram_write_buffer[14]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 47
+    Warning (13047): Converted the fan-out from the tri-state buffer "NeoPixelController:inst13|lpm_bustri:BUS_Switcher|din[15]" to the node "NeoPixelController:inst13|ram_write_buffer[15]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 47
+Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
+    Warning (13047): Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:io_bus|dout[0]" to the node "HEX_DISP_6:inst9|HEX_DISP:inst1|latched_hex[0]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 44
+    Warning (13047): Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:io_bus|dout[1]" to the node "HEX_DISP_6:inst9|HEX_DISP:inst1|latched_hex[1]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 44
+    Warning (13047): Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:io_bus|dout[2]" to the node "HEX_DISP_6:inst9|HEX_DISP:inst1|latched_hex[2]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 44
+    Warning (13047): Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:io_bus|dout[3]" to the node "HEX_DISP_6:inst9|HEX_DISP:inst1|latched_hex[3]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 44
+    Warning (13047): Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:io_bus|dout[4]" to the node "HEX_DISP_6:inst9|HEX_DISP:inst2|latched_hex[0]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 44
+    Warning (13047): Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:io_bus|dout[5]" to the node "HEX_DISP_6:inst9|HEX_DISP:inst2|latched_hex[1]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 44
+    Warning (13047): Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:io_bus|dout[6]" to the node "HEX_DISP_6:inst9|HEX_DISP:inst2|latched_hex[2]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 44
+    Warning (13047): Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:io_bus|dout[7]" to the node "HEX_DISP_6:inst9|HEX_DISP:inst2|latched_hex[3]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 44
+    Warning (13047): Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:io_bus|dout[8]" to the node "HEX_DISP_6:inst9|HEX_DISP:inst3|latched_hex[0]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 44
+    Warning (13047): Converted the fan-out from the tri-state buffer "SCOMP:inst|lpm_bustri:io_bus|dout[9]" to the node "HEX_DISP_6:inst9|HEX_DISP:inst3|latched_hex[1]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 44
+    Warning (13047): Converted the fan-out from the tri-state buffer "DIG_IN:inst7|lpm_bustri:IO_BUS|dout[10]" to the node "HEX_DISP_6:inst9|HEX_DISP:inst3|latched_hex[2]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 44
+    Warning (13047): Converted the fan-out from the tri-state buffer "DIG_IN:inst7|lpm_bustri:IO_BUS|dout[11]" to the node "HEX_DISP_6:inst9|HEX_DISP:inst3|latched_hex[3]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 44
+    Warning (13047): Converted the fan-out from the tri-state buffer "DIG_IN:inst7|lpm_bustri:IO_BUS|dout[12]" to the node "HEX_DISP_6:inst9|HEX_DISP:inst4|latched_hex[0]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 44
+    Warning (13047): Converted the fan-out from the tri-state buffer "DIG_IN:inst7|lpm_bustri:IO_BUS|dout[13]" to the node "HEX_DISP_6:inst9|HEX_DISP:inst4|latched_hex[1]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 44
+    Warning (13047): Converted the fan-out from the tri-state buffer "DIG_IN:inst7|lpm_bustri:IO_BUS|dout[14]" to the node "HEX_DISP_6:inst9|HEX_DISP:inst4|latched_hex[2]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 44
+    Warning (13047): Converted the fan-out from the tri-state buffer "DIG_IN:inst7|lpm_bustri:IO_BUS|dout[15]" to the node "HEX_DISP_6:inst9|HEX_DISP:inst4|latched_hex[3]" into an OR gate File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/lpm_bustri.tdf Line: 44
 Info (286030): Timing-Driven Synthesis is running
 Critical Warning (18061): Ignored Power-Up Level option on the following registers
-    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[9] will power up to High File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/NeoPixelController.vhd Line: 123
-    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[8] will power up to High File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/NeoPixelController.vhd Line: 123
-    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[7] will power up to High File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/NeoPixelController.vhd Line: 123
-    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[6] will power up to High File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/NeoPixelController.vhd Line: 123
-    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[5] will power up to High File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/NeoPixelController.vhd Line: 123
-    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[3] will power up to High File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/NeoPixelController.vhd Line: 123
-    Critical Warning (18010): Register NeoPixelController:inst13|bit_count[4] will power up to High File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/NeoPixelController.vhd Line: 123
-    Critical Warning (18010): Register NeoPixelController:inst13|bit_count[2] will power up to High File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/NeoPixelController.vhd Line: 123
-    Critical Warning (18010): Register NeoPixelController:inst13|bit_count[1] will power up to High File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/NeoPixelController.vhd Line: 123
-    Critical Warning (18010): Register NeoPixelController:inst13|bit_count[0] will power up to High File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/NeoPixelController.vhd Line: 123
+    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[9] will power up to High File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/NeoPixelController.vhd Line: 144
+    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[8] will power up to High File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/NeoPixelController.vhd Line: 144
+    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[7] will power up to High File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/NeoPixelController.vhd Line: 144
+    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[6] will power up to High File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/NeoPixelController.vhd Line: 144
+    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[5] will power up to High File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/NeoPixelController.vhd Line: 144
+    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[3] will power up to High File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/NeoPixelController.vhd Line: 144
+    Critical Warning (18010): Register NeoPixelController:inst13|bit_count[4] will power up to High File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/NeoPixelController.vhd Line: 144
+    Critical Warning (18010): Register NeoPixelController:inst13|bit_count[2] will power up to High File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/NeoPixelController.vhd Line: 144
+    Critical Warning (18010): Register NeoPixelController:inst13|bit_count[1] will power up to High File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/NeoPixelController.vhd Line: 144
+    Critical Warning (18010): Register NeoPixelController:inst13|bit_count[0] will power up to High File: C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/NeoPixelController.vhd Line: 144
 Info (17049): 1 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 823 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 860 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 12 input pins
     Info (21059): Implemented 52 output pins
-    Info (21061): Implemented 718 logic cells
+    Info (21061): Implemented 755 logic cells
     Info (21064): Implemented 40 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 29 warnings
-    Info: Peak virtual memory: 4883 megabytes
-    Info: Processing ended: Wed Apr 06 17:29:47 2022
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:23
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 46 warnings
+    Info: Peak virtual memory: 4912 megabytes
+    Info: Processing ended: Sun Apr 17 15:50:00 2022
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:19
 
 
