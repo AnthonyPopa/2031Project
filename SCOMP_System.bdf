@@ -706,7 +706,7 @@ https://fpgasoftware.intel.com/eula.
 	)
 )
 (symbol
-	(rect 768 224 1000 496)
+	(rect 752 224 984 496)
 	(text "IO_DECODER" (rect 5 0 78 12)(font "Arial" ))
 	(text "inst3" (rect 8 256 31 268)(font "Arial" ))
 	(port
@@ -917,7 +917,7 @@ https://fpgasoftware.intel.com/eula.
 		(pt 168 32)
 		(output)
 		(text "sda" (rect 0 0 17 12)(font "Arial" ))
-		(text "sda" (rect 133 27 147 39)(font "Arial" ))
+		(text "sda" (rect 133 27 150 39)(font "Arial" ))
 		(line (pt 168 32)(pt 152 32))
 	)
 	(drawing
@@ -1260,77 +1260,6 @@ https://fpgasoftware.intel.com/eula.
 	(pt 208 1056)
 )
 (connector
-	(text "IO_ADDR[10..0]" (rect 682 240 756 257)(font "Intel Clear" ))
-	(pt 672 256)
-	(pt 768 256)
-	(bus)
-)
-(connector
-	(text "IO_CYCLE" (rect 682 256 731 273)(font "Intel Clear" ))
-	(pt 672 272)
-	(pt 768 272)
-)
-(connector
-	(text "SWITCH_EN" (rect 1010 240 1067 257)(font "Intel Clear" ))
-	(pt 1000 256)
-	(pt 1080 256)
-)
-(connector
-	(text "LED_EN" (rect 1010 256 1047 273)(font "Intel Clear" ))
-	(pt 1000 272)
-	(pt 1080 272)
-)
-(connector
-	(text "TIMER_EN" (rect 1010 272 1059 289)(font "Intel Clear" ))
-	(pt 1000 288)
-	(pt 1080 288)
-)
-(connector
-	(text "HEX0_EN" (rect 1010 288 1054 305)(font "Intel Clear" ))
-	(pt 1000 304)
-	(pt 1080 304)
-)
-(connector
-	(text "HEX1_EN" (rect 1010 304 1054 321)(font "Intel Clear" ))
-	(pt 1000 320)
-	(pt 1080 320)
-)
-(connector
-	(text "PXL_A_EN" (rect 1008 320 1059 337)(font "Intel Clear" ))
-	(pt 1000 336)
-	(pt 1080 336)
-)
-(connector
-	(text "PXL_D_EN" (rect 1008 336 1059 353)(font "Intel Clear" ))
-	(pt 1000 352)
-	(pt 1080 352)
-)
-(connector
-	(text "ALL_PXLS" (rect 1010 352 1060 369)(font "Intel Clear" ))
-	(pt 1000 368)
-	(pt 1080 368)
-)
-(connector
-	(text "BIT24" (rect 1010 368 1037 385)(font "Intel Clear" ))
-	(pt 1000 384)
-	(pt 1080 384)
-)
-(connector
-	(text "BIT24_2" (rect 1010 384 1048 401)(font "Intel Clear" ))
-	(pt 1000 400)
-	(pt 1080 400)
-)
-(connector
-	(text "BIT24_3" (rect 1010 400 1048 417)(font "Intel Clear" ))
-	(pt 1000 416)
-	(pt 1080 416)
-)
-(connector
-	(text "RUN_PXL" (rect 1010 416 1057 433)(font "Intel Clear" ))
-	(pt 1000 432)
-	(pt 1080 432)
-)
-(connector
 	(text "RUN_PXL" (rect 218 1056 265 1073)(font "Intel Clear" ))
 	(pt 296 1072)
 	(pt 208 1072)
@@ -1341,15 +1270,91 @@ https://fpgasoftware.intel.com/eula.
 	(pt 208 1088)
 )
 (connector
-	(text "RAINBOW" (rect 1010 432 1059 449)(font "Intel Clear" ))
-	(pt 1000 448)
-	(pt 1080 448)
+	(text "IO_ADDR[10..0]" (rect 666 240 740 257)(font "Intel Clear" ))
+	(pt 656 256)
+	(pt 752 256)
+	(bus)
+)
+(connector
+	(text "IO_CYCLE" (rect 666 256 715 273)(font "Intel Clear" ))
+	(pt 656 272)
+	(pt 752 272)
+)
+(connector
+	(text "SWITCH_EN" (rect 994 240 1051 257)(font "Intel Clear" ))
+	(pt 984 256)
+	(pt 1064 256)
+)
+(connector
+	(text "LED_EN" (rect 994 256 1031 273)(font "Intel Clear" ))
+	(pt 984 272)
+	(pt 1064 272)
+)
+(connector
+	(text "TIMER_EN" (rect 994 272 1043 289)(font "Intel Clear" ))
+	(pt 984 288)
+	(pt 1064 288)
+)
+(connector
+	(text "HEX0_EN" (rect 994 288 1038 305)(font "Intel Clear" ))
+	(pt 984 304)
+	(pt 1064 304)
+)
+(connector
+	(text "HEX1_EN" (rect 994 304 1038 321)(font "Intel Clear" ))
+	(pt 984 320)
+	(pt 1064 320)
+)
+(connector
+	(text "PXL_A_EN" (rect 992 320 1043 337)(font "Intel Clear" ))
+	(pt 984 336)
+	(pt 1064 336)
+)
+(connector
+	(text "PXL_D_EN" (rect 992 336 1043 353)(font "Intel Clear" ))
+	(pt 984 352)
+	(pt 1064 352)
+)
+(connector
+	(text "ALL_PXLS" (rect 994 352 1044 369)(font "Intel Clear" ))
+	(pt 984 368)
+	(pt 1064 368)
+)
+(connector
+	(text "BIT24" (rect 994 368 1021 385)(font "Intel Clear" ))
+	(pt 984 384)
+	(pt 1064 384)
+)
+(connector
+	(text "BIT24_2" (rect 994 384 1032 401)(font "Intel Clear" ))
+	(pt 984 400)
+	(pt 1064 400)
+)
+(connector
+	(text "BIT24_3" (rect 994 400 1032 417)(font "Intel Clear" ))
+	(pt 984 416)
+	(pt 1064 416)
+)
+(connector
+	(text "RUN_PXL" (rect 994 416 1041 433)(font "Intel Clear" ))
+	(pt 984 432)
+	(pt 1064 432)
+)
+(connector
+	(text "RAINBOW" (rect 994 432 1043 449)(font "Intel Clear" ))
+	(pt 984 448)
+	(pt 1064 448)
+)
+(connector
+	(text "clock_10Hz" (rect 218 1088 272 1105)(font "Intel Clear" ))
+	(pt 296 1104)
+	(pt 208 1104)
 )
 (junction (pt 512 280))
 (title_block
 	(rect 976 1048 1344 1168)
 	(section (rect 0 24 368 48)(text "COMPANY" (rect 2 0 57 12)(font "Arial" ))(text "GaTech DDL" (rect 56 2 170 20)(font "Arial" (font_size 12)))(border))
-	(section (rect 0 96 240 120)(text "DATE" (rect 2 0 30 12)(font "Arial" ))(text "Sun Apr 17 13:13:57 2022" (rect 56 3 234 19)(font "Arial" (font_size 10)))(date)(border))
+	(section (rect 0 96 240 120)(text "DATE" (rect 2 0 30 12)(font "Arial" ))(text "Sun Apr 17 15:26:12 2022" (rect 56 3 234 19)(font "Arial" (font_size 10)))(date)(border))
 	(section (rect 0 48 368 72)(text "DESIGNER" (rect 2 0 59 12)(font "Arial" ))(text "Kevin Johnson, Tom Collins" (rect 56 2 286 20)(font "Arial" (font_size 12)))(border))
 	(section (rect 0 72 280 96)(text "NUMBER" (rect 2 0 49 12)(font "Arial" ))(text "1.00" (rect 56 1 85 17)(font "Arial" (font_size 10)))(border))
 	(section (rect 310 96 368 120)(text "OF" (rect 10 0 25 12)(font "Arial" ))(text "1" (rect 34 4 42 20)(font "Arial" (font_size 10))))

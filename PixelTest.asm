@@ -2,27 +2,7 @@
 
 ORG 0
 
-
-		LOADI 3
-		OUT PXL_A
-		LOADI &HFFFF
-		OUT RED
-		LOADI 0
-		OUT GREEN
-		LOADI &HFFFF
-		OUT BLUE
-		
-Loop:	IN Switches
-		JZERO Loop
-		
-		LOADI 4
-		OUT PXL_A
-		LOADI &H000F
-		OUT PXL_D
-		LOAD  Test
-		OUT PXL_D
-		LOAD  Test1
-		OUT PXL_D
+		OUT RUN
 		
 Test:	DW &HF000
 Test1:	DW &HF0F0
@@ -39,3 +19,5 @@ ALL_PXLS:  EQU &H0B2
 RED:       EQU &H0B3
 GREEN:     EQU &H0B4
 BLUE:      EQU &H0B5
+RUN:	   EQU &H0B6
+RAINBOW:   EQU &H0B7

@@ -209,6 +209,7 @@ begin
 	process (clk_10M, resetn, cs_addr, all_pxls, bit24, rainbow)
 	
 		variable all_pxls_addr : integer range 0 to 255;
+		variable timer : integer range 0 to 1000;
 
 	begin
 		-- For this implementation, saving the memory address
@@ -220,6 +221,12 @@ begin
 			-- If SCOMP is writing to the address register...
 			if (io_write = '1') and (cs_addr='1') then
 				ram_write_addr <= data_in(7 downto 0);
+			elsif (io_write = '1' and run_pxl = '1' and rstate = off_storing) then
+				if (ram_write_addr >= x"FF") then
+					ram_write_addr <= x"00";
+				else
+					ram_write_addr <= ram_write_addr + 1;
+				end if;
 			elsif (all_pxls = '1' or rainbow = '1') then
 				case istate is
 				when init =>
@@ -232,7 +239,7 @@ begin
 						ram_write_addr <= ram_write_addr + 1;
 					end if;
 				end case;
-			elsif ((wstate = storing) and (all_pxls /= '1') and (bit24 /= '1')) then
+			elsif ((wstate = storing) and (all_pxls /= '1') and (bit24 /= '1') and (run_pxl /= '1')) then
 				if (ram_write_addr >= x"FF") then
 					ram_write_addr <= x"00";
 				else
@@ -256,6 +263,8 @@ begin
 		if resetn = '0' then
 			wstate <= idle;
 			cstate <= red;
+			rstate <= off_write;
+			timer := 0;
 			ram_we <= '0';
 			ram_write_buffer <= x"000000";
 			-- Note that resetting this device does NOT clear the memory.
@@ -264,7 +273,7 @@ begin
 		elsif rising_edge(clk_10M) then
 			case wstate is
 			when idle =>
-				if (io_write = '1' and (cs_data='1' or all_pxls = '1' or bit24 = '1' or rainbow = '1')) then
+				if (io_write = '1' and (cs_data='1' or all_pxls = '1' or bit24 = '1' or rainbow = '1' or run_pxl = '1')) then
 					if (all_pxls = '1') then
 						ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
 						ram_we <= '1';
@@ -287,7 +296,7 @@ begin
 							ram_write_buffer <= x"FFFF00";
 							cstate <= green;
 						when green =>
-							ram_write_buffer <= x"00FF00";
+							ram_write_buffer <= x"FF0000";
 							cstate <= blue;
 						when blue =>
 							ram_write_buffer <= x"0000FF";
@@ -304,8 +313,32 @@ begin
 						
 						ram_we <= '1';
 						if (ram_write_addr >= x"FF") then
+							cstate <= red;
 							wstate <= storing;
 						end if;
+					elsif (run_pxl = '1') then
+						case rstate is
+						when off_write =>
+							ram_write_buffer <= x"000000";
+							ram_we <= '1';
+							rstate <= off_storing;
+						when off_storing =>
+							ram_we <= '0';
+							rstate <= on_write;
+						when on_write =>
+							ram_write_buffer <= x"00FF00";
+							timer := timer + 1;
+							ram_we <= '1';
+							if (timer = 100) then
+								rstate <= on_storing;	
+								timer := 0;
+							end if;
+						when on_storing =>
+							ram_we <= '0';
+							rstate <= off_write;
+						when others =>
+							rstate <= off_write;
+						end case;
 					else
 						-- latch the current data into the temporary storage register,
 						-- because this is the only time it'll be available.
@@ -340,49 +373,6 @@ begin
 		end if;
 	
 	end process;
-	
---	process (clk_10, resetn, run_pxl)
---	
---	begin
---	
---		if (resetn = '0') then
---			ram_write_addr <= x"00";
---		elsif (rising_edge(clk_10)) then
---			if (io_write = '1' and run_pxl = '1' and rstate = off_storing) then
---				if (ram_write_addr >= x"FF") then
---					ram_write_addr <= x"00";
---				else
---					ram_write_addr <= ram_write_addr + 1;
---				end if;
---			end if;
---		end if;
---		
---		if (resetn = '0') then
---			rstate <= off_write;
---			ram_We <= '0';
---			ram_write_buffer <= x"000000";
---		elsif (rising_edge(clk_10)) then
---			case rstate is
---			when off_write =>
---				ram_write_buffer <= x"000000";
---				ram_we <= '1';
---				rstate <= off_storing;
---			when off_storing =>
---				ram_we <= '0';
---				rstate <= on_write;
---			when on_write =>
---				ram_write_buffer <= x"00FF00";
---				ram_we <= '1';
---				rstate <= on_storing;
---			when on_storing =>
---				ram_we <= '0';
---				rstate <= off_write;
---			when others =>
---				rstate <= off_write;
---			end case;
---		end if;
---	
---	end process;
 	
 	
 end internals;

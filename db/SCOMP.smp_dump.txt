@@ -30,6 +30,13 @@ state.ex_in2 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
 state.ex_out 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
 state.ex_out2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
 
+State Machine - |SCOMP_System|NeoPixelController:inst13|rstate
+Name rstate.on_storing rstate.on_write rstate.off_storing rstate.off_write 
+rstate.off_write 0 0 0 0 
+rstate.off_storing 0 0 1 1 
+rstate.on_write 0 1 0 1 
+rstate.on_storing 1 0 0 1 
+
 State Machine - |SCOMP_System|NeoPixelController:inst13|cstate
 Name cstate.violet cstate.indigo cstate.blue cstate.green cstate.yellow cstate.orange cstate.red 
 cstate.red 0 0 0 0 0 0 0 
