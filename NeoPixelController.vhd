@@ -234,11 +234,12 @@ begin
 						if fade_color = '1' then
 							bright <= down;
 							fade := 0;
+							ram_write_buffer <= x"FFFFFF";
 						else
 							bright <= no_change;
 						end if;
 					when down =>
-						if (fade >= 32) then
+						if (fade >= 64) then
 							bright <= up;
 						else
 							fade := fade + 2;
@@ -278,7 +279,9 @@ begin
 			when idle =>
 				if ((io_write = '1') and ((cs_data='1') or (all_pxls = '1') or (fade_color = '1'))) then
 					if (fade_color = '1') then
-						ram_write_buffer <= ((data_in(10 downto 5) & "00") & (data_in(15 downto 11) & "000") & (data_in(4 downto 0) & "000"))-fade;
+						--ram_write_buffer <= ((data_in(10 downto 5) & "00") & (data_in(15 downto 11) & "000") & (data_in(4 downto 0) & "000"))-fade;
+						ram_write_buffer <= (ram_write_buffer(6 downto 0) - fade) & (ram_write_buffer(14 downto 7) - fade) &
+																										(ram_write_buffer(23 downto 15) - fade);
 						ram_we <= '1';
 						if (ram_write_addr >= x"ff") then
 							wstate <= storing;
