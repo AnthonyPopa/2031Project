@@ -819,9 +819,9 @@ https://fpgasoftware.intel.com/eula.
 	)
 )
 (symbol
-	(rect 296 880 464 1152)
+	(rect 296 880 464 1120)
 	(text "NeoPixelController" (rect 5 0 95 12)(font "Arial" ))
-	(text "inst13" (rect 8 256 37 268)(font "Arial" ))
+	(text "inst13" (rect 8 224 37 236)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -907,21 +907,14 @@ https://fpgasoftware.intel.com/eula.
 		(line (pt 0 208)(pt 16 208))
 	)
 	(port
-		(pt 0 224)
-		(input)
-		(text "clk_10" (rect 0 0 31 12)(font "Arial" ))
-		(text "clk_10" (rect 21 219 52 231)(font "Arial" ))
-		(line (pt 0 224)(pt 16 224))
-	)
-	(port
 		(pt 168 32)
 		(output)
 		(text "sda" (rect 0 0 17 12)(font "Arial" ))
-		(text "sda" (rect 133 27 150 39)(font "Arial" ))
+		(text "sda" (rect 133 27 147 39)(font "Arial" ))
 		(line (pt 168 32)(pt 152 32))
 	)
 	(drawing
-		(rectangle (rect 16 16 152 256))
+		(rectangle (rect 16 16 152 224))
 	)
 )
 (connector
@@ -1345,16 +1338,11 @@ https://fpgasoftware.intel.com/eula.
 	(pt 984 448)
 	(pt 1064 448)
 )
-(connector
-	(text "clock_10Hz" (rect 218 1088 272 1105)(font "Intel Clear" ))
-	(pt 296 1104)
-	(pt 208 1104)
-)
 (junction (pt 512 280))
 (title_block
 	(rect 976 1048 1344 1168)
 	(section (rect 0 24 368 48)(text "COMPANY" (rect 2 0 57 12)(font "Arial" ))(text "GaTech DDL" (rect 56 2 170 20)(font "Arial" (font_size 12)))(border))
-	(section (rect 0 96 240 120)(text "DATE" (rect 2 0 30 12)(font "Arial" ))(text "Sun Apr 17 15:26:12 2022" (rect 56 3 234 19)(font "Arial" (font_size 10)))(date)(border))
+	(section (rect 0 96 240 120)(text "DATE" (rect 2 0 30 12)(font "Arial" ))(text "Sun Apr 17 15:59:26 2022" (rect 56 3 234 19)(font "Arial" (font_size 10)))(date)(border))
 	(section (rect 0 48 368 72)(text "DESIGNER" (rect 2 0 59 12)(font "Arial" ))(text "Kevin Johnson, Tom Collins" (rect 56 2 286 20)(font "Arial" (font_size 12)))(border))
 	(section (rect 0 72 280 96)(text "NUMBER" (rect 2 0 49 12)(font "Arial" ))(text "1.00" (rect 56 1 85 17)(font "Arial" (font_size 10)))(border))
 	(section (rect 310 96 368 120)(text "OF" (rect 10 0 25 12)(font "Arial" ))(text "1" (rect 34 4 42 20)(font "Arial" (font_size 10))))
