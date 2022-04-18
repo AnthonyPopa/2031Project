@@ -203,7 +203,7 @@ begin
 	process(clk_10M, resetn, cs_addr, all_pxls, fade_color)
 	
 		variable all_pxls_addr : integer range 0 to 255;
-		variable fade : integer;
+		variable fade : integer range 0 to 32;
 
 	begin
 		-- For this implementation, saving the memory address
@@ -219,27 +219,7 @@ begin
 			elsif (all_pxls = '1' or fade_color = '1') then
 				case istate is
 				when init =>
-					if (fade_color = '1') then
-						bright <= down;
-						fade := 0; 
-					end if;
 					ram_write_addr <= x"00";
-					if (bright /= no_change) then
-						case bright is 
-							when up =>
-								fade := fade - 2;
-								if (fade <= 0) then
-									bright <= down;
-								end if;
-							when down =>
-								fade := fade + 2;
-								if (fade >= 32) then
-								bright <= up;
-								end if;
-							when others =>
-								bright <= no_change;
-						end case;
-					end if;
 					istate <= increment;
 				when increment =>
 					if (ram_write_addr >= x"ff") then
@@ -249,9 +229,29 @@ begin
 					end if;
 				end case;
 				
+				case bright is 
+					when no_change =>
+						if fade_color = '1' then
+							bright <= down;
+							fade := 0;
+						else
+							bright <= no_change;
+						end if;
+					when down =>
+						if (fade >= 32) then
+							bright <= up;
+						else
+							fade := fade + 2;
+						end if;
+					when up =>
+						if (fade <= 0) then 
+							bright <= down;
+						else
+							fade := fade - 2;
+						end if;
+				end case;
 			end if;
 		end if;
-	
 	
 		-- The sequnce of events needed to store data into memory will be
 		-- implemented with a state machine.
@@ -272,21 +272,23 @@ begin
 			-- Note that resetting this device does NOT clear the memory.
 			-- Clearing memory would require cycling through each address
 			-- and setting them all to 0.
+			
 		elsif rising_edge(clk_10M) then
 			case wstate is
 			when idle =>
 				if ((io_write = '1') and ((cs_data='1') or (all_pxls = '1') or (fade_color = '1'))) then
-					if (all_pxls = '1' or fade_color = '1') then
-						if (fade_color = '1') then
-							ram_write_buffer <= (data_in(10 downto 5) & "00")-fade & (data_in(15 downto 11) & "000")-fade & (data_in(4 downto 0) & "000")-fade;
-							ram_we <= '1';
-						elsif all_pxls = '1' then
-							ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
-							ram_we <= '1';
-						end if;
+					if (fade_color = '1') then
+						ram_write_buffer <= ((data_in(10 downto 5) & "00") & (data_in(15 downto 11) & "000") & (data_in(4 downto 0) & "000"))-fade;
+						ram_we <= '1';
 						if (ram_write_addr >= x"ff") then
 							wstate <= storing;
 						end if;
+					elsif (all_pxls = '1') then
+						ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
+						ram_we <= '1';
+						if (ram_write_addr >= x"ff") then
+							wstate <= storing;
+						end if;					
 					else
 						-- latch the current data into the temporary storage register,
 						-- because this is the only time it'll be available.
@@ -308,6 +310,7 @@ begin
 			when others =>
 				wstate <= idle;
 			end case;
+			
 		end if;
 	end process;
 
