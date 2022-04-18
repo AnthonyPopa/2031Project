@@ -207,6 +207,7 @@ begin
 	
 		variable timer : integer range 0 to 100;
 		variable counter : integer range 0 to 3;
+		variable offset : integer range 0 to 3;
 		variable color : integer range 0 to 6;
 
 	begin
@@ -215,7 +216,6 @@ begin
 		-- SCOMP sends it.
 		if resetn = '0' then
 			ram_write_addr <= x"00";
-			counter := 0;
 		elsif rising_edge(clk_10M) then
 			-- If SCOMP is writing to the address register...
 			if (io_write = '1') and (cs_addr='1') then
@@ -253,23 +253,31 @@ begin
 				case istate is
 				when init =>
 					ram_write_addr <= x"00";
-					rstate <= red;
-					counter := 0;
 					istate <= increment;
 				when increment =>
 					if (ram_write_addr >= x"FF") then
 						istate <= init;
+						counter := 0;
+						if (offset = 3) then
+							offset := 0;
+						else
+							offset := offset + 1;
+						end if;
 					else
 						ram_write_addr <= ram_write_addr + 1;
-						counter := counter + 1;
 						if (counter = 3) then
-							rstate <= red;
 							counter := 0;
 						else
-							rstate <= off;
+							counter := counter + 1;
 						end if;
 					end if;
 				end case;
+				
+				if (counter = offset) then
+					rstate <= red;
+				else
+					rstate <= off;
+				end if;
 			elsif ((wstate = storing) and (bit24 /= '1') and (ram_write_addr <= 255)) then
 				ram_write_addr <= ram_write_addr + 1;
 			end if;

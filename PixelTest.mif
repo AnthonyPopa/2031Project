@@ -10,5 +10,5 @@ CONTENT
   BEGIN
     [000..7FF] : 0000;  -- Default to NOP
 
-           000 : 98B7;  -- 	OUT RAINBOW
+           000 : 98B6;  -- 	OUT RUN
   END;
