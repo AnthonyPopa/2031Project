@@ -18,11 +18,13 @@ entity NeoPixelController is
 		io_write  : in   std_logic ;
 		cs_addr   : in   std_logic ;
 		cs_data   : in   std_logic ;
-		data_in   : inout   std_logic_vector(15 downto 0);
+		data_in   : in   std_logic_vector(15 downto 0);
 		all_pxls	 : in	  std_logic;
 		bit24     : in   std_logic;
 		bit24_2   : in   std_logic;
 		bit24_3   : in   std_logic;
+		run_pxl   : in   std_logic;
+		rainbow   : in   std_logic;
 		sda       : out  std_logic
 		
 	); 
@@ -49,7 +51,8 @@ architecture internals of NeoPixelController is
 	signal wstate: write_states;
 	type increment_states is (init, increment);
 	signal istate: increment_states;
-	
+	type run_states is (red, off);
+	signal rstate: run_states;
 
 	
 begin
@@ -202,7 +205,9 @@ begin
 	
 	process(clk_10M, resetn, cs_addr, all_pxls, bit24)
 	
-		variable all_pxls_addr : integer range 0 to 255;
+		variable timer : integer range 0 to 100;
+		variable counter : integer range 0 to 3;
+		variable color : integer range 0 to 6;
 
 	begin
 		-- For this implementation, saving the memory address
@@ -210,6 +215,7 @@ begin
 		-- SCOMP sends it.
 		if resetn = '0' then
 			ram_write_addr <= x"00";
+			counter := 0;
 		elsif rising_edge(clk_10M) then
 			-- If SCOMP is writing to the address register...
 			if (io_write = '1') and (cs_addr='1') then
@@ -226,7 +232,45 @@ begin
 						ram_write_addr <= ram_write_addr + 1;
 					end if;
 				end case;
-			elsif ((wstate = storing) and (all_pxls /= '1') and (bit24 /= '1') and (ram_write_addr <= 255)) then
+			elsif (rainbow = '1') then
+				case istate is
+				when init =>
+					ram_write_addr <= x"00";
+					istate <= increment;
+				when increment =>
+					if (ram_write_addr >= x"FF") then
+						istate <= init;
+						if (color = 6) then
+							color := 0;
+						else
+							color := color + 1;
+						end if;
+					else
+						ram_write_addr <= ram_write_addr + 1;
+					end if;
+				end case;
+			elsif (run_pxl = '1') then
+				case istate is
+				when init =>
+					ram_write_addr <= x"00";
+					rstate <= red;
+					counter := 0;
+					istate <= increment;
+				when increment =>
+					if (ram_write_addr >= x"FF") then
+						istate <= init;
+					else
+						ram_write_addr <= ram_write_addr + 1;
+						counter := counter + 1;
+						if (counter = 3) then
+							rstate <= red;
+							counter := 0;
+						else
+							rstate <= off;
+						end if;
+					end if;
+				end case;
+			elsif ((wstate = storing) and (bit24 /= '1') and (ram_write_addr <= 255)) then
 				ram_write_addr <= ram_write_addr + 1;
 			end if;
 		end if;
@@ -246,6 +290,7 @@ begin
 		if resetn = '0' then
 			wstate <= idle;
 			ram_we <= '0';
+			color := 0;
 			ram_write_buffer <= x"000000";
 			-- Note that resetting this device does NOT clear the memory.
 			-- Clearing memory would require cycling through each address
@@ -253,7 +298,7 @@ begin
 		elsif rising_edge(clk_10M) then
 			case wstate is
 			when idle =>
-				if (io_write = '1' and (cs_data='1' or all_pxls = '1' or bit24 = '1')) then
+				if (io_write = '1' and (cs_data='1' or all_pxls = '1' or bit24 = '1' or rainbow = '1' or run_pxl = '1')) then
 					if (all_pxls = '1') then
 						ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
 						ram_we <= '1';
@@ -264,6 +309,37 @@ begin
 						ram_write_buffer <= ram_write_buffer(23 downto 16) & data_in(7 downto 0) & ram_write_buffer(7 downto 0);
 						ram_we <= '1';
 						wstate <= idle2;
+					elsif (rainbow = '1') then
+						case color is
+						when 0 =>
+							ram_write_buffer <= x"00FF00";
+						when 1 =>
+							ram_write_buffer <= x"80FF00";
+						when 2 =>
+							ram_write_buffer <= x"FFFF00";
+						when 3 =>
+							ram_write_buffer <= x"FF0000";
+						when 4 =>
+							ram_write_buffer <= x"0000FF";
+						when 5 =>
+							ram_write_buffer <= x"0070FF";
+						when 6 =>
+							ram_write_buffer <= x"00FFFF";
+						end case;
+						
+						ram_we <= '1';
+						if (ram_write_addr >= x"FF") then
+							wstate <= storing;
+						end if;
+					elsif (run_pxl = '1') then
+						if (rstate = red) then
+							ram_write_buffer <= x"00FF00";
+						else
+							ram_write_buffer <= x"000000";
+						end if;
+						
+						ram_we <= '1';
+						wstate <= storing;
 					else
 						-- latch the current data into the temporary storage register,
 						-- because this is the only time it'll be available.

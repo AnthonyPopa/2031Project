@@ -1,5 +1,5 @@
 Assembler report for SCOMP
-Wed Apr 13 18:39:13 2022
+Mon Apr 18 17:45:39 2022
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -38,7 +38,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Wed Apr 13 18:39:13 2022 ;
+; Assembler Status      ; Successful - Mon Apr 18 17:45:39 2022 ;
 ; Revision Name         ; SCOMP                                 ;
 ; Top-level Entity Name ; SCOMP_System                          ;
 ; Family                ; Cyclone V                             ;
@@ -95,8 +95,8 @@ https://fpgasoftware.intel.com/eula.
 +----------------+--------------------------------------------------------------------------------------+
 ; Option         ; Setting                                                                              ;
 +----------------+--------------------------------------------------------------------------------------+
-; JTAG usercode  ; 0x00DD5CBA                                                                           ;
-; Checksum       ; 0x00DD5CBA                                                                           ;
+; JTAG usercode  ; 0x00DD1455                                                                           ;
+; Checksum       ; 0x00DD1455                                                                           ;
 +----------------+--------------------------------------------------------------------------------------+
 
 
@@ -106,13 +106,13 @@ https://fpgasoftware.intel.com/eula.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Wed Apr 13 18:39:09 2022
+    Info: Processing started: Mon Apr 18 17:45:32 2022
 Info: Command: quartus_asm --read_settings_files=on --write_settings_files=off SCOMP -c SCOMP
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 4857 megabytes
-    Info: Processing ended: Wed Apr 13 18:39:13 2022
-    Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:04
+    Info: Peak virtual memory: 4846 megabytes
+    Info: Processing ended: Mon Apr 18 17:45:39 2022
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:07
 
 

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for SCOMP
-Wed Apr 13 18:33:56 2022
+Mon Apr 18 17:40:43 2022
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -61,13 +61,13 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Apr 13 18:33:56 2022       ;
+; Analysis & Synthesis Status     ; Successful - Mon Apr 18 17:40:42 2022       ;
 ; Quartus Prime Version           ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name                   ; SCOMP                                       ;
 ; Top-level Entity Name           ; SCOMP_System                                ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 357                                         ;
+; Total registers                 ; 363                                         ;
 ; Total pins                      ; 64                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 38,912                                      ;
@@ -234,16 +234,16 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-----------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                             ;
 +---------------------------------------------+-----------------------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 394                                                                               ;
+; Estimate of Logic utilization (ALMs needed) ; 389                                                                               ;
 ;                                             ;                                                                                   ;
-; Combinational ALUT usage for logic          ; 541                                                                               ;
-;     -- 7 input functions                    ; 0                                                                                 ;
-;     -- 6 input functions                    ; 117                                                                               ;
-;     -- 5 input functions                    ; 172                                                                               ;
-;     -- 4 input functions                    ; 104                                                                               ;
-;     -- <=3 input functions                  ; 148                                                                               ;
+; Combinational ALUT usage for logic          ; 546                                                                               ;
+;     -- 7 input functions                    ; 3                                                                                 ;
+;     -- 6 input functions                    ; 99                                                                                ;
+;     -- 5 input functions                    ; 183                                                                               ;
+;     -- 4 input functions                    ; 89                                                                                ;
+;     -- <=3 input functions                  ; 172                                                                               ;
 ;                                             ;                                                                                   ;
-; Dedicated logic registers                   ; 357                                                                               ;
+; Dedicated logic registers                   ; 363                                                                               ;
 ;                                             ;                                                                                   ;
 ; I/O pins                                    ; 64                                                                                ;
 ; Total MLAB memory bits                      ; 0                                                                                 ;
@@ -255,9 +255,9 @@ https://fpgasoftware.intel.com/eula.
 ;     -- PLLs                                 ; 1                                                                                 ;
 ;                                             ;                                                                                   ;
 ; Maximum fan-out node                        ; PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
-; Maximum fan-out                             ; 382                                                                               ;
-; Total fan-out                               ; 4444                                                                              ;
-; Average fan-out                             ; 4.16                                                                              ;
+; Maximum fan-out                             ; 389                                                                               ;
+; Total fan-out                               ; 4432                                                                              ;
+; Average fan-out                             ; 4.11                                                                              ;
 +---------------------------------------------+-----------------------------------------------------------------------------------+
 
 
@@ -266,28 +266,28 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------+--------------------+--------------+
 ; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                        ; Entity Name        ; Library Name ;
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------+--------------------+--------------+
-; |SCOMP_System                             ; 541 (6)             ; 357 (0)                   ; 38912             ; 0          ; 64   ; 0            ; |SCOMP_System                                                                              ; SCOMP_System       ; work         ;
+; |SCOMP_System                             ; 546 (26)            ; 363 (0)                   ; 38912             ; 0          ; 64   ; 0            ; |SCOMP_System                                                                              ; SCOMP_System       ; work         ;
 ;    |DIG_IN:inst7|                         ; 0 (0)               ; 10 (10)                   ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|DIG_IN:inst7                                                                 ; DIG_IN             ; work         ;
 ;    |DIG_OUT:inst6|                        ; 0 (0)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|DIG_OUT:inst6                                                                ; DIG_OUT            ; work         ;
-;    |HEX_DISP_6:inst9|                     ; 44 (2)              ; 24 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9                                                             ; HEX_DISP_6         ; work         ;
+;    |HEX_DISP_6:inst9|                     ; 45 (3)              ; 24 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9                                                             ; HEX_DISP_6         ; work         ;
 ;       |HEX_DISP:inst1|                    ; 7 (7)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9|HEX_DISP:inst1                                              ; HEX_DISP           ; work         ;
 ;       |HEX_DISP:inst2|                    ; 7 (7)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9|HEX_DISP:inst2                                              ; HEX_DISP           ; work         ;
 ;       |HEX_DISP:inst3|                    ; 7 (7)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9|HEX_DISP:inst3                                              ; HEX_DISP           ; work         ;
 ;       |HEX_DISP:inst4|                    ; 7 (7)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9|HEX_DISP:inst4                                              ; HEX_DISP           ; work         ;
 ;       |HEX_DISP:inst5|                    ; 7 (7)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9|HEX_DISP:inst5                                              ; HEX_DISP           ; work         ;
 ;       |HEX_DISP:inst6|                    ; 7 (7)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|HEX_DISP_6:inst9|HEX_DISP:inst6                                              ; HEX_DISP           ; work         ;
-;    |IO_DECODER:inst3|                     ; 5 (5)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|IO_DECODER:inst3                                                             ; IO_DECODER         ; work         ;
-;    |NeoPixelController:inst13|            ; 163 (163)           ; 99 (99)                   ; 6144              ; 0          ; 0    ; 0            ; |SCOMP_System|NeoPixelController:inst13                                                    ; NeoPixelController ; work         ;
+;    |IO_DECODER:inst3|                     ; 13 (13)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|IO_DECODER:inst3                                                             ; IO_DECODER         ; work         ;
+;    |NeoPixelController:inst13|            ; 163 (163)           ; 105 (105)                 ; 6144              ; 0          ; 0    ; 0            ; |SCOMP_System|NeoPixelController:inst13                                                    ; NeoPixelController ; work         ;
 ;       |altsyncram:pixelRAM|               ; 0 (0)               ; 0 (0)                     ; 6144              ; 0          ; 0    ; 0            ; |SCOMP_System|NeoPixelController:inst13|altsyncram:pixelRAM                                ; altsyncram         ; work         ;
 ;          |altsyncram_2c24:auto_generated| ; 0 (0)               ; 0 (0)                     ; 6144              ; 0          ; 0    ; 0            ; |SCOMP_System|NeoPixelController:inst13|altsyncram:pixelRAM|altsyncram_2c24:auto_generated ; altsyncram_2c24    ; work         ;
 ;    |PLL_main:inst1|                       ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|PLL_main:inst1                                                               ; PLL_main           ; pll_main     ;
 ;       |PLL_main_0002:pll_main_inst|       ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|PLL_main:inst1|PLL_main_0002:pll_main_inst                                   ; PLL_main_0002      ; PLL_main     ;
 ;          |altera_pll:altera_pll_i|        ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|PLL_main:inst1|PLL_main_0002:pll_main_inst|altera_pll:altera_pll_i           ; altera_pll         ; work         ;
-;    |SCOMP:inst|                           ; 265 (225)           ; 178 (178)                 ; 32768             ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst                                                                   ; SCOMP              ; work         ;
+;    |SCOMP:inst|                           ; 241 (200)           ; 178 (178)                 ; 32768             ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst                                                                   ; SCOMP              ; work         ;
 ;       |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 32768             ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst|altsyncram:altsyncram_component                                   ; altsyncram         ; work         ;
 ;          |altsyncram_qm24:auto_generated| ; 0 (0)               ; 0 (0)                     ; 32768             ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst|altsyncram:altsyncram_component|altsyncram_qm24:auto_generated    ; altsyncram_qm24    ; work         ;
-;       |lpm_clshift:shifter|               ; 40 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst|lpm_clshift:shifter                                               ; lpm_clshift        ; work         ;
-;          |lpm_clshift_fuc:auto_generated| ; 40 (40)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst|lpm_clshift:shifter|lpm_clshift_fuc:auto_generated                ; lpm_clshift_fuc    ; work         ;
+;       |lpm_clshift:shifter|               ; 41 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst|lpm_clshift:shifter                                               ; lpm_clshift        ; work         ;
+;          |lpm_clshift_fuc:auto_generated| ; 41 (41)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|SCOMP:inst|lpm_clshift:shifter|lpm_clshift_fuc:auto_generated                ; lpm_clshift_fuc    ; work         ;
 ;    |TIMER:inst4|                          ; 33 (33)             ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|TIMER:inst4                                                                  ; TIMER              ; work         ;
 ;    |clk_div:inst5|                        ; 25 (25)             ; 21 (21)                   ; 0                 ; 0          ; 0    ; 0            ; |SCOMP_System|clk_div:inst5                                                                ; clk_div            ; work         ;
 +-------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------------------------------------------------------------------+--------------------+--------------+
@@ -405,12 +405,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 357   ;
+; Total registers                              ; 363   ;
 ; Number of registers using Synchronous Clear  ; 54    ;
 ; Number of registers using Synchronous Load   ; 130   ;
-; Number of registers using Asynchronous Clear ; 134   ;
+; Number of registers using Asynchronous Clear ; 139   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 223   ;
+; Number of registers using Clock Enable       ; 227   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -439,24 +439,25 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------+
-; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |SCOMP_System|NeoPixelController:inst13|ram_write_buffer[8]  ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|pixel_count[7]       ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |SCOMP_System|NeoPixelController:inst13|ram_write_buffer[9]  ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|pixel_count[3]       ;
 ; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|ram_read_addr[0]     ;
-; 3:1                ; 99 bits   ; 198 LEs       ; 0 LEs                ; 198 LEs                ; Yes        ; |SCOMP_System|SCOMP:inst|PC_stack[7][2]                      ;
-; 4:1                ; 23 bits   ; 46 LEs        ; 0 LEs                ; 46 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|pixel_buffer[10]     ;
-; 5:1                ; 6 bits    ; 18 LEs        ; 6 LEs                ; 12 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|ram_write_buffer[19] ;
-; 5:1                ; 5 bits    ; 15 LEs        ; 5 LEs                ; 10 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|ram_write_buffer[3]  ;
+; 3:1                ; 99 bits   ; 198 LEs       ; 0 LEs                ; 198 LEs                ; Yes        ; |SCOMP_System|SCOMP:inst|PC_stack[7][5]                      ;
+; 4:1                ; 23 bits   ; 46 LEs        ; 0 LEs                ; 46 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|pixel_buffer[16]     ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |SCOMP_System|NeoPixelController:inst13|counter[0]           ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 10 LEs               ; 5 LEs                  ; Yes        ; |SCOMP_System|NeoPixelController:inst13|ram_write_buffer[12] ;
 ; 6:1                ; 8 bits    ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|ram_write_addr[6]    ;
-; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |SCOMP_System|NeoPixelController:inst13|ram_write_buffer[17] ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |SCOMP_System|NeoPixelController:inst13|ram_write_buffer[16] ;
 ; 7:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |SCOMP_System|NeoPixelController:inst13|ram_write_buffer[0]  ;
-; 11:1               ; 11 bits   ; 77 LEs        ; 22 LEs               ; 55 LEs                 ; Yes        ; |SCOMP_System|SCOMP:inst|PC[7]                               ;
-; 12:1               ; 16 bits   ; 128 LEs       ; 96 LEs               ; 32 LEs                 ; Yes        ; |SCOMP_System|SCOMP:inst|AC[0]                               ;
+; 9:1                ; 5 bits    ; 30 LEs        ; 10 LEs               ; 20 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|ram_write_buffer[19] ;
+; 9:1                ; 5 bits    ; 30 LEs        ; 10 LEs               ; 20 LEs                 ; Yes        ; |SCOMP_System|NeoPixelController:inst13|ram_write_buffer[4]  ;
+; 11:1               ; 11 bits   ; 77 LEs        ; 22 LEs               ; 55 LEs                 ; Yes        ; |SCOMP_System|SCOMP:inst|PC[6]                               ;
+; 12:1               ; 16 bits   ; 128 LEs       ; 96 LEs               ; 32 LEs                 ; Yes        ; |SCOMP_System|SCOMP:inst|AC[2]                               ;
 ; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |SCOMP_System|NeoPixelController:inst13|enc_count            ;
 ; 3:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |SCOMP_System|NeoPixelController:inst13|reset_count          ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |SCOMP_System|NeoPixelController:inst13|data_in[1]           ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |SCOMP_System|IO_DATA[4]                                     ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |SCOMP_System|NeoPixelController:inst13|bit_count            ;
-; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |SCOMP_System|NeoPixelController:inst13|Selector17           ;
-; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |SCOMP_System|NeoPixelController:inst13|Selector20           ;
+; 10:1               ; 4 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; No         ; |SCOMP_System|NeoPixelController:inst13|Selector18           ;
 ; 12:1               ; 16 bits   ; 128 LEs       ; 128 LEs              ; 0 LEs                  ; No         ; |SCOMP_System|SCOMP:inst|Add1                                ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------+
 
@@ -928,34 +929,36 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 357                         ;
-;     CLR               ; 102                         ;
+; arriav_ff             ; 363                         ;
+;     CLR               ; 103                         ;
 ;     ENA               ; 42                          ;
-;     ENA CLR           ; 24                          ;
+;     ENA CLR           ; 28                          ;
 ;     ENA CLR SCLR SLD  ; 8                           ;
 ;     ENA SCLR          ; 27                          ;
 ;     ENA SLD           ; 122                         ;
 ;     SCLR              ; 19                          ;
-;     plain             ; 13                          ;
-; arriav_lcell_comb     ; 547                         ;
+;     plain             ; 14                          ;
+; arriav_lcell_comb     ; 552                         ;
 ;     arith             ; 96                          ;
 ;         1 data inputs ; 79                          ;
 ;         2 data inputs ; 1                           ;
 ;         5 data inputs ; 16                          ;
-;     normal            ; 451                         ;
+;     extend            ; 3                           ;
+;         7 data inputs ; 3                           ;
+;     normal            ; 453                         ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 7                           ;
-;         2 data inputs ; 20                          ;
-;         3 data inputs ; 46                          ;
-;         4 data inputs ; 104                         ;
-;         5 data inputs ; 156                         ;
-;         6 data inputs ; 117                         ;
+;         2 data inputs ; 28                          ;
+;         3 data inputs ; 62                          ;
+;         4 data inputs ; 89                          ;
+;         5 data inputs ; 167                         ;
+;         6 data inputs ; 99                          ;
 ; boundary_port         ; 64                          ;
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 40                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 4.50                        ;
-; Average LUT depth     ; 2.36                        ;
+; Max LUT depth         ; 5.00                        ;
+; Average LUT depth     ; 2.48                        ;
 +-----------------------+-----------------------------+
 
 
@@ -974,11 +977,11 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Wed Apr 13 18:33:42 2022
+    Info: Processing started: Mon Apr 18 17:40:29 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off SCOMP -c SCOMP
 Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file neopixelcontroller.vhd
-    Info (12022): Found design unit 1: NeoPixelController-internals File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 32
+    Info (12022): Found design unit 1: NeoPixelController-internals File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 34
     Info (12023): Found entity 1: NeoPixelController File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 13
 Info (12021): Found 2 design units, including 1 entities, in source file hex_disp.vhd
     Info (12022): Found design unit 1: HEX_DISP-a File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 17
@@ -996,7 +999,7 @@ Info (12021): Found 2 design units, including 1 entities, in source file timer.v
     Info (12022): Found design unit 1: TIMER-a File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/TIMER.vhd Line: 27
     Info (12023): Found entity 1: TIMER File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/TIMER.vhd Line: 17
 Info (12021): Found 2 design units, including 1 entities, in source file io_decoder.vhd
-    Info (12022): Found design unit 1: IO_DECODER-a File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/IO_DECODER.vhd Line: 30
+    Info (12022): Found design unit 1: IO_DECODER-a File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/IO_DECODER.vhd Line: 32
     Info (12023): Found entity 1: IO_DECODER File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/IO_DECODER.vhd Line: 9
 Info (12021): Found 2 design units, including 1 entities, in source file scomp.vhd
     Info (12022): Found design unit 1: SCOMP-a File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/SCOMP.vhd Line: 33
@@ -1012,9 +1015,9 @@ Info (12021): Found 1 design units, including 1 entities, in source file pll_mai
     Info (12023): Found entity 1: PLL_main_0002 File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/PLL_main/PLL_main_0002.v Line: 2
 Info (12127): Elaborating entity "SCOMP_System" for the top level hierarchy
 Info (12128): Elaborating entity "NeoPixelController" for hierarchy "NeoPixelController:inst13"
-Info (12128): Elaborating entity "altsyncram" for hierarchy "NeoPixelController:inst13|altsyncram:pixelRAM" File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 60
-Info (12130): Elaborated megafunction instantiation "NeoPixelController:inst13|altsyncram:pixelRAM" File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 60
-Info (12133): Instantiated megafunction "NeoPixelController:inst13|altsyncram:pixelRAM" with the following parameter: File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 60
+Info (12128): Elaborating entity "altsyncram" for hierarchy "NeoPixelController:inst13|altsyncram:pixelRAM" File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 63
+Info (12130): Elaborated megafunction instantiation "NeoPixelController:inst13|altsyncram:pixelRAM" File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 63
+Info (12133): Instantiated megafunction "NeoPixelController:inst13|altsyncram:pixelRAM" with the following parameter: File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 63
     Info (12134): Parameter "address_aclr_a" = "UNUSED"
     Info (12134): Parameter "address_aclr_b" = "NONE"
     Info (12134): Parameter "address_reg_b" = "CLOCK0"
@@ -1191,17 +1194,8 @@ Info (12133): Instantiated megafunction "SCOMP:inst|altsyncram:altsyncram_compon
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_qm24.tdf
     Info (12023): Found entity 1: altsyncram_qm24 File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/db/altsyncram_qm24.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_qm24" for hierarchy "SCOMP:inst|altsyncram:altsyncram_component|altsyncram_qm24:auto_generated" File: c:/intelfpga_lite/19.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Warning (113031): 18 out of 2048 addresses are reinitialized. The latest initialized data will replace the existing data. There are 18 warnings found, and 10 warnings are reported. File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/PixelTest.mif Line: 1
+Warning (113031): 1 out of 2048 addresses are reinitialized. The latest initialized data will replace the existing data. There are 1 warnings found, and 1 warnings are reported. File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/PixelTest.mif Line: 1
     Warning (113030): Memory Initialization File address 0 is reinitialized File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/ Line: 13
-    Warning (113030): Memory Initialization File address 1 is reinitialized File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/ Line: 14
-    Warning (113030): Memory Initialization File address 2 is reinitialized File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/ Line: 15
-    Warning (113030): Memory Initialization File address 3 is reinitialized File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/ Line: 16
-    Warning (113030): Memory Initialization File address 4 is reinitialized File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/ Line: 17
-    Warning (113030): Memory Initialization File address 5 is reinitialized File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/ Line: 18
-    Warning (113030): Memory Initialization File address 6 is reinitialized File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/ Line: 19
-    Warning (113030): Memory Initialization File address 7 is reinitialized File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/ Line: 20
-    Warning (113030): Memory Initialization File address 8 is reinitialized File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/ Line: 21
-    Warning (113030): Memory Initialization File address 9 is reinitialized File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/ Line: 22
 Info (12128): Elaborating entity "LPM_CLSHIFT" for hierarchy "SCOMP:inst|LPM_CLSHIFT:shifter" File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/SCOMP.vhd Line: 88
 Info (12130): Elaborated megafunction instantiation "SCOMP:inst|LPM_CLSHIFT:shifter" File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/SCOMP.vhd Line: 88
 Info (12133): Instantiated megafunction "SCOMP:inst|LPM_CLSHIFT:shifter" with the following parameter: File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/SCOMP.vhd Line: 88
@@ -1244,47 +1238,47 @@ Info (12128): Elaborating entity "HEX_DISP_6" for hierarchy "HEX_DISP_6:inst9"
 Info (12128): Elaborating entity "HEX_DISP" for hierarchy "HEX_DISP_6:inst9|HEX_DISP:inst1"
 Info (12128): Elaborating entity "DIG_OUT" for hierarchy "DIG_OUT:inst6"
 Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
-    Warning (13048): Converted tri-state node feeding "HEX_DISP_6:inst9|HEX_DISP:inst4|latched_hex[3]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node feeding "HEX_DISP_6:inst9|HEX_DISP:inst4|latched_hex[2]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node feeding "HEX_DISP_6:inst9|HEX_DISP:inst4|latched_hex[1]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node feeding "HEX_DISP_6:inst9|HEX_DISP:inst4|latched_hex[0]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node feeding "HEX_DISP_6:inst9|HEX_DISP:inst3|latched_hex[3]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node feeding "HEX_DISP_6:inst9|HEX_DISP:inst3|latched_hex[2]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node feeding "HEX_DISP_6:inst9|HEX_DISP:inst3|latched_hex[1]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node feeding "HEX_DISP_6:inst9|HEX_DISP:inst3|latched_hex[0]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node feeding "HEX_DISP_6:inst9|HEX_DISP:inst2|latched_hex[3]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node feeding "HEX_DISP_6:inst9|HEX_DISP:inst2|latched_hex[2]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node feeding "HEX_DISP_6:inst9|HEX_DISP:inst2|latched_hex[1]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node feeding "HEX_DISP_6:inst9|HEX_DISP:inst2|latched_hex[0]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node feeding "HEX_DISP_6:inst9|HEX_DISP:inst1|latched_hex[3]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node feeding "HEX_DISP_6:inst9|HEX_DISP:inst1|latched_hex[2]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node feeding "HEX_DISP_6:inst9|HEX_DISP:inst1|latched_hex[1]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
-    Warning (13048): Converted tri-state node feeding "HEX_DISP_6:inst9|HEX_DISP:inst1|latched_hex[0]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
+    Warning (13048): Converted tri-state node "IO_DATA[15]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
+    Warning (13048): Converted tri-state node "IO_DATA[14]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
+    Warning (13048): Converted tri-state node "IO_DATA[13]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
+    Warning (13048): Converted tri-state node "IO_DATA[12]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
+    Warning (13048): Converted tri-state node "IO_DATA[11]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/HEX_DISP.vhd Line: 25
+    Warning (13048): Converted tri-state node "IO_DATA[10]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 47
+    Warning (13048): Converted tri-state node "IO_DATA[9]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 47
+    Warning (13048): Converted tri-state node "IO_DATA[8]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 47
+    Warning (13048): Converted tri-state node "IO_DATA[7]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 47
+    Warning (13048): Converted tri-state node "IO_DATA[6]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 47
+    Warning (13048): Converted tri-state node "IO_DATA[5]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 47
+    Warning (13048): Converted tri-state node "IO_DATA[4]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 47
+    Warning (13048): Converted tri-state node "IO_DATA[3]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 47
+    Warning (13048): Converted tri-state node "IO_DATA[2]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 47
+    Warning (13048): Converted tri-state node "IO_DATA[1]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 47
+    Warning (13048): Converted tri-state node "IO_DATA[0]" into a selector File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 47
 Info (286030): Timing-Driven Synthesis is running
 Critical Warning (18061): Ignored Power-Up Level option on the following registers
-    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[9] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 127
-    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[8] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 127
-    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[7] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 127
-    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[6] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 127
-    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[5] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 127
-    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[3] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 127
-    Critical Warning (18010): Register NeoPixelController:inst13|bit_count[4] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 127
-    Critical Warning (18010): Register NeoPixelController:inst13|bit_count[2] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 127
-    Critical Warning (18010): Register NeoPixelController:inst13|bit_count[1] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 127
-    Critical Warning (18010): Register NeoPixelController:inst13|bit_count[0] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 127
+    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[9] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 130
+    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[8] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 130
+    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[7] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 130
+    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[6] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 130
+    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[5] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 130
+    Critical Warning (18010): Register NeoPixelController:inst13|reset_count[3] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 130
+    Critical Warning (18010): Register NeoPixelController:inst13|bit_count[4] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 130
+    Critical Warning (18010): Register NeoPixelController:inst13|bit_count[2] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 130
+    Critical Warning (18010): Register NeoPixelController:inst13|bit_count[1] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 130
+    Critical Warning (18010): Register NeoPixelController:inst13|bit_count[0] will power up to High File: C:/Users/Anthony Popa/OneDrive/Documents/2031Project/NeoPixelController.vhd Line: 130
 Info (17049): 1 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 849 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 855 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 12 input pins
     Info (21059): Implemented 52 output pins
-    Info (21061): Implemented 744 logic cells
+    Info (21061): Implemented 750 logic cells
     Info (21064): Implemented 40 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 40 warnings
-    Info: Peak virtual memory: 4910 megabytes
-    Info: Processing ended: Wed Apr 13 18:33:56 2022
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 31 warnings
+    Info: Peak virtual memory: 4926 megabytes
+    Info: Processing ended: Mon Apr 18 17:40:43 2022
     Info: Elapsed time: 00:00:14
-    Info: Total CPU time (on all processors): 00:00:29
+    Info: Total CPU time (on all processors): 00:00:28
 
 
