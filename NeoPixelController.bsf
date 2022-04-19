@@ -74,6 +74,13 @@ https://fpgasoftware.intel.com/eula.
 		(line (pt 0 128)(pt 16 128)(line_width 1))
 	)
 	(port
+		(pt 0 144)
+		(input)
+		(text "dyn_rb_all" (rect 0 0 42 12)(font "Arial" ))
+		(text "dyn_rb_all" (rect 21 139 63 151)(font "Arial" ))
+		(line (pt 0 144)(pt 16 144)(line_width 1))
+	)
+	(port
 		(pt 168 32)
 		(output)
 		(text "sda" (rect 0 0 14 12)(font "Arial" ))

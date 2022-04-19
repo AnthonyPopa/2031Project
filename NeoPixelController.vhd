@@ -20,6 +20,7 @@ entity NeoPixelController is
 		cs_data   : in   std_logic ;
 		data_in   : in   std_logic_vector(15 downto 0);
 		all_pxls	 : in	  std_logic;
+		dyn_rb_all: in   std_logic;
 		sda       : out  std_logic
 		
 	); 
@@ -46,7 +47,15 @@ architecture internals of NeoPixelController is
 	signal wstate: write_states;
 	type increment_states is (init, increment);
 	signal istate: increment_states;
-
+	type dynrball_states is (init, red_green, green_blue, blue_red);
+	signal rb_allstate: dynrball_states;
+	type dra_rg is (red_rg, green_rg);
+	signal rgstate: dra_rg;
+	type dra_gb is (green_gb, blue_gb);
+	signal gbstate: dra_gb;
+	type dra_br is (blue_br, red_br);
+	signal brstate: dra_br;
+	
 	
 begin
 
@@ -199,6 +208,7 @@ begin
 	process(clk_10M, resetn, cs_addr, all_pxls)
 	
 		variable all_pxls_addr : integer range 0 to 255;
+		variable crb_all : std_logic_vector(23 downto 0);
 
 	begin
 		-- For this implementation, saving the memory address
@@ -210,7 +220,7 @@ begin
 			-- If SCOMP is writing to the address register...
 			if (io_write = '1') and (cs_addr='1') then
 				ram_write_addr <= data_in(7 downto 0);
-			elsif (all_pxls = '1') then
+			elsif (all_pxls = '1' or dyn_rb_all = '1') then
 				case istate is
 				when init =>
 					ram_write_addr <= x"00";
@@ -222,7 +232,17 @@ begin
 						ram_write_addr <= ram_write_addr + 1;
 					end if;
 				end case;
-			end if;
+			--elsif (dyn_rb_all = '1') then
+				--case istate is
+				--when init =>
+					--ram_write_addr <= x"00";
+					--istate <= increment;
+				--when increment =>
+					--if wstate = storing then
+						--ram_write_addr <= ram_write_addr + 1;
+					--end if;
+				--end case;
+			--end if;
 		end if;
 	
 	
@@ -239,6 +259,7 @@ begin
 		-- that's a bad thing for memory control signals.
 		if resetn = '0' then
 			wstate <= idle;
+			rb_allstate <= init;
 			ram_we <= '0';
 			ram_write_buffer <= x"000000";
 			-- Note that resetting this device does NOT clear the memory.
@@ -247,24 +268,84 @@ begin
 		elsif rising_edge(clk_10M) then
 			case wstate is
 			when idle =>
-				if ((io_write = '1') and ((cs_data='1') or (all_pxls = '1'))) then
-					if (all_pxls = '1') then
-						ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
-						ram_we <= '1';
-						if (ram_write_addr > x"ff") then
-							wstate <= storing;
-						end if;
-					else
-						-- latch the current data into the temporary storage register,
-						-- because this is the only time it'll be available.
-						-- Convert RGB565 to 24-bit color
-						ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
-						-- can raise ram_we on the upcoming transition, because data
-						-- won't be stored until next clock cycle.
-						ram_we <= '1';
-						--Change state
+				if (io_write = '1') and (cs_data='1') then
+					-- latch the current data into the temporary storage register,
+					-- because this is the only time it'll be available.
+					-- Convert RGB565 to 24-bit color
+					ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
+					-- can raise ram_we on the upcoming transition, because data
+					-- won't be stored until next clock cycle.
+					ram_we <= '1';
+					--Change state
+					wstate <= storing;
+				elsif (all_pxls = '1') then 
+					ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
+					ram_we <= '1';
+					if (ram_write_addr >= x"ff") then
 						wstate <= storing;
 					end if;
+				elsif (dyn_rb_all = '1') then
+					if (ram_write_addr >= x"ff") then
+						wstate <= storing;
+					end if;
+					case rb_allstate is
+					when init =>
+						crb_all := x"00FF00";
+						ram_write_buffer <= crb_all;
+						rb_allstate <= red_green;
+						rgstate <= red_rg;
+						gbstate <= green_gb;
+						brstate <= blue_br;
+						--wstate <= storing;
+					when red_green =>
+						if crb_all = x"FF0000" then
+							rb_allstate <= green_blue;
+							--wstate <= storing;
+						end if;
+						case rgstate is
+						when red_rg =>
+							crb_all := crb_all - x"000100";
+							ram_write_buffer <= crb_all;
+							rgstate <= green_rg;
+						when green_rg =>
+							crb_all := crb_all + x"010000";
+							ram_write_buffer <= crb_all;
+							rgstate <= red_rg;
+						end case;
+						--wstate <= storing;
+					when green_blue =>
+						if crb_all = x"0000FF" then
+							rb_allstate <= blue_red;
+						end if;
+						case gbstate is
+							when green_gb =>
+								crb_all := crb_all - x"010000";
+								ram_write_buffer <= crb_all;
+								gbstate <= blue_gb;
+							when blue_gb =>
+								crb_all := crb_all + x"000001";
+								ram_write_buffer <= crb_all;
+								gbstate <= green_gb;
+						end case;
+						--wstate <= storing;
+					when blue_red =>
+						if crb_all = x"00FF00" then
+							rb_allstate <= red_green;
+						end if;
+						case brstate is
+						when blue_br =>	
+							crb_all := crb_all - x"000001";
+							ram_write_buffer <= crb_all;
+							brstate <= red_br;
+						when red_br =>
+							crb_all := crb_all + x"000100";
+							ram_write_buffer <= crb_all;
+							brstate <= blue_br;
+						end case;
+						--wstate <= storing;
+					end case;
+					ram_we <= '1';
+					--wstate <= storing;
 				end if;
 			when storing =>
 				-- All that's needed here is to lower ram_we.  The RAM will be
@@ -275,6 +356,7 @@ begin
 			when others =>
 				wstate <= idle;
 			end case;
+		end if;
 		end if;
 	end process;
 
