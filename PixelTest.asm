@@ -2,7 +2,7 @@
 
 ORG 0
 
-	OUT RUN
+	OUT RAINBOW
 
 ; IO address constants
 Switches:  EQU 000

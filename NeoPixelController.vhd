@@ -216,6 +216,7 @@ begin
 		-- SCOMP sends it.
 		if resetn = '0' then
 			ram_write_addr <= x"00";
+			timer := 0;
 		elsif rising_edge(clk_10M) then
 			-- If SCOMP is writing to the address register...
 			if (io_write = '1') and (cs_addr='1') then
@@ -236,7 +237,11 @@ begin
 				case istate is
 				when init =>
 					ram_write_addr <= x"00";
-					istate <= increment;
+					timer := timer + 1;
+					if (timer = 100) then
+						timer := 0;
+						istate <= increment;
+					end if;
 				when increment =>
 					if (ram_write_addr >= x"FF") then
 						istate <= init;
