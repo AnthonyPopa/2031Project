@@ -13,12 +13,16 @@ use altera_mf.altera_mf_components.all;
 LIBRARY LPM;
 USE LPM.LPM_COMPONENTS.ALL;
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 entity NeoPixelController is
 
 	port(
 		clk_10M   : in   std_logic;
 		resetn    : in   std_logic;
+<<<<<<< Updated upstream
 		io_write  : in   std_logic ;
 		cs_addr   : in   std_logic ;
 		cs_data   : in   std_logic ;
@@ -27,6 +31,19 @@ entity NeoPixelController is
 		sda       : out  std_logic;
 		io_bus   : inout   std_logic_vector(15 downto 0)
 		
+=======
+		io_write  : in   std_logic;
+		cs_addr   : in   std_logic;
+		cs_data   : in   std_logic;
+		data_in   : in   std_logic_vector(15 downto 0);
+		all_pxls	 : in	  std_logic;
+		bit24_r   : in   std_logic;
+		bit24_g   : in   std_logic;
+		bit24_b   : in   std_logic;
+		run_pxl   : in   std_logic;
+		rainbow   : in   std_logic;
+		sda       : out  std_logic
+>>>>>>> Stashed changes
 	); 
 
 end entity;
@@ -53,7 +70,11 @@ architecture internals of NeoPixelController is
 	signal ibus : std_logic_vector(15 downto 0);
 
 	-- RAM interface state machine signals
+<<<<<<< Updated upstream
 	type write_states is (idle, storing);
+=======
+	type write_states is (idle, W24_G, W24_B, storing);
+>>>>>>> Stashed changes
 	signal wstate: write_states;
 	type increment_states is (init, increment);
 	signal istate: increment_states;
@@ -104,6 +125,7 @@ begin
 		q_b => ram_read_data -- this will be our output signal. and is always connected to the ram_read_addr
 	);
 
+<<<<<<< Updated upstream
 	 BUS_Switcher: lpm_bustri
     GENERIC MAP (
       lpm_width => 16
@@ -116,6 +138,8 @@ begin
 		result => ibus, --ibus is the data insignal
 		data => ram_read_data(15 downto 11) & ram_read_data(23 downto 18) & ram_read_data(7 downto 3) --obus is the data outsignal
     );
+=======
+>>>>>>> Stashed changes
 
 	-- This process implements the NeoPixel protocol by
 	-- using several counters to keep track of clock cycles,
@@ -217,9 +241,19 @@ begin
 	
 	
 	
+<<<<<<< Updated upstream
 	process(clk_10M, resetn, cs_addr, all_pxls)
 	
 		variable all_pxls_addr : integer range 0 to 255;
+=======
+	process(clk_10M, resetn, cs_addr, all_pxls, bit24_r)
+	
+		variable timer : integer range 0 to 100;
+		variable counter : integer range 0 to 3;
+		variable offset : integer range 0 to 3;
+		variable color : integer range 0 to 6;
+		
+>>>>>>> Stashed changes
 
 	begin
 		-- For this implementation, saving the memory address
@@ -227,6 +261,10 @@ begin
 		-- SCOMP sends it.
 		if resetn = '0' then
 			ram_write_addr <= x"00";
+<<<<<<< Updated upstream
+=======
+			counter := 0;
+>>>>>>> Stashed changes
 		elsif rising_edge(clk_10M) then
 			-- If SCOMP is writing to the address register...
 			if (io_write = '1') and (cs_addr='1') then --iowrite and cs_addr are the signals from SCOMP that dictate that 1) its writing 2) its writing the address
@@ -247,9 +285,62 @@ begin
 						ram_write_addr <= ram_write_addr + 1;
 					end if;
 				end case;
+<<<<<<< Updated upstream
+=======
+			elsif (rainbow = '1') then
+				case istate is
+				when init =>
+					ram_write_addr <= x"00";
+					istate <= increment;
+				when increment =>
+					if (ram_write_addr >= x"FF") then
+						istate <= init;
+						if (color = 6) then
+							color := 0;
+						else
+							color := color + 1;
+						end if;
+					else
+						ram_write_addr <= ram_write_addr + 1;
+					end if;
+				end case;
+			elsif (run_pxl = '1') then
+				case istate is
+				when init =>
+					ram_write_addr <= x"00";
+					timer := timer + 1;
+					if (timer = 100) then
+						timer := 0;
+						istate <= increment;
+					end if;
+				when increment =>
+					if (ram_write_addr >= x"FF") then
+						istate <= init;
+						counter := 0;
+						if (offset = 3) then
+							offset := 0;
+						else
+							offset := offset + 1;
+						end if;
+					else
+						ram_write_addr <= ram_write_addr + 1;
+						if (counter = 3) then
+							counter := 0;
+						else
+							counter := counter + 1;
+						end if;
+					end if;
+				end case;
+				if (counter = offset) then
+					rstate <= red;
+				else
+					rstate <= off;
+				end if;
+			elsif ((wstate = storing) and (bit24_r /= '1') and (ram_write_addr <= 255)) then
+				ram_write_addr <= ram_write_addr + 1;
+>>>>>>> Stashed changes
 			end if;
 		end if;
-	
 	
 		-- The sequnce of events needed to store data into memory will be
 		-- implemented with a state machine.
@@ -272,6 +363,7 @@ begin
 		elsif rising_edge(clk_10M) then
 			case wstate is --write state
 			when idle =>
+<<<<<<< Updated upstream
 				if ((io_write = '1') and ((cs_data='1') or (all_pxls = '1'))) then
 					if (all_pxls = '1') then
 						ram_write_buffer <= ibus(10 downto 5) & "00" & ibus(15 downto 11) & "000" & ibus(4 downto 0) & "000"; --data in to the buffer
@@ -290,11 +382,65 @@ begin
 						--Change state
 						wstate <= storing;
 					end if;
+=======
+				if (io_write = '1' and cs_data='1') then
+					ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
+					ram_we <= '1';
+					wstate <= storing;
+				elsif (all_pxls = '1') then
+					ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
+					ram_we <= '1';
+					if (ram_write_addr >= x"FF") then
+						wstate <= storing;
+					end if;
+				elsif (bit24_r = '1') then
+					ram_write_buffer <= ram_write_buffer(23 downto 16) & data_in(7 downto 0) & ram_write_buffer(7 downto 0);
+					ram_we <= '1';
+					wstate <= W24_G;
+				elsif (rainbow = '1') then
+					case color is
+					when 0 =>
+						ram_write_buffer <= x"00FF00";
+					when 1 =>
+						ram_write_buffer <= x"80FF00";
+					when 2 =>
+						ram_write_buffer <= x"FFFF00";
+					when 3 =>
+						ram_write_buffer <= x"FF0000";
+					when 4 =>
+						ram_write_buffer <= x"0000FF";
+					when 5 =>
+						ram_write_buffer <= x"0070FF";
+					when 6 =>
+						ram_write_buffer <= x"00FFFF";
+					end case;
+					ram_we <= '1';
+					if (ram_write_addr >= x"FF") then
+						wstate <= storing;
+					end if;
+				elsif (run_pxl = '1') then
+					if (rstate = red) then
+						ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
+					else
+						ram_write_buffer <= x"000000";
+					end if;					
+					ram_we <= '1';
+					if (ram_write_addr >= x"FF") then
+						wstate <= storing;
+					end if;	
+				end if;
+			when W24_G =>
+				if (io_write = '1' and bit24_g = '1') then
+					ram_write_buffer <= data_in(7 downto 0) & ram_write_buffer(15 downto 0);
+					wstate <= W24_B;
+				end if;
+			when W24_B =>
+				if (io_write = '1' and bit24_b = '1') then
+					ram_write_buffer <= ram_write_buffer(23 downto 8) & data_in(7 downto 0);
+					wstate <= storing;
+>>>>>>> Stashed changes
 				end if;
 			when storing =>
-				-- All that's needed here is to lower ram_we.  The RAM will be
-				-- storing data on this clock edge, so ram_we can go low at the
-				-- same time.
 				ram_we <= '0';
 				wstate <= idle;
 			when others =>

@@ -1,5 +1,9 @@
 MIF/HEX Update report for SCOMP
+<<<<<<< Updated upstream
 Sun Apr 17 16:41:43 2022
+=======
+Tue Apr 19 18:56:48 2022
+>>>>>>> Stashed changes
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -36,7 +40,11 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------+
 ; MIF/HEX Update Summary                                        ;
 +-----------------------+---------------------------------------+
+<<<<<<< Updated upstream
 ; MIF/HEX Update Status ; Successful - Sun Apr 17 16:41:43 2022 ;
+=======
+; MIF/HEX Update Status ; Successful - Tue Apr 19 18:56:48 2022 ;
+>>>>>>> Stashed changes
 ; Revision Name         ; SCOMP                                 ;
 ; Top-level Entity Name ; SCOMP_System                          ;
 ; Family                ; Cyclone V                             ;
@@ -44,6 +52,7 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------+---------------------------------------+
 
 
+<<<<<<< Updated upstream
 +--------------------------------------------------------------------+
 ; MIF/HEX Update Processed Files                                     ;
 +--------------------------------------------------------------------+
@@ -52,6 +61,16 @@ https://fpgasoftware.intel.com/eula.
 ; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/PixelTest.mif ;
 ; C:/Users/gabeg/OneDrive/Documents/GitHub/2031Project/pixeldata.mif ;
 +--------------------------------------------------------------------+
+=======
++------------------------------------------------------------+
+; MIF/HEX Update Processed Files                             ;
++------------------------------------------------------------+
+; File Name                                                  ;
++------------------------------------------------------------+
+; C:/Users/jorda/Desktop/SCOMP_Project_spr22/ALLPXLSTest.mif ;
+; C:/Users/jorda/Desktop/SCOMP_Project_spr22/pixeldata.mif   ;
++------------------------------------------------------------+
+>>>>>>> Stashed changes
 
 
 +-------------------------+
@@ -60,6 +79,7 @@ https://fpgasoftware.intel.com/eula.
 Info: *******************************************************************
 Info: Running Quartus Prime MIF/HEX Update
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
+<<<<<<< Updated upstream
     Info: Processing started: Wed Mar 30 18:27:23 2022
 Info: Command: quartus_cdb SCOMP -c SCOMP --update_mif
 Warning (113031): 2 out of 2048 addresses are reinitialized. The latest initialized data will replace the existing data. There are 2 warnings found, and 2 warnings are reported. File: C:/Users/jorda/OneDrive - Georgia Institute of Technology/Classes/Spring 2022/ECE 2031/Labs/Lab 9/SCOMP_Project_spr22/pixeltest.mif Line: 1
@@ -72,6 +92,29 @@ Info: Quartus Prime MIF/HEX Update was successful. 0 errors, 3 warnings
     Info: Peak virtual memory: 4881 megabytes
     Info: Processing ended: Wed Mar 30 18:27:28 2022
     Info: Elapsed time: 00:00:05
+=======
+    Info: Processing started: Tue Apr 19 18:56:44 2022
+Info: Command: quartus_cdb SCOMP -c SCOMP --update_mif
+Critical Warning (127005): Memory depth (256) in the design file differs from memory depth (4) in the Memory Initialization File "C:/Users/jorda/Desktop/SCOMP_Project_spr22/pixeldata.mif" -- setting initial value for remaining addresses to 0
+Warning (113031): 15 out of 2048 addresses are reinitialized. The latest initialized data will replace the existing data. There are 15 warnings found, and 10 warnings are reported. File: C:/Users/jorda/Desktop/SCOMP_Project_spr22/ALLPXLSTest.mif Line: 1
+    Warning (113030): Memory Initialization File address 0 is reinitialized File: C:/Users/jorda/Desktop/SCOMP_Project_spr22/ Line: 13
+    Warning (113030): Memory Initialization File address 1 is reinitialized File: C:/Users/jorda/Desktop/SCOMP_Project_spr22/ Line: 14
+    Warning (113030): Memory Initialization File address 2 is reinitialized File: C:/Users/jorda/Desktop/SCOMP_Project_spr22/ Line: 15
+    Warning (113030): Memory Initialization File address 3 is reinitialized File: C:/Users/jorda/Desktop/SCOMP_Project_spr22/ Line: 16
+    Warning (113030): Memory Initialization File address 4 is reinitialized File: C:/Users/jorda/Desktop/SCOMP_Project_spr22/ Line: 17
+    Warning (113030): Memory Initialization File address 5 is reinitialized File: C:/Users/jorda/Desktop/SCOMP_Project_spr22/ Line: 18
+    Warning (113030): Memory Initialization File address 6 is reinitialized File: C:/Users/jorda/Desktop/SCOMP_Project_spr22/ Line: 19
+    Warning (113030): Memory Initialization File address 7 is reinitialized File: C:/Users/jorda/Desktop/SCOMP_Project_spr22/ Line: 20
+    Warning (113030): Memory Initialization File address 8 is reinitialized File: C:/Users/jorda/Desktop/SCOMP_Project_spr22/ Line: 21
+    Warning (113030): Memory Initialization File address 9 is reinitialized File: C:/Users/jorda/Desktop/SCOMP_Project_spr22/ Line: 22
+Info (39024): Processed the following Memory Initialization File(s)
+    Info (39025): Processed Memory Initialization File C:/Users/jorda/Desktop/SCOMP_Project_spr22/ALLPXLSTest.mif File: C:/Users/jorda/Desktop/SCOMP_Project_spr22/ALLPXLSTest.mif Line: 0
+    Info (39025): Processed Memory Initialization File C:/Users/jorda/Desktop/SCOMP_Project_spr22/pixeldata.mif File: C:/Users/jorda/Desktop/SCOMP_Project_spr22/pixeldata.mif Line: 0
+Info: Quartus Prime MIF/HEX Update was successful. 0 errors, 12 warnings
+    Info: Peak virtual memory: 4879 megabytes
+    Info: Processing ended: Tue Apr 19 18:56:48 2022
+    Info: Elapsed time: 00:00:04
+>>>>>>> Stashed changes
     Info: Total CPU time (on all processors): 00:00:04
 
 

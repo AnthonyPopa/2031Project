@@ -1,0 +1,27 @@
+-- Altera Memory Initialization File (MIF)
+
+DEPTH = 2048;
+WIDTH = 16;
+
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+
+CONTENT
+  BEGIN
+    [000..7FF] : 0000;  -- Default to NOP
+
+           000 : 98B7;  -- 	OUT	 RAINBOW_T
+           001 : 0200;  -- test1:     DW &B1000000000
+           002 : 0100;  -- test2:     DW &B0100000000
+           003 : 0080;  -- test3:     DW &B0010000000
+           004 : 0040;  -- test4:     DW &B0001000000
+           005 : 0020;  -- test5:     DW &B0000100000
+           006 : 0010;  -- test6:     DW &B0000010000
+           007 : 0008;  -- test7:     DW &B0000001000
+           008 : 0000;  -- down:      DW &B0000000000
+           009 : FFFF;  -- COLOR1:    DW &HFFFF
+           00A : 0044;  -- BIT_r_24:  DW &H44
+           00B : 00EC;  -- BIT_g_24:  DW &HEC
+           00C : 00F2;  -- BIT_b_24:  DW &HF2
+           00D : 97EE;  -- BIT_C_16:  DW &H97EE
+  END;

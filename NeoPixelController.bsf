@@ -63,8 +63,41 @@ https://fpgasoftware.intel.com/eula.
 		(pt 0 112)
 		(input)
 		(text "all_pxls" (rect 0 0 28 12)(font "Arial" ))
+<<<<<<< Updated upstream
 		(text "all_pxls" (rect 21 107 49 119)(font "Arial" ))
 		(line (pt 0 112)(pt 16 112)(line_width 1))
+=======
+		(text "all_pxls" (rect 21 123 49 135)(font "Arial" ))
+		(line (pt 0 128)(pt 16 128)(line_width 1))
+	)
+	(port
+		(pt 0 144)
+		(input)
+		(text "bit24_r" (rect 0 0 28 12)(font "Arial" ))
+		(text "bit24_r" (rect 21 139 49 151)(font "Arial" ))
+		(line (pt 0 144)(pt 16 144)(line_width 1))
+	)
+	(port
+		(pt 0 160)
+		(input)
+		(text "bit24_g" (rect 0 0 29 12)(font "Arial" ))
+		(text "bit24_g" (rect 21 155 50 167)(font "Arial" ))
+		(line (pt 0 160)(pt 16 160)(line_width 1))
+	)
+	(port
+		(pt 0 176)
+		(input)
+		(text "bit24_b" (rect 0 0 29 12)(font "Arial" ))
+		(text "bit24_b" (rect 21 171 50 183)(font "Arial" ))
+		(line (pt 0 176)(pt 16 176)(line_width 1))
+	)
+	(port
+		(pt 0 192)
+		(input)
+		(text "run_pxl" (rect 0 0 29 12)(font "Arial" ))
+		(text "run_pxl" (rect 21 187 50 199)(font "Arial" ))
+		(line (pt 0 192)(pt 16 192)(line_width 1))
+>>>>>>> Stashed changes
 	)
 	(port
 		(pt 184 32)

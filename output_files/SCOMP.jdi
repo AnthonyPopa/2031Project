@@ -1,6 +1,10 @@
 <sld_project_info>
   <project>
+<<<<<<< Updated upstream
     <hash md5_digest_80b="3c21b4c2a0a6058f5f48"/>
+=======
+    <hash md5_digest_80b="46dc3c5dd27acd4628c5"/>
+>>>>>>> Stashed changes
   </project>
   <file_info>
     <file device="5CSXFC6D6F31C6" path="SCOMP.sof" usercode="0xFFFFFFFF"/>

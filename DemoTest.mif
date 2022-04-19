@@ -1,0 +1,91 @@
+-- Altera Memory Initialization File (MIF)
+
+DEPTH = 2048;
+WIDTH = 16;
+
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+
+CONTENT
+  BEGIN
+    [000..7FF] : 0000;  -- Default to NOP
+
+           000 : 9000;  -- START:			IN Switches
+           001 : 5048;  -- 				OR Down
+           002 : 4004;  -- 				JZERO Continue
+           003 : 2800;  -- 				JUMP Start
+           004 : 9000;  -- Continue:		IN SWITCHES
+           005 : 5048;  -- 				OR Down
+           006 : 3808;  -- 				JPOS Test
+           007 : 2804;  -- 				JUMP Continue
+           008 : 9000;  -- TEST:			IN SWITCHES
+           009 : 2041;  -- 				SUB test1
+           00A : 403C;  -- 				JZERO Rainbow
+           00B : 9000;  -- 				IN SWITCHES
+           00C : 2042;  -- 				SUB test2
+           00D : 4023;  -- 				JZERO Running
+           00E : 9000;  -- 				IN SWITCHES
+           00F : 2043;  -- 				SUB test3
+           010 : 4029;  -- 				JZERO BIT16
+           011 : 9000;  -- 				IN SWITCHES
+           012 : 2044;  -- 				SUB test4
+           013 : 402E;  -- 				JZERO BIT24
+           014 : 9000;  -- 				IN SWITCHES
+           015 : 2045;  -- 				SUB test5
+           016 : 4035;  -- 				JZERO ALLPIXL
+           017 : 9000;  -- 				IN SWITCHES
+           018 : 2046;  -- 				SUB test6
+           019 : 403B;  -- 				JZERO Read_T
+           01A : 9000;  -- 				IN SWITCHES
+           01B : 2047;  -- 				SUB test7
+           01C : 401E;  -- 				JZERO RainbowALL
+           01D : 2808;  -- 				JUMP TEST
+           01E : 98B8;  -- RainbowALL:		OUT RAINBOW_D
+           01F : 9000;  -- 				IN Switches
+           020 : 5048;  -- 				OR Down
+           021 : 4000;  -- 				JZERO Start
+           022 : 281E;  -- 				JUMP RainbowALL
+           023 : 084D;  -- Running:		LOAD BIT_C_16
+           024 : 98B6;  -- 				OUT RUN
+           025 : 9000;  -- 				IN Switches
+           026 : 5048;  -- 				OR Down
+           027 : 4000;  -- 				JZERO Start
+           028 : 2823;  -- 				JUMP Running
+           029 : B804;  -- BIT16:			LOADI 4
+           02A : 98B0;  -- 				OUT PXL_A
+           02B : 084D;  -- 				LOAD BIT_c_16
+           02C : 98B1;  -- 				OUT PXL_D
+           02D : 2800;  -- 				JUMP Start
+           02E : 084A;  -- BIT24:			LOAD BIT_r_24
+           02F : 98B3;  -- 				OUT RED
+           030 : 084B;  -- 				LOAD BIT_g_24
+           031 : 98B4;  -- 				OUT GREEN
+           032 : 084C;  -- 				LOAD BIT_b_24
+           033 : 98B5;  -- 				OUT BLUE
+           034 : 2800;  -- 				JUMP Start
+           035 : 0849;  -- ALLPIXL:	   	LOAD COLOR1
+           036 : 98B2;  -- 				OUT  ALL_PXLS
+           037 : 9000;  -- 				IN Switches
+           038 : 5048;  -- 				OR Down
+           039 : 4000;  -- 				JZERO Start
+           03A : 2835;  -- 				JUMP ALLPIXL
+           03B : 2800;  -- 			    JUMP Start
+           03C : 98B7;  -- Rainbow:		OUT RAINBOW_T
+           03D : 9000;  -- 				IN Switches
+           03E : 5048;  -- 				OR Down
+           03F : 4000;  -- 				JZERO Start
+           040 : 283C;  -- 				JUMP Rainbow				
+           041 : 0200;  -- test1:     DW &B1000000000
+           042 : 0100;  -- test2:     DW &B0100000000
+           043 : 0080;  -- test3:     DW &B0010000000
+           044 : 0040;  -- test4:     DW &B0001000000
+           045 : 0020;  -- test5:     DW &B0000100000
+           046 : 0010;  -- test6:     DW &B0000010000
+           047 : 0008;  -- test7:     DW &B0000001000
+           048 : 0000;  -- down:      DW &B0000000000
+           049 : FFFF;  -- COLOR1:    DW &HFFFF
+           04A : 0044;  -- BIT_r_24:  DW &H44
+           04B : 00EC;  -- BIT_g_24:  DW &HEC
+           04C : 00F2;  -- BIT_b_24:  DW &HF2
+           04D : 97EE;  -- BIT_C_16:  DW &H97EE
+  END;

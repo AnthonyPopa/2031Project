@@ -1,5 +1,9 @@
 Flow report for SCOMP
+<<<<<<< Updated upstream
 Wed Apr 06 18:00:57 2022
+=======
+Tue Apr 19 19:45:39 2022
+>>>>>>> Stashed changes
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -41,16 +45,26 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
+<<<<<<< Updated upstream
 ; Flow Status                     ; Successful - Wed Apr 06 18:00:57 2022       ;
+=======
+; Flow Status                     ; Successful - Tue Apr 19 19:45:39 2022       ;
+>>>>>>> Stashed changes
 ; Quartus Prime Version           ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name                   ; SCOMP                                       ;
 ; Top-level Entity Name           ; SCOMP_System                                ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSXFC6D6F31C6                              ;
 ; Timing Models                   ; Final                                       ;
+<<<<<<< Updated upstream
 ; Logic utilization (in ALMs)     ; N/A                                         ;
 ; Total registers                 ; 346                                         ;
 ; Total pins                      ; 64                                          ;
+=======
+; Logic utilization (in ALMs)     ; 383 / 41,910 ( < 1 % )                      ;
+; Total registers                 ; 394                                         ;
+; Total pins                      ; 64 / 499 ( 13 % )                           ;
+>>>>>>> Stashed changes
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 38,912                                      ;
 ; Total DSP Blocks                ; 0                                           ;
@@ -68,7 +82,11 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
+<<<<<<< Updated upstream
 ; Start date & time ; 04/06/2022 18:00:44 ;
+=======
+; Start date & time ; 04/19/2022 19:42:16 ;
+>>>>>>> Stashed changes
 ; Main task         ; Compilation         ;
 ; Revision Name     ; SCOMP               ;
 +-------------------+---------------------+
@@ -80,7 +98,11 @@ https://fpgasoftware.intel.com/eula.
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name  ; Section Id                        ;
 +-------------------------------------+----------------------------------------+---------------+--------------+-----------------------------------+
 ; ADVANCED_PHYSICAL_OPTIMIZATION      ; Off                                    ; On            ; --           ; --                                ;
+<<<<<<< Updated upstream
 ; COMPILER_SIGNATURE_ID               ; 119438745688175.164928244431716        ; --            ; --           ; --                                ;
+=======
+; COMPILER_SIGNATURE_ID               ; 119438745688175.165041173616208        ; --            ; --           ; --                                ;
+>>>>>>> Stashed changes
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --           ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --           ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --           ; eda_board_design_signal_integrity ;
@@ -114,8 +136,17 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
+<<<<<<< Updated upstream
 ; Analysis & Synthesis ; 00:00:14     ; 1.0                     ; 4883 MB             ; 00:00:23                           ;
 ; Total                ; 00:00:14     ; --                      ; --                  ; 00:00:23                           ;
+=======
+; Analysis & Synthesis ; 00:00:14     ; 1.0                     ; 4885 MB             ; 00:00:30                           ;
+; Fitter               ; 00:02:43     ; 1.0                     ; 6544 MB             ; 00:03:13                           ;
+; Assembler            ; 00:00:08     ; 1.0                     ; 4856 MB             ; 00:00:07                           ;
+; Timing Analyzer      ; 00:00:10     ; 1.4                     ; 5207 MB             ; 00:00:14                           ;
+; EDA Netlist Writer   ; 00:00:02     ; 1.0                     ; 4838 MB             ; 00:00:02                           ;
+; Total                ; 00:03:17     ; --                      ; --                  ; 00:04:06                           ;
+>>>>>>> Stashed changes
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -125,6 +156,13 @@ https://fpgasoftware.intel.com/eula.
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
 ; Analysis & Synthesis ; Jordans-SLS      ; Windows 10 ; 10.0       ; x86_64         ;
+<<<<<<< Updated upstream
+=======
+; Fitter               ; Jordans-SLS      ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; Jordans-SLS      ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; Jordans-SLS      ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; Jordans-SLS      ; Windows 10 ; 10.0       ; x86_64         ;
+>>>>>>> Stashed changes
 +----------------------+------------------+------------+------------+----------------+
 
 

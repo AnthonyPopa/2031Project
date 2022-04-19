@@ -706,7 +706,11 @@ https://fpgasoftware.intel.com/eula.
 	)
 )
 (symbol
+<<<<<<< Updated upstream
 	(rect 776 224 1008 400)
+=======
+	(rect 792 184 1024 456)
+>>>>>>> Stashed changes
 	(text "IO_DECODER" (rect 5 0 78 12)(font "Arial" ))
 	(text "inst3" (rect 8 160 31 172)(font "Arial" ))
 	(port
@@ -795,6 +799,92 @@ https://fpgasoftware.intel.com/eula.
 		(line (pt 0 32)(pt 16 32))
 	)
 	(port
+<<<<<<< Updated upstream
+		(pt 0 48)
+		(input)
+		(text "resetn" (rect 0 0 30 12)(font "Arial" ))
+		(text "resetn" (rect 21 43 51 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "io_write" (rect 0 0 36 12)(font "Arial" ))
+		(text "io_write" (rect 21 59 57 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "cs_addr" (rect 0 0 38 12)(font "Arial" ))
+		(text "cs_addr" (rect 21 75 59 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80))
+=======
+		(pt 232 160)
+		(output)
+		(text "BIT24_R" (rect 0 0 42 12)(font "Arial" ))
+		(text "BIT24_R" (rect 176 155 211 167)(font "Arial" ))
+		(line (pt 232 160)(pt 216 160))
+	)
+	(port
+		(pt 232 176)
+		(output)
+		(text "BIT24_G" (rect 0 0 42 12)(font "Arial" ))
+		(text "BIT24_G" (rect 176 171 211 183)(font "Arial" ))
+		(line (pt 232 176)(pt 216 176))
+	)
+	(port
+		(pt 232 192)
+		(output)
+		(text "BIT24_B" (rect 0 0 41 12)(font "Arial" ))
+		(text "BIT24_B" (rect 177 187 211 199)(font "Arial" ))
+		(line (pt 232 192)(pt 216 192))
+>>>>>>> Stashed changes
+	)
+	(port
+		(pt 0 96)
+		(input)
+		(text "cs_data" (rect 0 0 38 12)(font "Arial" ))
+		(text "cs_data" (rect 21 91 59 103)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "data_in[15..0]" (rect 0 0 67 12)(font "Arial" ))
+		(text "data_in[15..0]" (rect 21 107 88 119)(font "Arial" ))
+		(line (pt 0 112)(pt 16 112)(line_width 3))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "all_pxls" (rect 0 0 36 12)(font "Arial" ))
+		(text "all_pxls" (rect 21 123 57 135)(font "Arial" ))
+		(line (pt 0 128)(pt 16 128))
+	)
+	(port
+		(pt 168 32)
+		(output)
+		(text "sda" (rect 0 0 17 12)(font "Arial" ))
+		(text "sda" (rect 133 27 150 39)(font "Arial" ))
+		(line (pt 168 32)(pt 152 32))
+	)
+	(drawing
+		(rectangle (rect 16 16 152 160))
+	)
+)
+(symbol
+	(rect 312 880 480 1120)
+	(text "NeoPixelController" (rect 5 0 95 12)(font "Arial" ))
+	(text "inst13" (rect 8 224 37 236)(font "Arial" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk_10M" (rect 0 0 40 12)(font "Arial" ))
+		(text "clk_10M" (rect 21 27 61 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
 		(pt 0 48)
 		(input)
 		(text "resetn" (rect 0 0 30 12)(font "Arial" ))
@@ -837,14 +927,49 @@ https://fpgasoftware.intel.com/eula.
 		(line (pt 0 128)(pt 16 128))
 	)
 	(port
+		(pt 0 144)
+		(input)
+		(text "bit24_r" (rect 0 0 33 12)(font "Arial" ))
+		(text "bit24_r" (rect 21 139 54 151)(font "Arial" ))
+		(line (pt 0 144)(pt 16 144))
+	)
+	(port
+		(pt 0 160)
+		(input)
+		(text "bit24_g" (rect 0 0 35 12)(font "Arial" ))
+		(text "bit24_g" (rect 21 155 56 167)(font "Arial" ))
+		(line (pt 0 160)(pt 16 160))
+	)
+	(port
+		(pt 0 176)
+		(input)
+		(text "bit24_b" (rect 0 0 35 12)(font "Arial" ))
+		(text "bit24_b" (rect 21 171 56 183)(font "Arial" ))
+		(line (pt 0 176)(pt 16 176))
+	)
+	(port
+		(pt 0 192)
+		(input)
+		(text "run_pxl" (rect 0 0 35 12)(font "Arial" ))
+		(text "run_pxl" (rect 21 187 56 199)(font "Arial" ))
+		(line (pt 0 192)(pt 16 192))
+	)
+	(port
+		(pt 0 208)
+		(input)
+		(text "rainbow" (rect 0 0 36 12)(font "Arial" ))
+		(text "rainbow" (rect 21 203 57 215)(font "Arial" ))
+		(line (pt 0 208)(pt 16 208))
+	)
+	(port
 		(pt 168 32)
 		(output)
 		(text "sda" (rect 0 0 17 12)(font "Arial" ))
-		(text "sda" (rect 133 27 150 39)(font "Arial" ))
+		(text "sda" (rect 133 27 147 39)(font "Arial" ))
 		(line (pt 168 32)(pt 152 32))
 	)
 	(drawing
-		(rectangle (rect 16 16 152 160))
+		(rectangle (rect 16 16 152 224))
 	)
 )
 (connector
@@ -994,6 +1119,41 @@ https://fpgasoftware.intel.com/eula.
 	(pt 344 128)
 )
 (connector
+	(text "clk_10MHz" (rect 234 896 287 913)(font "Intel Clear" ))
+	(pt 312 912)
+	(pt 224 912)
+)
+(connector
+	(text "resetn" (rect 234 912 263 929)(font "Intel Clear" ))
+	(pt 312 928)
+	(pt 224 928)
+)
+(connector
+	(text "IO_WRITE" (rect 232 928 280 945)(font "Intel Clear" ))
+	(pt 312 944)
+	(pt 224 944)
+)
+(connector
+	(text "PXL_A_EN" (rect 232 944 283 961)(font "Intel Clear" ))
+	(pt 312 960)
+	(pt 224 960)
+)
+(connector
+	(text "PXL_D_EN" (rect 232 960 283 977)(font "Intel Clear" ))
+	(pt 312 976)
+	(pt 224 976)
+)
+(connector
+	(text "IO_DATA[15..0]" (rect 234 976 307 993)(font "Intel Clear" ))
+	(pt 312 992)
+	(pt 224 992)
+	(bus)
+)
+(connector
+	(pt 480 912)
+	(pt 488 912)
+)
+(connector
 	(text "segments[41..0]" (rect 1032 688 1107 705)(font "Intel Clear" ))
 	(pt 1032 704)
 	(pt 1120 704)
@@ -1128,6 +1288,7 @@ https://fpgasoftware.intel.com/eula.
 	(pt 1088 136)
 )
 (connector
+<<<<<<< Updated upstream
 	(text "IO_ADDR[10..0]" (rect 690 240 764 257)(font "Intel Clear" ))
 	(pt 680 256)
 	(pt 776 256)
@@ -1217,12 +1378,122 @@ https://fpgasoftware.intel.com/eula.
 (connector
 	(pt 448 912)
 	(pt 488 912)
+=======
+	(text "SWITCH_EN" (rect 1034 200 1091 217)(font "Intel Clear" ))
+	(pt 1024 216)
+	(pt 1104 216)
+)
+(connector
+	(text "LED_EN" (rect 1034 216 1071 233)(font "Intel Clear" ))
+	(pt 1024 232)
+	(pt 1104 232)
+)
+(connector
+	(text "TIMER_EN" (rect 1034 232 1083 249)(font "Intel Clear" ))
+	(pt 1024 248)
+	(pt 1104 248)
+)
+(connector
+	(text "HEX0_EN" (rect 1034 248 1078 265)(font "Intel Clear" ))
+	(pt 1024 264)
+	(pt 1104 264)
+)
+(connector
+	(text "HEX1_EN" (rect 1034 264 1078 281)(font "Intel Clear" ))
+	(pt 1024 280)
+	(pt 1104 280)
+)
+(connector
+	(text "PXL_A_EN" (rect 1032 280 1083 297)(font "Intel Clear" ))
+	(pt 1104 296)
+	(pt 1024 296)
+)
+(connector
+	(text "PXL_D_EN" (rect 1032 296 1083 313)(font "Intel Clear" ))
+	(pt 1104 312)
+	(pt 1024 312)
+)
+(connector
+	(text "IO_ADDR[10..0]" (rect 706 200 780 217)(font "Intel Clear" ))
+	(pt 696 216)
+	(pt 792 216)
+	(bus)
+)
+(connector
+	(text "IO_CYCLE" (rect 706 216 755 233)(font "Intel Clear" ))
+	(pt 696 232)
+	(pt 792 232)
+)
+(connector
+	(text "ALL_PXLS" (rect 1034 312 1084 329)(font "Intel Clear" ))
+	(pt 1024 328)
+	(pt 1104 328)
+)
+(connector
+	(text "BIT24_R" (rect 1034 328 1074 345)(font "Intel Clear" ))
+	(pt 1024 344)
+	(pt 1104 344)
+)
+(connector
+	(text "BIT24_G" (rect 1034 344 1074 361)(font "Intel Clear" ))
+	(pt 1024 360)
+	(pt 1104 360)
+)
+(connector
+	(text "BIT24_B" (rect 1034 360 1074 377)(font "Intel Clear" ))
+	(pt 1024 376)
+	(pt 1104 376)
+)
+(connector
+	(text "RUN_PXL" (rect 1034 376 1081 393)(font "Intel Clear" ))
+	(pt 1024 392)
+	(pt 1104 392)
+)
+(connector
+	(text "RAINBOW" (rect 1034 392 1083 409)(font "Intel Clear" ))
+	(pt 1024 408)
+	(pt 1104 408)
+)
+(connector
+	(text "ALL_PXLS" (rect 234 992 284 1009)(font "Intel Clear" ))
+	(pt 312 1008)
+	(pt 224 1008)
+)
+(connector
+	(text "BIT24_R" (rect 234 1008 274 1025)(font "Intel Clear" ))
+	(pt 312 1024)
+	(pt 224 1024)
+)
+(connector
+	(text "BIT24_G" (rect 234 1024 274 1041)(font "Intel Clear" ))
+	(pt 312 1040)
+	(pt 224 1040)
+)
+(connector
+	(text "BIT24_B" (rect 234 1040 274 1057)(font "Intel Clear" ))
+	(pt 312 1056)
+	(pt 224 1056)
+)
+(connector
+	(text "RUN_PXL" (rect 234 1056 281 1073)(font "Intel Clear" ))
+	(pt 312 1072)
+	(pt 224 1072)
+)
+(connector
+	(text "RAINBOW" (rect 234 1072 283 1089)(font "Intel Clear" ))
+	(pt 312 1088)
+	(pt 224 1088)
+>>>>>>> Stashed changes
 )
 (junction (pt 512 280))
 (title_block
 	(rect 976 1048 1344 1168)
 	(section (rect 0 24 368 48)(text "COMPANY" (rect 2 0 57 12)(font "Arial" ))(text "GaTech DDL" (rect 56 2 170 20)(font "Arial" (font_size 12)))(border))
+<<<<<<< Updated upstream
 	(section (rect 0 96 240 120)(text "DATE" (rect 2 0 30 12)(font "Arial" ))(text "Wed Apr 06 17:52:01 2022" (rect 56 3 238 19)(font "Arial" (font_size 10)))(date)(border))
+=======
+	(section (rect 0 96 240 120)(text "DATE" (rect 2 0 30 12)(font "Arial" ))(text "Tue Apr 19 18:24:01 2022" (rect 56 3 231 19)(font "Arial" (font_size 10)))(date)(border))
+>>>>>>> Stashed changes
 	(section (rect 0 48 368 72)(text "DESIGNER" (rect 2 0 59 12)(font "Arial" ))(text "Kevin Johnson, Tom Collins" (rect 56 2 286 20)(font "Arial" (font_size 12)))(border))
 	(section (rect 0 72 280 96)(text "NUMBER" (rect 2 0 49 12)(font "Arial" ))(text "1.00" (rect 56 1 85 17)(font "Arial" (font_size 10)))(border))
 	(section (rect 310 96 368 120)(text "OF" (rect 10 0 25 12)(font "Arial" ))(text "1" (rect 34 4 42 20)(font "Arial" (font_size 10))))

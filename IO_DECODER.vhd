@@ -19,7 +19,16 @@ ENTITY IO_DECODER IS
     HEX1_EN       : OUT STD_LOGIC;
     PXL_A_EN      : OUT STD_LOGIC;
     PXL_D_EN      : OUT STD_LOGIC;
+<<<<<<< Updated upstream
 	 ALL_PXLS		: OUT STD_LOGIC
+=======
+	 ALL_PXLS		: OUT STD_LOGIC;
+	 BIT24_R       : OUT STD_LOGIC;
+	 BIT24_G       : OUT STD_LOGIC;
+	 BIT24_B       : OUT STD_LOGIC;
+	 RUN_PXL			: OUT STD_LOGIC;
+	 RAINBOW			: OUT STD_LOGIC
+>>>>>>> Stashed changes
   );
 
 END ENTITY;
@@ -40,6 +49,14 @@ begin
   PXL_A_EN     <= '1' WHEN (ADDR_INT = 16#0B0#) and (IO_CYCLE = '1') ELSE '0';
   PXL_D_EN     <= '1' WHEN (ADDR_INT = 16#0B1#) and (IO_CYCLE = '1') ELSE '0';
   ALL_PXLS		<= '1' WHEN (ADDR_INT = 16#0B2#) and (IO_CYCLE = '1') ELSE '0';
+<<<<<<< Updated upstream
+=======
+  BIT24_R   	<= '1' WHEN (ADDR_INT = 16#0B3#) and (IO_CYCLE = '1') ELSE '0';
+  BIT24_G		<= '1' WHEN (ADDR_INT = 16#0B4#) and (IO_CYCLE = '1') ELSE '0';
+  BIT24_B		<= '1' WHEN (ADDR_INT = 16#0B5#) and (IO_CYCLE = '1') ELSE '0';
+  RUN_PXL		<= '1' WHEN (ADDR_INT = 16#0B6#) and (IO_CYCLE = '1') ELSE '0';
+  RAINBOW		<= '1' WHEN (ADDR_INT = 16#0B7#) and (IO_CYCLE = '1') ELSE '0';
+>>>>>>> Stashed changes
 	
  
 END a;
