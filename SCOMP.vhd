@@ -15,13 +15,13 @@ use lpm.lpm_components.all;
 
 entity SCOMP is
 	port(
-		clock     : in    std_logic;
-		resetn    : in    std_logic;
-		IO_WRITE  : out   std_logic;
-		IO_CYCLE  : out   std_logic;
-		IO_ADDR   : out   std_logic_vector(10 downto 0);
-		IO_DATA   : inout std_logic_vector(15 downto 0);
-		dbg_FETCH : out   std_logic;
+		clock     : in    std_logic; --this is just the clock
+		resetn    : in    std_logic; --manual reset is button 0
+		IO_WRITE  : out   std_logic; --this is our IO drive enable, when 0 not driving, when 0, driving
+		IO_CYCLE  : out   std_logic; --this is 1 when we are enabling any peripheral
+		IO_ADDR   : out   std_logic_vector(10 downto 0); --this goes directly to the io decoder
+		IO_DATA   : inout std_logic_vector(15 downto 0); --this is the actual data input/output bus that will go to all our peripherals 
+		dbg_FETCH : out   std_logic; --
 		dbg_AC    : out   std_logic_vector(15 downto 0);
 		dbg_PC    : out   std_logic_vector(10 downto 0);
 		dbg_MA    : out   std_logic_vector(10 downto 0);
