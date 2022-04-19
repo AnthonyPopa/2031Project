@@ -237,11 +237,7 @@ begin
 				case istate is
 				when init =>
 					ram_write_addr <= x"00";
-					timer := timer + 1;
-					if (timer = 100) then
-						timer := 0;
-						istate <= increment;
-					end if;
+					istate <= increment;
 				when increment =>
 					if (ram_write_addr >= x"FF") then
 						istate <= init;
@@ -258,7 +254,11 @@ begin
 				case istate is
 				when init =>
 					ram_write_addr <= x"00";
-					istate <= increment;
+					timer := timer + 1;
+					if (timer = 100) then
+						timer := 0;
+						istate <= increment;
+					end if;
 				when increment =>
 					if (ram_write_addr >= x"FF") then
 						istate <= init;
@@ -346,13 +346,15 @@ begin
 						end if;
 					elsif (run_pxl = '1') then
 						if (rstate = red) then
-							ram_write_buffer <= x"00FF00";
+							ram_write_buffer <= data_in(10 downto 5) & "00" & data_in(15 downto 11) & "000" & data_in(4 downto 0) & "000";
 						else
 							ram_write_buffer <= x"000000";
 						end if;
 						
 						ram_we <= '1';
-						wstate <= storing;
+						if (ram_write_addr >= x"FF") then
+							wstate <= storing;
+						end if;
 					else
 						-- latch the current data into the temporary storage register,
 						-- because this is the only time it'll be available.

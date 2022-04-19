@@ -2,7 +2,8 @@
 
 ORG 0
 
-	OUT RAINBOW
+	LOADI &H000F
+	OUT RUN
 
 ; IO address constants
 Switches:  EQU 000

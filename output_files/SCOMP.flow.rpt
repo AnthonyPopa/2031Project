@@ -1,5 +1,5 @@
 Flow report for SCOMP
-Tue Apr 19 17:25:25 2022
+Tue Apr 19 18:35:11 2022
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -41,15 +41,15 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Tue Apr 19 17:25:25 2022       ;
+; Flow Status                     ; Successful - Tue Apr 19 18:35:11 2022       ;
 ; Quartus Prime Version           ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name                   ; SCOMP                                       ;
 ; Top-level Entity Name           ; SCOMP_System                                ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSXFC6D6F31C6                              ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 383 / 41,910 ( < 1 % )                      ;
-; Total registers                 ; 395                                         ;
+; Logic utilization (in ALMs)     ; 381 / 41,910 ( < 1 % )                      ;
+; Total registers                 ; 389                                         ;
 ; Total pins                      ; 64 / 499 ( 13 % )                           ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 38,912 / 5,662,720 ( < 1 % )                ;
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/19/2022 17:21:47 ;
+; Start date & time ; 04/19/2022 18:32:51 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; SCOMP               ;
 +-------------------+---------------------+
@@ -80,7 +80,7 @@ https://fpgasoftware.intel.com/eula.
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name  ; Section Id                        ;
 +-------------------------------------+----------------------------------------+---------------+--------------+-----------------------------------+
 ; ADVANCED_PHYSICAL_OPTIMIZATION      ; Off                                    ; On            ; --           ; --                                ;
-; COMPILER_SIGNATURE_ID               ; 10995770589186.165040330736096         ; --            ; --           ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 10995770589186.165040757139628         ; --            ; --           ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --           ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --           ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --           ; eda_board_design_signal_integrity ;
@@ -114,14 +114,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:15     ; 1.0                     ; 4913 MB             ; 00:00:31                           ;
-; Fitter               ; 00:01:53     ; 1.0                     ; 6817 MB             ; 00:02:33                           ;
-; Assembler            ; 00:00:07     ; 1.0                     ; 4849 MB             ; 00:00:07                           ;
-; Timing Analyzer      ; 00:00:08     ; 1.7                     ; 5256 MB             ; 00:00:12                           ;
-; EDA Netlist Writer   ; 00:00:02     ; 1.0                     ; 4837 MB             ; 00:00:02                           ;
-; MIF/HEX Update       ; 00:00:03     ; 1.0                     ; 4878 MB             ; 00:00:03                           ;
-; Assembler            ; 00:00:07     ; 1.0                     ; 4848 MB             ; 00:00:07                           ;
-; Total                ; 00:02:35     ; --                      ; --                  ; 00:03:35                           ;
+; Analysis & Synthesis ; 00:00:14     ; 1.0                     ; 4918 MB             ; 00:00:29                           ;
+; Fitter               ; 00:01:44     ; 1.1                     ; 6763 MB             ; 00:02:24                           ;
+; Assembler            ; 00:00:07     ; 1.0                     ; 4851 MB             ; 00:00:06                           ;
+; Timing Analyzer      ; 00:00:08     ; 1.7                     ; 5253 MB             ; 00:00:12                           ;
+; EDA Netlist Writer   ; 00:00:02     ; 1.0                     ; 4836 MB             ; 00:00:02                           ;
+; Total                ; 00:02:15     ; --                      ; --                  ; 00:03:13                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -135,8 +133,6 @@ https://fpgasoftware.intel.com/eula.
 ; Assembler            ; DESKTOP-NC89A0Q  ; Windows 10 ; 10.0       ; x86_64         ;
 ; Timing Analyzer      ; DESKTOP-NC89A0Q  ; Windows 10 ; 10.0       ; x86_64         ;
 ; EDA Netlist Writer   ; DESKTOP-NC89A0Q  ; Windows 10 ; 10.0       ; x86_64         ;
-; MIF/HEX Update       ; DESKTOP-NC89A0Q  ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; DESKTOP-NC89A0Q  ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 
@@ -148,8 +144,6 @@ quartus_fit --read_settings_files=off --write_settings_files=off SCOMP -c SCOMP
 quartus_asm --read_settings_files=off --write_settings_files=off SCOMP -c SCOMP
 quartus_sta SCOMP -c SCOMP
 quartus_eda --read_settings_files=off --write_settings_files=off SCOMP -c SCOMP
-quartus_cdb SCOMP -c SCOMP --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off SCOMP -c SCOMP
 
 
 
