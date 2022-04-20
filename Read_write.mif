@@ -1,0 +1,24 @@
+-- Altera Memory Initialization File (MIF)
+
+DEPTH = 2048;
+WIDTH = 16;
+
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+
+CONTENT
+  BEGIN
+    [000..7FF] : 0000;  -- Default to NOP
+
+           000 : B80A;  -- 		LOADI 10
+           001 : 98B0;  -- 		OUT PXL_A
+           002 : 080A;  -- 		LOAD COLOR
+           003 : 98B1;  -- 		OUT PXL_D
+           004 : 90B1;  -- 		IN PXL_D
+           005 : 100B;  -- 		STORE TEMP
+           006 : B80F;  -- 		LOADI 15
+           007 : 98B0;  -- 		OUT PXL_A
+           008 : 080B;  -- 		LOAD TEMP
+           009 : 98B1;  -- 		OUT PXL_D
+           00A : 97EE;  -- COLOR: DW &H97EE
+  END;
