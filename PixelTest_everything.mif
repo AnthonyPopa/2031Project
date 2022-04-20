@@ -1,0 +1,74 @@
+-- Altera Memory Initialization File (MIF)
+
+DEPTH = 2048;
+WIDTH = 16;
+
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+
+CONTENT
+  BEGIN
+    [000..7FF] : 0000;  -- Default to NOP
+
+           000 : 9000;  -- START:			IN Switches
+           001 : 5037;  -- 				OR Down
+           002 : 4004;  -- 				JZERO Continue
+           003 : 2800;  -- 				JUMP Start
+           004 : 9000;  -- Continue:		IN SWITCHES
+           005 : 5037;  -- 				OR Down
+           006 : 3808;  -- 				JPOS Test
+           007 : 2804;  -- 				JUMP Continue
+           008 : 9000;  -- TEST:			IN SWITCHES
+           009 : 2030;  -- 				SUB test1
+           00A : 402E;  -- 				JZERO Rainbow
+           00B : 9000;  -- 				IN SWITCHES
+           00C : 2031;  -- 				SUB test2
+           00D : 401B;  -- 				JZERO Running
+           00E : 9000;  -- 				IN SWITCHES
+           00F : 2032;  -- 				SUB test3
+           010 : 401E;  -- 				JZERO BIT16
+           011 : 9000;  -- 				IN SWITCHES
+           012 : 2033;  -- 				SUB test4
+           013 : 4023;  -- 				JZERO BIT24
+           014 : 9000;  -- 				IN SWITCHES
+           015 : 2034;  -- 				SUB test5
+           016 : 402A;  -- 				JZERO ALLPIXL
+           017 : 9000;  -- 				IN SWITCHES
+           018 : 2035;  -- 				SUB test6
+           019 : 402D;  -- 				JZERO Read_T
+           01A : 2808;  -- 				JUMP TEST
+           01B : 083C;  -- Running:		LOAD BIT_C_16
+           01C : 98B6;  -- 				OUT RUN
+           01D : 2800;  -- 				JUMP Start
+           01E : B804;  -- BIT16:			LOADI 4
+           01F : 98B0;  -- 				OUT PXL_A
+           020 : 083C;  -- 				LOAD BIT_c_16
+           021 : 98B1;  -- 				OUT PXL_D
+           022 : 2800;  -- 				JUMP Start
+           023 : 0839;  -- BIT24:			LOAD BIT_r_24
+           024 : 98B3;  -- 				OUT RED
+           025 : 083A;  -- 				LOAD BIT_g_24
+           026 : 98B4;  -- 				OUT GREEN
+           027 : 083B;  -- 				LOAD BIT_b_24
+           028 : 98B5;  -- 				OUT BLUE
+           029 : 2800;  -- 				JUMP Start
+           02A : 0838;  -- ALLPIXL:	    LOAD COLOR1
+           02B : 98B2;  -- 				OUT  ALL_PXLS
+           02C : 2800;  -- 				JUMP Start
+           02D : 2800;  -- 			    JUMP Start
+           02E : 98B7;  -- Rainbow:		OUT RAINBOW_T
+           02F : 2800;  -- 				JUMP Start
+           030 : 0200;  -- test1:     DW &B1000000000
+           031 : 0100;  -- test2:     DW &B0100000000
+           032 : 0080;  -- test3:     DW &B0010000000
+           033 : 0040;  -- test4:     DW &B0001000000
+           034 : 0020;  -- test5:     DW &B0000100000
+           035 : 0010;  -- test6:     DW &B0000010000
+           036 : 0008;  -- test7:     DW &B0000001000
+           037 : 0000;  -- down:      DW &B0000000000
+           038 : FFFF;  -- COLOR1:    DW &HFFFF
+           039 : 0044;  -- BIT_r_24:  DW &H44
+           03A : 00EC;  -- BIT_g_24:  DW &HEC
+           03B : 00F2;  -- BIT_b_24:  DW &HF2
+           03C : 97EE;  -- BIT_C_16:  DW &H97EE
+  END;
